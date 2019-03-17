@@ -1,8 +1,8 @@
 {
-  "name": "redmobile-android-light",
+  "name": "redmobile-nodes",
   "version": "1.0.0",
   "description": "",
-  "main": "node/android-light.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,7 +17,7 @@
   },
   "node-red": {
     "nodes": {
-      "android-light": "./nodes/andreoid-light.js"
+      "red-light": "./nodes/light.js"
     }
   }
 }

@@ -1,0 +1,23 @@
+{
+  "name": "redmobile-android-light",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node/android-light.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "redmobile",
+    "nodered"
+  ],
+  "author": "hiroyuki okada",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0"
+  },
+  "node-red": {
+    "nodes": {
+      "android-light": "./nodes/andreoid-light.js"
+    }
+  }
+}

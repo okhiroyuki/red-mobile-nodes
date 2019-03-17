@@ -15,7 +15,8 @@ module.exports = function(RED) {
                 url: PATH,
                 method: 'get',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': "Bearer: " + RED.settings.redMobileAccessKey
                 },
                 timeout: 5000
             };

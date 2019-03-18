@@ -1,0 +1,31 @@
+<script type="text/x-red" data-template-name="red-compass">
+    <div class="form-row">
+        <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="red-compass.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]red-compass.label.name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="red-compass">
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('red-compass', {
+        category: 'mobile',
+        color: '#a4c639',
+        defaults: {
+            name: {
+                value: ""
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "light.png",
+        label: function () {
+            return this.name || this._("red-compass.red-compass");
+        },
+        oneditprepare: function() {
+        },
+        oneditsave: function() {
+        }
+    });
+</script>

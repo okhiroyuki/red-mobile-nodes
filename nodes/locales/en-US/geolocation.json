@@ -1,0 +1,11 @@
+{
+    "red-location": {
+        "red-location": "location",
+        "label": {
+            "name": "Name"
+        },
+        "errors": {
+            "response": "Could not get sensor data."
+        }
+    }
+}

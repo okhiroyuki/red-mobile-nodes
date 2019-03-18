@@ -17,7 +17,10 @@
   },
   "node-red": {
     "nodes": {
-      "red-light": "./nodes/light.js"
+      "red-light": "./nodes/light.js",
+      "red-geolocation": "./nodes/geolocation.js",
+      "red-motion": "./nodes/motion.js",
+      "red-compass": "./nodes/compass.js"
     }
   }
 }

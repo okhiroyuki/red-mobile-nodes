@@ -1,5 +1,5 @@
 {
-  "name": "red-mobile-nodes",
+  "name": "@red-mobile/red-mobile-nodes",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",

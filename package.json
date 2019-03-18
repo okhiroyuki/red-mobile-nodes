@@ -1,6 +1,6 @@
 {
   "name": "@red-mobile/red-mobile-nodes",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Extra nodes for RedMobile",
   "main": "app.js",
   "scripts": {

@@ -20,7 +20,8 @@
       "red-light": "./nodes/light.js",
       "red-motion": "./nodes/motion.js",
       "red-compass": "./nodes/compass.js",
-      "red-battery": "./nodes/battery.js"
+      "red-battery": "./nodes/battery.js",
+      "red-location": "./nodes/geolocation.js"
     }
   }
 }

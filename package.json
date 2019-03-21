@@ -13,7 +13,8 @@
   "author": "hiroyuki okada",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",
+    "qs": "^6.6.0"
   },
   "node-red": {
     "nodes": {
@@ -21,7 +22,9 @@
       "red-motion": "./nodes/motion.js",
       "red-compass": "./nodes/compass.js",
       "red-battery": "./nodes/battery.js",
-      "red-location": "./nodes/geolocation.js"
+      "red-location": "./nodes/geolocation.js",
+      "speech-to-text": "./nodes/speech-to-text.js",
+      "text-to-speech": "./nodes/text-to-speech.js"
     }
   }
 }

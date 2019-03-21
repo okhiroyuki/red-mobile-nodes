@@ -1,0 +1,11 @@
+{
+    "text-to-speech": {
+        "text-to-speech": "text to speech",
+        "label": {
+            "name": "Name"
+        },
+        "errors": {
+            "response": "Could not get sensor data."
+        }
+    }
+}

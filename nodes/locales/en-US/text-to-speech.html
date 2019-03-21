@@ -1,0 +1,18 @@
+<script type="text/x-red" data-help-name="text-to-speech">
+    <p>Text to speech.</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>payload.text<span class="property-type">number</span></dt>
+        <dd>the text to be synthesized and spoken for this utterance.</dd>
+        <dt>payload.lang <span class="property-type">string</span></dt>
+        <dd>the language of the speech synthesis for the utterance</dd>
+    </dl>
+    <p>Example</p>
+<pre>
+msg.payload = {
+    text: "hello.",
+    lang: "en-US"
+}
+</pre>
+    <p><b>Note</b>: <code>msg.lang</code> is a valid BCP 47 language tag.</p>
+</script>

@@ -3,7 +3,7 @@ module.exports = function(RED) {
 
     const axios = require('axios');
     const BASE_URL = 'http://127.0.0.1';
-    const PATH =  '/compass';
+    const PATH =  '/mobile';
 
     function RedMobileCompassNode(n) {
         RED.nodes.createNode(this, n);
@@ -17,6 +17,9 @@ module.exports = function(RED) {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': "Bearer: " + RED.settings.redMobileAccessKey
+                },
+                params: {
+                    method: "compass"
                 },
                 timeout: 5000
             };

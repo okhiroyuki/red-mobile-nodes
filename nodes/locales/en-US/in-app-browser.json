@@ -1,0 +1,11 @@
+{
+    "in-app-browser": {
+        "in-app-browser": "InAppBrowser",
+        "label": {
+            "name": "Name"
+        },
+        "errors": {
+            "response": "Could not get sensor data."
+        }
+    }
+}

@@ -1,0 +1,19 @@
+<script type="text/x-red" data-help-name="in-app-browser">
+    <p>Opens a URL in a new [InAppBrowser] instance, the system browser.</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>payload.url<span class="property-type">string</span></dt>
+        <dd>The URL to load. Call encodeURI() on this if the URL contains Unicode characters.</dd>
+        <dt>payload.options <span class="property-type">string</span></dt>
+        <dd>Options for the [InAppBrowser].</dd>
+    </dl>
+    <p>Example</p>
+<pre>
+msg.payload = {
+    "url": "https://twitter.com/redmobile_info",
+    "options": "location=true"
+}
+</pre>
+    <p><b>Note</b>: The options string must not contain any blank space, and each feature's name/value pairs must be separated by a comma. Feature names are case insensitive.</br>
+        All platforms support the value below: location: Set to yes or no to turn the InAppBrowser's location bar on or off.</p>
+</script>

@@ -24,7 +24,8 @@
       "red-battery": "./nodes/battery.js",
       "red-location": "./nodes/geolocation.js",
       "speech-to-text": "./nodes/speech-to-text.js",
-      "text-to-speech": "./nodes/text-to-speech.js"
+      "text-to-speech": "./nodes/text-to-speech.js",
+      "in-app-browser": "./nodes/in-app-browser.js"
     }
   }
 }

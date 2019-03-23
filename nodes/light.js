@@ -20,8 +20,7 @@ module.exports = function(RED) {
                 },
                 params: {
                     method: "light"
-                },
-                timeout: 5000
+                }
             };
 
             axios.request(config).then((res) => {

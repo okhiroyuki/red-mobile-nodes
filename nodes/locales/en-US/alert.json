@@ -1,6 +1,6 @@
 {
     "alert": {
-        "alert": "beep",
+        "alert": "alert",
         "label": {
             "name": "Name"
         },

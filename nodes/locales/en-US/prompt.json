@@ -1,0 +1,11 @@
+{
+    "prompt": {
+        "prompt": "prompt",
+        "label": {
+            "name": "Name"
+        },
+        "errors": {
+            "response": "Could not get sensor data."
+        }
+    }
+}

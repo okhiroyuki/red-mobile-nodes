@@ -1,0 +1,20 @@
+<script type="text/x-red" data-help-name="alert">
+    <p>Shows a custom alert or dialog box. Most Cordova implementations use a native dialog box for this feature, but some platforms use the browser's alert function, which is typically less customizable.</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>payload.message <span class="property-type">string</span></dt>
+        <dd>Dialog message.</dd>
+        <dt>payload.title <span class="property-type">string</span></dt>
+        <dd>Dialog title.(Optional, defaults to Alert)</dd>
+        <dt>payload.buttonName <span class="property-type">string</span></dt>
+        <dd>Button name. (String) (Optional, defaults to OK)</dd>
+    </dl>
+    <h4>Example</h4>
+<pre>
+msg.payload = {
+    "message": "You are the winner!",
+    "title": "Game Over",
+    "buttonName": "Done"
+}
+</pre>
+</script>

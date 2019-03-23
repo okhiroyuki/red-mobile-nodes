@@ -1,0 +1,25 @@
+<script type="text/x-red" data-help-name="vibrate">
+    <p>Vibrates the device for a given amount of time.</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>payload<span class="property-type">array</span></dt>
+        <dd>Sequence of durations (in milliseconds) for which to turn on or off the vibrator. (Array of Numbers)</dd>
+    </dl>
+    <h4>Standard vibrate</h4>
+<pre>
+msg.payload = [3000];
+</pre>
+    <h4>Vibrate with a pattern</h4>
+<pre>
+// Vibrate for 1 second
+// Wait for 1 second
+// Vibrate for 3 seconds
+// Wait for 1 second
+// Vibrate for 5 seconds
+msg.payload = [1000, 1000, 3000, 1000, 5000];
+</pre>
+    <h4>Cancel vibration</h4>
+<pre>
+msg.payload = [0];
+</pre>
+</script>

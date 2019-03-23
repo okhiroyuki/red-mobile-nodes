@@ -25,7 +25,12 @@
       "red-location": "./nodes/geolocation.js",
       "speech-to-text": "./nodes/speech-to-text.js",
       "text-to-speech": "./nodes/text-to-speech.js",
-      "in-app-browser": "./nodes/in-app-browser.js"
+      "in-app-browser": "./nodes/in-app-browser.js",
+      "vibrate": "./nodes/vibrate.js",
+      "beep": "./nodes/beep.js",
+      "alert": "./nodes/alert.js",
+      "confirm": "./nodes/confirm.js",
+      "prompt": "./nodes/prompt.js"
     }
   }
 }

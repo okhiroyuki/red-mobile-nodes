@@ -1,6 +1,6 @@
 {
   "name": "@red-mobile/red-mobile-nodes",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Extra nodes for RedMobile",
   "main": "app.js",
   "scripts": {
@@ -18,11 +18,12 @@
   },
   "node-red": {
     "nodes": {
-      "red-light": "./nodes/light.js",
-      "red-motion": "./nodes/motion.js",
-      "red-compass": "./nodes/compass.js",
-      "red-battery": "./nodes/battery.js",
-      "red-location": "./nodes/geolocation.js",
+      "light": "./nodes/light.js",
+      "motion": "./nodes/motion.js",
+      "compass": "./nodes/compass.js",
+      "battery": "./nodes/battery.js",
+      "location": "./nodes/geolocation.js",
+      "proximity": "./nodes/proximity.js",
       "speech-to-text": "./nodes/speech-to-text.js",
       "text-to-speech": "./nodes/text-to-speech.js",
       "in-app-browser": "./nodes/in-app-browser.js",

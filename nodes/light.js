@@ -32,15 +32,15 @@ module.exports = function(RED) {
                     text: "success"
                 });
             }).catch((error) => {
-                node.error(RED._("red-light.errors.response"));
+                node.error(RED._("light.errors.response"));
                 node.status({
                     fill: "red",
                     shape: "ring",
-                    text: RED._("red-light.errors.response")
+                    text: RED._("light.errors.response")
                 });
             });
         });
     }
 
-    RED.nodes.registerType("red-light", RedMobileLightNode);
+    RED.nodes.registerType("light", RedMobileLightNode);
 };

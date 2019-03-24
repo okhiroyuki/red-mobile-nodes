@@ -3,9 +3,9 @@ module.exports = function(RED) {
 
     const axios = require('axios');
     const BASE_URL = 'http://127.0.0.1';
-    const PATH =  '/mobile';
+    const PATH =  '/exit';
 
-    function RedMobileGeolocationNode(n) {
+    function RedMobileExitNode(n) {
         RED.nodes.createNode(this, n);
         let node = this;
 
@@ -18,9 +18,6 @@ module.exports = function(RED) {
                     'Content-Type': 'application/json',
                     'Authorization': "Bearer: " + RED.settings.redMobileAccessKey
                 },
-                params: {
-                    method: "geolocation"
-                }
             };
 
             axios.request(config).then((res) => {
@@ -32,15 +29,15 @@ module.exports = function(RED) {
                     text: "success"
                 });
             }).catch((error) => {
-                node.error(RED._("location.errors.response"));
+                node.error(RED._("exit.errors.response"));
                 node.status({
                     fill: "red",
                     shape: "ring",
-                    text: RED._("location.errors.response")
+                    text: RED._("exit.errors.response")
                 });
             });
         });
     }
 
-    RED.nodes.registerType("location", RedMobileGeolocationNode);
+    RED.nodes.registerType("exit", RedMobileExitNode);
 };

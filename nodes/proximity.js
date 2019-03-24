@@ -5,7 +5,7 @@ module.exports = function(RED) {
     const BASE_URL = 'http://127.0.0.1';
     const PATH =  '/mobile';
 
-    function RedMobileGeolocationNode(n) {
+    function RedMobileProximityNode(n) {
         RED.nodes.createNode(this, n);
         let node = this;
 
@@ -19,7 +19,7 @@ module.exports = function(RED) {
                     'Authorization': "Bearer: " + RED.settings.redMobileAccessKey
                 },
                 params: {
-                    method: "geolocation"
+                    method: "proximity"
                 }
             };
 
@@ -32,15 +32,15 @@ module.exports = function(RED) {
                     text: "success"
                 });
             }).catch((error) => {
-                node.error(RED._("location.errors.response"));
+                node.error(RED._("proximity.errors.response"));
                 node.status({
                     fill: "red",
                     shape: "ring",
-                    text: RED._("location.errors.response")
+                    text: RED._("proximity.errors.response")
                 });
             });
         });
     }
 
-    RED.nodes.registerType("location", RedMobileGeolocationNode);
+    RED.nodes.registerType("proximity", RedMobileProximityNode);
 };

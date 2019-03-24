@@ -33,15 +33,15 @@ module.exports = function(RED) {
                     text: "success"
                 });
             }).catch((error) => {
-                node.error(RED._("red-battery.errors.response"));
+                node.error(RED._("battery.errors.response"));
                 node.status({
                     fill: "red",
                     shape: "ring",
-                    text: RED._("red-battery.errors.response")
+                    text: RED._("battery.errors.response")
                 });
             });
         });
     }
 
-    RED.nodes.registerType("red-battery", RedMobileBatteryNode);
+    RED.nodes.registerType("battery", RedMobileBatteryNode);
 };

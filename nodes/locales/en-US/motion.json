@@ -1,6 +1,6 @@
 {
-    "red-motion": {
-        "red-motion": "motion",
+    "motion": {
+        "motion": "motion",
         "label": {
             "name": "Name"
         },

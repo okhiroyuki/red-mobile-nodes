@@ -32,15 +32,15 @@ module.exports = function(RED) {
                     text: "success"
                 });
             }).catch((error) => {
-                node.error(RED._("red-compass.errors.response"));
+                node.error(RED._("compass.errors.response"));
                 node.status({
                     fill: "red",
                     shape: "ring",
-                    text: RED._("red-compass.errors.response")
+                    text: RED._("compass.errors.response")
                 });
             });
         });
     }
 
-    RED.nodes.registerType("red-compass", RedMobileCompassNode);
+    RED.nodes.registerType("compass", RedMobileCompassNode);
 };

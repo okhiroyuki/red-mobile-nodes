@@ -1,6 +1,6 @@
 {
-    "light": {
-        "light": "light",
+    "proximity": {
+        "proximity": "proximity",
         "label": {
             "name": "Name"
         },

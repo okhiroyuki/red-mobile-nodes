@@ -1,6 +1,6 @@
 {
-    "red-compass": {
-        "red-compass": "compass",
+    "compass": {
+        "compass": "compass",
         "label": {
             "name": "Name"
         },

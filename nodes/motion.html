@@ -1,12 +1,12 @@
-<script type="text/x-red" data-template-name="red-motion">
+<script type="text/x-red" data-template-name="motion">
     <div class="form-row">
-        <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="red-motion.label.name"></span></label>
-        <input type="text" id="node-input-name" data-i18n="[placeholder]red-motion.label.name">
+        <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="motion.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]motion.label.name">
     </div>
 </script>
 
 <script type="text/javascript">
-    RED.nodes.registerType('red-motion', {
+    RED.nodes.registerType('motion', {
         category: 'mobile',
         color: '#a4c639',
         defaults: {
@@ -18,7 +18,7 @@
         outputs: 1,
         icon: "light.png",
         label: function () {
-            return this.name || this._("red-motion.red-motion");
+            return this.name || this._("motion.motion");
         },
         oneditprepare: function() {
         },

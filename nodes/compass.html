@@ -1,12 +1,12 @@
-<script type="text/x-red" data-template-name="red-compass">
+<script type="text/x-red" data-template-name="compass">
     <div class="form-row">
-        <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="red-compass.label.name"></span></label>
-        <input type="text" id="node-input-name" data-i18n="[placeholder]red-compass.label.name">
+        <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="compass.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]compass.label.name">
     </div>
 </script>
 
 <script type="text/javascript">
-    RED.nodes.registerType('red-compass', {
+    RED.nodes.registerType('compass', {
         category: 'mobile',
         color: '#a4c639',
         defaults: {
@@ -18,7 +18,7 @@
         outputs: 1,
         icon: "light.png",
         label: function () {
-            return this.name || this._("red-compass.red-compass");
+            return this.name || this._("compass.compass");
         },
         oneditprepare: function() {
         },

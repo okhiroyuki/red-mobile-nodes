@@ -1,6 +1,6 @@
 {
-    "red-location": {
-        "red-location": "location",
+    "location": {
+        "location": "location",
         "label": {
             "name": "Name"
         },

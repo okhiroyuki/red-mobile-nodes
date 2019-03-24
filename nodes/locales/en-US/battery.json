@@ -1,6 +1,6 @@
 {
-    "red-battery": {
-        "red-battery": "battery",
+    "battery": {
+        "battery": "battery",
         "label": {
             "name": "Name"
         },

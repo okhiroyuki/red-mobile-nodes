@@ -45,11 +45,11 @@ module.exports = function(RED) {
     }
 
     function sendError(node){
-        node.error(RED._("beep.errors.response"));
+        node.error(RED._("alert.errors.response"));
         node.status({
             fill: "red",
             shape: "ring",
-            text: RED._("beep.errors.response")
+            text: RED._("alert.errors.response")
         });
     }
 

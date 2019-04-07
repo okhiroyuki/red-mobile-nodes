@@ -1,0 +1,11 @@
+{
+    "gyroscope": {
+        "gyroscope": "gyroscope",
+        "label": {
+            "name": "Name"
+        },
+        "errors": {
+            "response": "Could not get sensor data."
+        }
+    }
+}

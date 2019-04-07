@@ -22,6 +22,7 @@
       "motion": "./nodes/motion.js",
       "gyroscope": "./nodes/gyroscope.js",
       "compass": "./nodes/compass.js",
+      "magnetic": "./nodes/magnetic.js",
       "battery": "./nodes/battery.js",
       "location": "./nodes/geolocation.js",
       "proximity": "./nodes/proximity.js",

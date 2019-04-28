@@ -1,6 +1,6 @@
 {
   "name": "@red-mobile/red-mobile-nodes",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "Extra nodes for RedMobile",
   "main": "app.js",
   "scripts": {
@@ -23,6 +23,7 @@
       "gyroscope": "./nodes/gyroscope.js",
       "compass": "./nodes/compass.js",
       "magnetic": "./nodes/magnetic.js",
+      "dB": "./nodes/db.js",
       "battery": "./nodes/battery.js",
       "location": "./nodes/geolocation.js",
       "proximity": "./nodes/proximity.js",

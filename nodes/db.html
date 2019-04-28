@@ -1,0 +1,28 @@
+<script type="text/x-red" data-template-name="db">
+    <div class="form-row">
+        <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="db.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]db.label.name">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('db', {
+        category: 'mobile',
+        color: '#a4c639',
+        defaults: {
+            name: {
+                value: ""
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "db.png",
+        label: function () {
+            return this.name || this._("db.db");
+        },
+        oneditprepare: function() {
+        },
+        oneditsave: function() {
+        }
+    });
+</script>

@@ -11,19 +11,18 @@ module.exports = function(RED) {
         let node = this;
 
         node.on('input', function(msg) {
-            const json =  {
-                method: "camera-open",
-                payload: msg.payload
-            };
             let config = {
                 baseURL: BASE_URL + ":" + RED.settings.redMobilePort,
                 url: PATH,
-                method: "post",
-                data: qs.stringify(json),
+                method: 'get',
                 headers: {
-                    'Authorization': "Bearer: " + RED.settings.redMobileAccessKey,
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
+                    'Content-Type': 'application/json',
+                    'Authorization': "Bearer: " + RED.settings.redMobileAccessKey
+                },
+                params: {
+                    method: "camera-open"
+                },
+                timeout: 5000
             };
 
             axios.request(config).then((res) => {

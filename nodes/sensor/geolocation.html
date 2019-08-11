@@ -1,0 +1,28 @@
+<script type="text/x-red" data-template-name="location">
+    <div class="form-row">
+        <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="location.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]location.label.name">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('location', {
+        category: 'sensor',
+        color: '#a4c639',
+        defaults: {
+            name: {
+                value: ""
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "location.png",
+        label: function () {
+            return this.name || this._("location.location");
+        },
+        oneditprepare: function() {
+        },
+        oneditsave: function() {
+        }
+    });
+</script>

@@ -1,0 +1,14 @@
+{
+    "camera-open":{
+        "camera-open": "Camera Open"
+    },
+    "take-picture":{
+        "take-picture": "Take Picture"
+    },
+    "camera-close":{
+        "camera-close": "Camera Close"
+    },
+    "camera-preview":{
+        "camera-preview": "Preview"
+    }
+}

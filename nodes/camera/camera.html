@@ -1,0 +1,115 @@
+<script type="text/x-red" data-template-name="camera-open">
+    <div class="form-row">
+        <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="speech-to-text.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]speech-to-text.label.name">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('camera-open', {
+        category: 'camera',
+        color: '#a4c639',
+        defaults: {
+            name: {
+                value: ""
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "camera-open.png",
+        label: function () {
+            return this.name || this._("camera-open.camera-open");
+        },
+        oneditprepare: function() {
+        },
+        oneditsave: function() {
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="camera-close">
+    <div class="form-row">
+        <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="speech-to-text.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]speech-to-text.label.name">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('camera-close', {
+        category: 'camera',
+        color: '#a4c639',
+        defaults: {
+            name: {
+                value: ""
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "camera-close.png",
+        label: function () {
+            return this.name || this._("camera-close.camera-close");
+        },
+        oneditprepare: function() {
+        },
+        oneditsave: function() {
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="take-picture">
+    <div class="form-row">
+        <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="speech-to-text.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]speech-to-text.label.name">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('take-picture', {
+        category: 'camera',
+        color: '#a4c639',
+        defaults: {
+            name: {
+                value: ""
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "camera-take-picture.png",
+        label: function () {
+            return this.name || this._("take-picture.take-picture");
+        },
+        oneditprepare: function() {
+        },
+        oneditsave: function() {
+        }
+    });
+</script>
+
+<!-- <script type="text/x-red" data-template-name="camera-preview">
+    <div class="form-row">
+        <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="speech-to-text.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]speech-to-text.label.name">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('camera-preview', {
+        category: 'camera',
+        color: '#a4c639',
+        defaults: {
+            name: {
+                value: ""
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "preview.png",
+        label: function () {
+            return this.name || this._("camera-preview.camera-preview");
+        },
+        oneditprepare: function() {
+        },
+        oneditsave: function() {
+        }
+    });
+</script> -->

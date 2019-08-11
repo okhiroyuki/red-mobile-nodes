@@ -1,0 +1,28 @@
+<script type="text/x-red" data-template-name="text-to-speech">
+    <div class="form-row">
+        <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="text-to-speech.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]text-to-speech.label.name">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('text-to-speech', {
+        category: 'cognitive',
+        color: '#a4c639',
+        defaults: {
+            name: {
+                value: ""
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "text-to-speech.png",
+        label: function () {
+            return this.name || this._("text-to-speech.text-to-speech");
+        },
+        oneditprepare: function() {
+        },
+        oneditsave: function() {
+        }
+    });
+</script>

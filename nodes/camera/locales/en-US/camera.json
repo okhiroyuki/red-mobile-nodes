@@ -1,6 +1,13 @@
 {
     "camera-open":{
-        "camera-open": "Camera Open"
+        "camera-open": "Camera Open",
+        "label":{
+            "preview": "Preview"
+        },
+        "preview":{
+            "enable": "Enable",
+            "disable": "Disable"
+        }
     },
     "take-picture":{
         "take-picture": "Take Picture"
@@ -8,7 +15,7 @@
     "camera-close":{
         "camera-close": "Camera Close"
     },
-    "camera-preview":{
-        "camera-preview": "Preview"
+    "camera-switch":{
+        "camera-switch": "Camera Switch"
     }
 }

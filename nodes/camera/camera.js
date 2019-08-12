@@ -42,11 +42,11 @@ module.exports = function(RED) {
                     text: "success"
                 });
             }).catch((error) => {
-                node.error(RED._("speech-to-text.errors.response"));
+                node.error(RED._("camera-open.errors.response"));
                 node.status({
                     fill: "red",
                     shape: "ring",
-                    text: RED._("speech-to-text.errors.response")
+                    text: RED._("camera-open.errors.response")
                 });
             });
         });
@@ -82,11 +82,11 @@ module.exports = function(RED) {
                     text: "success"
                 });
             }).catch((error) => {
-                node.error(RED._("speech-to-text.errors.response"));
+                node.error(RED._("camera-close.errors.response"));
                 node.status({
                     fill: "red",
                     shape: "ring",
-                    text: RED._("speech-to-text.errors.response")
+                    text: RED._("scamera-close.errors.response")
                 });
             });
         });
@@ -122,11 +122,11 @@ module.exports = function(RED) {
                     text: "success"
                 });
             }).catch((error) => {
-                node.error(RED._("speech-to-text.errors.response"));
+                node.error(RED._("take-picture.errors.response"));
                 node.status({
                     fill: "red",
                     shape: "ring",
-                    text: RED._("speech-to-text.errors.response")
+                    text: RED._("take-picture.errors.response")
                 });
             });
         });
@@ -162,11 +162,11 @@ module.exports = function(RED) {
                     text: "success"
                 });
             }).catch((error) => {
-                node.error(RED._("speech-to-text.errors.response"));
+                node.error(RED._("camera-switch.errors.response"));
                 node.status({
                     fill: "red",
                     shape: "ring",
-                    text: RED._("speech-to-text.errors.response")
+                    text: RED._("camera-switch.errors.response")
                 });
             });
         });

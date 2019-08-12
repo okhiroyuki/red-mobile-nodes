@@ -7,15 +7,27 @@
         "preview":{
             "enable": "Enable",
             "disable": "Disable"
+        },
+        "error":{
+            "response": "Could not open camera."
         }
     },
     "take-picture":{
-        "take-picture": "Take Picture"
+        "take-picture": "Take Picture",
+        "error":{
+            "response": "Could not take Picture."
+        }
     },
     "camera-close":{
-        "camera-close": "Camera Close"
+        "camera-close": "Camera Close",
+        "error":{
+            "response": "Could not close camera."
+        }
     },
     "camera-switch":{
-        "camera-switch": "Camera Switch"
+        "camera-switch": "Camera Switch",
+        "error":{
+            "response": "Could not switch camera."
+        }
     }
 }

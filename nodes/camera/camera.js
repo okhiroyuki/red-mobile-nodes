@@ -9,20 +9,28 @@ module.exports = function(RED) {
     function RedMobileCameraOpenNode(n) {
         RED.nodes.createNode(this, n);
         let node = this;
+        node.options = {};
+        if(this.preview === "enable"){
+            node.options.onBack = false;
+        }else{
+            node.options.onBack = true;
+        }
 
         node.on('input', function(msg) {
+            const json =  {
+                method: "camera-open",
+                payload: msg.payload,
+                options: node.options
+            };
             let config = {
                 baseURL: BASE_URL + ":" + RED.settings.redMobilePort,
                 url: PATH,
-                method: 'get',
+                method: "post",
+                data: qs.stringify(json),
                 headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': "Bearer: " + RED.settings.redMobileAccessKey
-                },
-                params: {
-                    method: "camera-open"
-                },
-                timeout: 5000
+                    'Authorization': "Bearer: " + RED.settings.redMobileAccessKey,
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
             };
 
             axios.request(config).then((res) => {
@@ -51,19 +59,18 @@ module.exports = function(RED) {
         let node = this;
 
         node.on('input', function(msg) {
-            const json =  {
-                method: "camera-close",
-                payload: msg.payload
-            };
             let config = {
                 baseURL: BASE_URL + ":" + RED.settings.redMobilePort,
                 url: PATH,
-                method: "post",
-                data: qs.stringify(json),
+                method: 'get',
                 headers: {
-                    'Authorization': "Bearer: " + RED.settings.redMobileAccessKey,
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
+                    'Content-Type': 'application/json',
+                    'Authorization': "Bearer: " + RED.settings.redMobileAccessKey
+                },
+                params: {
+                    method: "camera-close"
+                },
+                timeout: 5000
             };
 
             axios.request(config).then((res) => {
@@ -92,19 +99,18 @@ module.exports = function(RED) {
         let node = this;
 
         node.on('input', function(msg) {
-            const json =  {
-                method: "camera-take-picture",
-                payload: msg.payload
-            };
             let config = {
                 baseURL: BASE_URL + ":" + RED.settings.redMobilePort,
                 url: PATH,
-                method: "post",
-                data: qs.stringify(json),
+                method: 'get',
                 headers: {
-                    'Authorization': "Bearer: " + RED.settings.redMobileAccessKey,
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
+                    'Content-Type': 'application/json',
+                    'Authorization': "Bearer: " + RED.settings.redMobileAccessKey
+                },
+                params: {
+                    method: "camera-take-picture"
+                },
+                timeout: 5000
             };
 
             axios.request(config).then((res) => {
@@ -128,44 +134,43 @@ module.exports = function(RED) {
 
     RED.nodes.registerType("take-picture", RedMobileTakePictureNode);
 
-    // function RedMobileCamerahPreviewNode(n) {
-    //     RED.nodes.createNode(this, n);
-    //     let node = this;
+    function RedMobileCameraSwitchNode(n) {
+        RED.nodes.createNode(this, n);
+        let node = this;
 
-    //     node.on('input', function(msg) {
-    //         const json =  {
-    //             method: "camera-preview",
-    //             payload: msg.payload
-    //         };
-    //         let config = {
-    //             baseURL: BASE_URL + ":" + RED.settings.redMobilePort,
-    //             url: PATH,
-    //             method: "post",
-    //             data: qs.stringify(json),
-    //             headers: {
-    //                 'Authorization': "Bearer: " + RED.settings.redMobileAccessKey,
-    //                 'Content-Type': 'application/x-www-form-urlencoded'
-    //             }
-    //         };
+        node.on('input', function(msg) {
+            let config = {
+                baseURL: BASE_URL + ":" + RED.settings.redMobilePort,
+                url: PATH,
+                method: 'get',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': "Bearer: " + RED.settings.redMobileAccessKey
+                },
+                params: {
+                    method: "camera-switch"
+                },
+                timeout: 5000
+            };
 
-    //         axios.request(config).then((res) => {
-    //             msg.payload = res.data;
-    //             node.send(msg);
-    //             node.status({
-    //                 fill: "blue",
-    //                 shape: "dot",
-    //                 text: "success"
-    //             });
-    //         }).catch((error) => {
-    //             node.error(RED._("speech-to-text.errors.response"));
-    //             node.status({
-    //                 fill: "red",
-    //                 shape: "ring",
-    //                 text: RED._("speech-to-text.errors.response")
-    //             });
-    //         });
-    //     });
-    // }
+            axios.request(config).then((res) => {
+                msg.payload = res.data;
+                node.send(msg);
+                node.status({
+                    fill: "blue",
+                    shape: "dot",
+                    text: "success"
+                });
+            }).catch((error) => {
+                node.error(RED._("speech-to-text.errors.response"));
+                node.status({
+                    fill: "red",
+                    shape: "ring",
+                    text: RED._("speech-to-text.errors.response")
+                });
+            });
+        });
+    }
 
-    // RED.nodes.registerType("camera-preview", RedMobileCamerahPreviewNode);
+    RED.nodes.registerType("camera-switch", RedMobileCameraSwitchNode);
 };

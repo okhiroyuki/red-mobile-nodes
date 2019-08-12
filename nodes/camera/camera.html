@@ -1,5 +1,14 @@
 <script type="text/x-red" data-template-name="camera-open">
     <div class="form-row">
+        <label for="node-input-preview"><i class="fa fa-list"></i> <span data-i18n="camera-open.label.preview"></span></label>
+        <select id="inject-preview-select">
+            <option value="enable" data-i18n="camera-open.preview.enable"></option>
+            <option value="disable" data-i18n="camera-open.preview.disable"></option>
+        </select>
+        <input type="hidden" id="node-input-preview">
+    </div>
+
+    <div class="form-row">
         <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="speech-to-text.label.name"></span></label>
         <input type="text" id="node-input-name" data-i18n="[placeholder]speech-to-text.label.name">
     </div>
@@ -8,10 +17,13 @@
 <script type="text/javascript">
     RED.nodes.registerType('camera-open', {
         category: 'camera',
-        color: '#a4c639',
+        color: '#839e2e',
         defaults: {
             name: {
                 value: ""
+            },
+            preview:{
+                value: "enable"
             }
         },
         inputs: 1,
@@ -37,7 +49,7 @@
 <script type="text/javascript">
     RED.nodes.registerType('camera-close', {
         category: 'camera',
-        color: '#a4c639',
+        color: '#839e2e',
         defaults: {
             name: {
                 value: ""
@@ -66,7 +78,7 @@
 <script type="text/javascript">
     RED.nodes.registerType('take-picture', {
         category: 'camera',
-        color: '#a4c639',
+        color: '#839e2e',
         defaults: {
             name: {
                 value: ""
@@ -85,7 +97,7 @@
     });
 </script>
 
-<!-- <script type="text/x-red" data-template-name="camera-preview">
+<script type="text/x-red" data-template-name="camera-switch">
     <div class="form-row">
         <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="speech-to-text.label.name"></span></label>
         <input type="text" id="node-input-name" data-i18n="[placeholder]speech-to-text.label.name">
@@ -93,9 +105,9 @@
 </script>
 
 <script type="text/javascript">
-    RED.nodes.registerType('camera-preview', {
+    RED.nodes.registerType('camera-switch', {
         category: 'camera',
-        color: '#a4c639',
+        color: '#839e2e',
         defaults: {
             name: {
                 value: ""
@@ -103,13 +115,13 @@
         },
         inputs: 1,
         outputs: 1,
-        icon: "preview.png",
+        icon: "switch.png",
         label: function () {
-            return this.name || this._("camera-preview.camera-preview");
+            return this.name || this._("camera-switch.camera-switch");
         },
         oneditprepare: function() {
         },
         oneditsave: function() {
         }
     });
-</script> -->
+</script>

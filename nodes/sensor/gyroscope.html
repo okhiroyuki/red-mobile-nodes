@@ -1,0 +1,28 @@
+<script type="text/x-red" data-template-name="gyroscope">
+    <div class="form-row">
+        <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="gyroscope.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]gyroscope.label.name">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('gyroscope', {
+        category: 'sensor',
+        color: '#a4c639',
+        defaults: {
+            name: {
+                value: ""
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "gyroscope.png",
+        label: function () {
+            return this.name || this._("gyroscope.gyroscope");
+        },
+        oneditprepare: function() {
+        },
+        oneditsave: function() {
+        }
+    });
+</script>

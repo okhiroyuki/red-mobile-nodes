@@ -1,6 +1,6 @@
 {
   "name": "@red-mobile/red-mobile-nodes",
-  "version": "1.0.18",
+  "version": "1.1.0",
   "description": "Extra nodes for RedMobile",
   "main": "app.js",
   "scripts": {
@@ -13,28 +13,29 @@
   "author": "hiroyuki okada",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "qs": "^6.6.0"
   },
   "node-red": {
     "nodes": {
-      "light": "./nodes/light.js",
-      "motion": "./nodes/motion.js",
-      "gyroscope": "./nodes/gyroscope.js",
-      "compass": "./nodes/compass.js",
-      "magnetic": "./nodes/magnetic.js",
-      "dB": "./nodes/db.js",
-      "battery": "./nodes/battery.js",
-      "location": "./nodes/geolocation.js",
-      "proximity": "./nodes/proximity.js",
-      "speech-to-text": "./nodes/speech-to-text.js",
-      "text-to-speech": "./nodes/text-to-speech.js",
-      "in-app-browser": "./nodes/in-app-browser.js",
-      "vibrate": "./nodes/vibrate.js",
-      "beep": "./nodes/beep.js",
-      "alert": "./nodes/alert.js",
-      "confirm": "./nodes/confirm.js",
-      "prompt": "./nodes/prompt.js"
+      "light": "./nodes/sensor/light.js",
+      "motion": "./nodes/sensor/motion.js",
+      "gyroscope": "./nodes/sensor/gyroscope.js",
+      "compass": "./nodes/sensor/compass.js",
+      "magnetic": "./nodes/sensor/magnetic.js",
+      "dB": "./nodes/sensor/db.js",
+      "battery": "./nodes/sensor/battery.js",
+      "location": "./nodes/sensor/geolocation.js",
+      "proximity": "./nodes/sensor/proximity.js",
+      "speech-to-text": "./nodes/cognitive/speech-to-text.js",
+      "text-to-speech": "./nodes/cognitive/text-to-speech.js",
+      "in-app-browser": "./nodes/advance/in-app-browser.js",
+      "vibrate": "./nodes/notification/vibrate.js",
+      "beep": "./nodes/notification/beep.js",
+      "alert": "./nodes/notification/alert.js",
+      "confirm": "./nodes/notification/confirm.js",
+      "prompt": "./nodes/notification/prompt.js",
+      "camera": "./nodes/camera/camera.js"
     }
   }
 }

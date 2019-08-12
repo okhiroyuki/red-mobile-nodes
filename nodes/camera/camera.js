@@ -10,10 +10,10 @@ module.exports = function(RED) {
         RED.nodes.createNode(this, n);
         let node = this;
         node.options = {};
-        if(this.preview === "enable"){
-            node.options.onBack = false;
+        if(n.preview === "enable"){
+            node.options.toBack = false;
         }else{
-            node.options.onBack = true;
+            node.options.toBack = true;
         }
 
         node.on('input', function(msg) {

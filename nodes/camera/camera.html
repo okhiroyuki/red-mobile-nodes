@@ -1,7 +1,7 @@
 <script type="text/x-red" data-template-name="camera-open">
     <div class="form-row">
         <label for="node-input-preview"><i class="fa fa-list"></i> <span data-i18n="camera-open.label.preview"></span></label>
-        <select id="inject-preview-select">
+        <select type="text" id="camera-preview-select">
             <option value="enable" data-i18n="camera-open.preview.enable"></option>
             <option value="disable" data-i18n="camera-open.preview.disable"></option>
         </select>
@@ -9,8 +9,8 @@
     </div>
 
     <div class="form-row">
-        <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="speech-to-text.label.name"></span></label>
-        <input type="text" id="node-input-name" data-i18n="[placeholder]speech-to-text.label.name">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
     </div>
 </script>
 
@@ -33,6 +33,14 @@
             return this.name || this._("camera-open.camera-open");
         },
         oneditprepare: function() {
+            $("#camera-preview-select option").filter(function() {
+                var v = $("#node-input-preview").val();
+                return $(this).val() == v;
+            }).attr('selected', true);
+            $("#camera-preview-select").change(function() {
+                var v = $("#camera-preview-select option:selected").val();
+                $("#node-input-preview").val(v);
+            });
         },
         oneditsave: function() {
         }
@@ -41,8 +49,8 @@
 
 <script type="text/x-red" data-template-name="camera-close">
     <div class="form-row">
-        <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="speech-to-text.label.name"></span></label>
-        <input type="text" id="node-input-name" data-i18n="[placeholder]speech-to-text.label.name">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
     </div>
 </script>
 
@@ -70,8 +78,8 @@
 
 <script type="text/x-red" data-template-name="take-picture">
     <div class="form-row">
-        <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="speech-to-text.label.name"></span></label>
-        <input type="text" id="node-input-name" data-i18n="[placeholder]speech-to-text.label.name">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
     </div>
 </script>
 
@@ -99,8 +107,8 @@
 
 <script type="text/x-red" data-template-name="camera-switch">
     <div class="form-row">
-        <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="speech-to-text.label.name"></span></label>
-        <input type="text" id="node-input-name" data-i18n="[placeholder]speech-to-text.label.name">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
     </div>
 </script>
 

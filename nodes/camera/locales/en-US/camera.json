@@ -8,25 +8,25 @@
             "enable": "Enable",
             "disable": "Disable"
         },
-        "error":{
+        "errors":{
             "response": "Could not open camera."
         }
     },
     "take-picture":{
         "take-picture": "Take Picture",
-        "error":{
+        "errors":{
             "response": "Could not take Picture."
         }
     },
     "camera-close":{
         "camera-close": "Camera Close",
-        "error":{
+        "errors":{
             "response": "Could not close camera."
         }
     },
     "camera-switch":{
         "camera-switch": "Camera Switch",
-        "error":{
+        "errors":{
             "response": "Could not switch camera."
         }
     }

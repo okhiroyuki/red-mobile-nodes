@@ -1,0 +1,28 @@
+<script type="text/x-red" data-help-name="serial-open">
+    <p>Open the serial port</p>
+    <p><b>Note</b>: First request the permission to use the serial port to the system.</p>
+</script>
+
+<script type="text/x-red" data-help-name="serial-close">
+    <p>Close the serial port.</p>
+</script>
+
+<script type="text/x-red" data-help-name="serial-write">
+    <p>Write data.</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>payload<span class="property-type">string</span></dt>
+        <dd>The string representation to be written to the serial port. It can be overwritten only when the string is not set in the property.</dd>
+    </dl>
+</script>
+
+<script type="text/x-red" data-help-name="serial-read">
+    <p>Read data.</p>
+    <h3>Outputs</h3>
+    <dl class="message-properties">
+        <dt>payload.data <span class="property-type">string</span></dt>
+        <dd>Get the latest value of data read serially. The data delimiter is \n.</dd>
+        <dt>payload.timestamp <span class="property-type">number</span></dt>
+        <dd>The time at which this heading was determined. (milliseconds)</dd>
+    </dl>
+</script>

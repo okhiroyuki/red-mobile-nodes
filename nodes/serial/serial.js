@@ -6,6 +6,21 @@ module.exports = function(RED) {
     const BASE_URL = 'http://127.0.0.1';
     const PATH =  '/mobile';
 
+    function getPostConfig(json){
+        const config = {
+            baseURL: BASE_URL + ":" + RED.settings.redMobilePort,
+            url: PATH,
+            method: "post",
+            data: qs.stringify(json),
+            headers: {
+                'Authorization': "Bearer: " + RED.settings.redMobileAccessKey,
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        };
+        console.log(JSON.stringify(config));
+        return config;
+    }
+
     function RedMobileSerialOpenNode(n) {
         RED.nodes.createNode(this, n);
         let node = this;
@@ -15,27 +30,17 @@ module.exports = function(RED) {
             stopBits: n.stopBits,
             parity: n.parity,
             dtr: n.dtr,
-            rts: n.rts,
-            sleepOnPause: true
+            rts: n.rts
         };
+
         node.on('input', function(msg) {
             const json =  {
                 method: "serial-open",
                 payload: msg.payload,
                 opts: node.opts
             };
-            let config = {
-                baseURL: BASE_URL + ":" + RED.settings.redMobilePort,
-                url: PATH,
-                method: "post",
-                data: qs.stringify(json),
-                headers: {
-                    'Authorization': "Bearer: " + RED.settings.redMobileAccessKey,
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            };
 
-            axios.request(config).then((res) => {
+            axios.request(getPostConfig(json)).then((res) => {
                 msg.payload = res.data;
                 node.send(msg);
                 node.status({
@@ -99,37 +104,27 @@ module.exports = function(RED) {
     function RedMobileSerialWriteNode(n) {
         RED.nodes.createNode(this, n);
         let node = this;
-        node.payload = n.payload;
+        node.data = n.data;
 
         node.on('input', function(msg) {
-            if(node.payload.length === 0){
+            if(node.data.length === 0){
                 if(msg.payload !== undefined){
-                    node.payload = msg.payload;
+                    node.data = msg.payload;
                 }else{
                     node.error(RED._("serial-write.errors.payload"));
                     node.status({
                         fill: "red",
                         shape: "ring",
                         text: RED._("serial-write.errors.payload")
-                });
+                    });
                 }
             }
             const json =  {
                 method: "serial-write",
-                payload: node.payload
-            };
-            let config = {
-                baseURL: BASE_URL + ":" + RED.settings.redMobilePort,
-                url: PATH,
-                method: "post",
-                data: qs.stringify(json),
-                headers: {
-                    'Authorization': "Bearer: " + RED.settings.redMobileAccessKey,
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
+                payload: node.data
             };
 
-            axios.request(config).then((res) => {
+            axios.request(getPostConfig(json)).then((res) => {
                 msg.payload = res.data;
                 node.send(msg);
                 node.status({
@@ -189,4 +184,4 @@ module.exports = function(RED) {
     }
 
     RED.nodes.registerType("serial-read", RedMobileSerialReadNode);
-};
+}

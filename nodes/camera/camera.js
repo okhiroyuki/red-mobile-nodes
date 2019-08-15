@@ -86,7 +86,7 @@ module.exports = function(RED) {
                 node.status({
                     fill: "red",
                     shape: "ring",
-                    text: RED._("scamera-close.errors.response")
+                    text: RED._("camera-close.errors.response")
                 });
             });
         });

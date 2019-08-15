@@ -16,6 +16,12 @@
     "axios": "^0.18.1",
     "qs": "^6.6.0"
   },
+  "devDependencies": {
+    "grunt": "^1.0.4",
+    "grunt-contrib-jshint": "^2.1.0",
+    "grunt-jsonlint": "^2.0.0",
+    "grunt-lint-inline": "^1.0.0"
+  },
   "node-red": {
     "nodes": {
       "light": "./nodes/sensor/light.js",

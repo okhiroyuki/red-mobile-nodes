@@ -43,7 +43,7 @@
             "data": "Data"
         },
         "errors":{
-            "response": "Could not take Picture.",
+            "response": "Could not write serial data.",
             "payload": "no send data."
         }
     },
@@ -56,7 +56,7 @@
     "serial-read":{
         "serial-read": "Serial Read",
         "errors":{
-            "response": "Could not switch serial."
+            "response": "Could not read serial data."
         }
     }
 }

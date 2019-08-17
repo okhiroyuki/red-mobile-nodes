@@ -6,7 +6,7 @@ module.exports = function(RED) {
     const BASE_URL = 'http://127.0.0.1';
     const PATH =  '/mobile';
 
-    function RedMobileSpeechToTextNode(n) {
+    function RedMobileInAppBrowserNode(n) {
         RED.nodes.createNode(this, n);
         let node = this;
 
@@ -45,5 +45,5 @@ module.exports = function(RED) {
         });
     }
 
-    RED.nodes.registerType("in-app-browser", RedMobileSpeechToTextNode);
+    RED.nodes.registerType("in-app-browser", RedMobileInAppBrowserNode);
 };

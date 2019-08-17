@@ -29,7 +29,7 @@ module.exports = function(RED) {
             };
 
             axios.request(config).then((res) => {
-                msg.payload = res.data;
+                msg.payload = Number(res.data);
                 node.send(msg);
                 node.status({
                     fill: "blue",
@@ -37,19 +37,17 @@ module.exports = function(RED) {
                     text: "success"
                 });
             }).catch((error) => {
-                node.error(RED._("in-app-browser.errors.response"));
+                node.error(RED._("in-app-browser.errors.response-get"));
                 node.status({
                     fill: "red",
                     shape: "ring",
-                    text: RED._("in-app-browser.errors.response")
+                    text: RED._("in-app-browser.errors.response-get")
                 });
             });
         });
     }
 
     RED.nodes.registerType("volume-get", RedMobileVolumeGetNode);
-
-    const targets = ["alarm","dtmf","music","system","voiceCall","notification","all","ringer"];
 
     function validateVolume(volume){
         return typeof volume === "number" && volume >= 0 && volume <= 100;
@@ -63,27 +61,14 @@ module.exports = function(RED) {
 
         node.on('input', function(msg) {
             if(node.volume === -1){
-                if(msg.volume !== undefined && validateVolume(msg.volume)){
-                    node.volume = msg.volume;
+                if(msg.payload !== undefined && validateVolume(msg.payload)){
+                    node.volume = msg.payload;
                 }else{
                     node.error(RED._("volume.errors.volume"));
                     node.status({
                         fill: "red",
                         shape: "ring",
                         text: RED._("volume.errors.volume")
-                    });
-                    return;
-                }
-            }
-            if(node.target === "msg"){
-                if(msg.target !== undefined && targets.indexOf(msg.target)){
-                    node.target = msg.target;
-                }else{
-                    node.error(RED._("volume.errors.target"));
-                    node.status({
-                        fill: "red",
-                        shape: "ring",
-                        text: RED._("volume.errors.target")
                     });
                     return;
                 }
@@ -106,7 +91,7 @@ module.exports = function(RED) {
             };
 
             axios.request(config).then((res) => {
-                msg.payload = res.data;
+                msg.payload = Number(res.data);
                 node.send(msg);
                 node.status({
                     fill: "blue",
@@ -114,11 +99,11 @@ module.exports = function(RED) {
                     text: "success"
                 });
             }).catch((error) => {
-                node.error(RED._("in-app-browser.errors.response"));
+                node.error(RED._("in-app-browser.errors.response-set"));
                 node.status({
                     fill: "red",
                     shape: "ring",
-                    text: RED._("in-app-browser.errors.response")
+                    text: RED._("in-app-browser.errors.response-set")
                 });
             });
         });

@@ -1,7 +1,7 @@
 <script type="text/x-red" data-template-name="volume-get">
     <div class="form-row">
         <label for="node-input-target"><i class="fa fa-list"></i> <span data-i18n="volume.label.target"></span></label>
-        <select type="text" id="voice-target-select">
+        <select type="text" id="volume-target-select">
             <option value="alarm" data-i18n="volume.target.alarm"></option>
             <option value="dtmf" data-i18n="volume.target.dtmf"></option>
             <option value="music" data-i18n="volume.target.music"></option>
@@ -9,7 +9,6 @@
             <option value="system" data-i18n="volume.target.system"></option>
             <option value="voiceCall" data-i18n="volume.target.voiceCall"></option>
             <option value="notification" data-i18n="volume.target.notification"></option>
-            <option value="msg" data-i18n="volume.target.msg"></option>
         </select>
         <input type="hidden" id="node-input-target">
     </div>
@@ -38,6 +37,14 @@
             return this.name || this._("volume.volume-get");
         },
         oneditprepare: function() {
+            $("#volume-target-select option").filter(function() {
+                var v = $("#node-input-target").val();
+                return $(this).val() == v;
+            }).attr('selected', true);
+            $("#volume-target-select").change(function() {
+                var v = $("#volume-target-select option:selected").val();
+                $("#node-input-target").val(v);
+            });
         },
         oneditsave: function() {
         }
@@ -47,7 +54,7 @@
 <script type="text/x-red" data-template-name="volume-set">
     <div class="form-row">
         <label for="node-input-target"><i class="fa fa-list"></i> <span data-i18n="volume.label.target"></span></label>
-        <select type="text" id="voice-target-select">
+        <select type="text" id="volume-target-select">
             <option value="alarm" data-i18n="volume.target.alarm"></option>
             <option value="dtmf" data-i18n="volume.target.dtmf"></option>
             <option value="music" data-i18n="volume.target.music"></option>
@@ -56,7 +63,6 @@
             <option value="voiceCall" data-i18n="volume.target.voiceCall"></option>
             <option value="notification" data-i18n="volume.target.notification"></option>
             <option value="all" data-i18n="volume.target.all"></option>
-            <option value="msg" data-i18n="volume.target.msg"></option>
         </select>
         <input type="hidden" id="node-input-target">
     </div>
@@ -102,6 +108,14 @@
         },
         oneditprepare: function() {
             $( "#node-input-volume" ).spinner({min:-1, max:100});
+            $("#volume-target-select option").filter(function() {
+                var v = $("#node-input-target").val();
+                return $(this).val() == v;
+            }).attr('selected', true);
+            $("#volume-target-select").change(function() {
+                var v = $("#volume-target-select option:selected").val();
+                $("#node-input-target").val(v);
+            });
         },
         oneditsave: function() {
             var v = $( "#node-input-volume" ).val();

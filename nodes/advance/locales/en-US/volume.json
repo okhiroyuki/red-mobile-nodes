@@ -14,12 +14,12 @@
             "ringer": "the ringer/ringtone volume",
             "system": "the system volume",
             "voiceCall": "the voice call volume",
-            "all": "all different types of volume",
-            "msg": "- As defined in msg.target -"
+            "all": "all different types of volume"
         },
         "errors":{
-            "volume": "",
-            "target": ""
+            "response-get": "Could not get volume.",
+            "response-set": "Could not set volume.",
+            "volume": "parameter error: msg.payload."
         }
     }
 }

@@ -152,7 +152,7 @@ module.exports = function(RED) {
         const ev = new EventEmitter();
         const ws = new WebSocketClient(ev);
 
-        ws.open("ws://localhost:23456/mobile/serial");
+        ws.open("ws://localhost:" + RED.settings.redMobileWsPort + "/mobile/serial");
         ev.on("open",() => {
             node.status({fill: "blue",shape: "dot",text: "connect"});
         });

@@ -3,6 +3,8 @@ module.exports = function(RED) {
 
     const axios = require('axios');
     const qs = require('qs');
+    const EventEmitter = require('events').EventEmitter;
+    const WebSocketClient = require('../WebSocketClient');
     const BASE_URL = 'http://127.0.0.1';
     const PATH =  '/mobile';
 
@@ -17,7 +19,6 @@ module.exports = function(RED) {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         };
-        console.log(JSON.stringify(config));
         return config;
     }
 
@@ -148,40 +149,24 @@ module.exports = function(RED) {
     function RedMobileSerialReadNode(n) {
         RED.nodes.createNode(this, n);
         let node = this;
+        const ev = new EventEmitter();
+        const ws = new WebSocketClient(ev);
 
-        node.on('input', function(msg) {
-            let config = {
-                baseURL: BASE_URL + ":" + RED.settings.redMobilePort,
-                url: PATH,
-                method: 'get',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': "Bearer: " + RED.settings.redMobileAccessKey
-                },
-                params: {
-                    method: "serial-read"
-                },
-                timeout: 5000
-            };
-
-            axios.request(config).then((res) => {
-                msg.payload = res.data;
-                node.send(msg);
-                node.status({
-                    fill: "blue",
-                    shape: "dot",
-                    text: "success"
-                });
-            }).catch((error) => {
-                node.error(RED._("serial-read.errors.response"));
-                node.status({
-                    fill: "red",
-                    shape: "ring",
-                    text: RED._("serial-read.errors.response")
-                });
-            });
+        ws.open("ws://localhost:23456/mobile/serial");
+        ev.on("open",() => {
+            node.status({fill: "blue",shape: "dot",text: "connect"});
+        });
+        ev.on("close", () => {
+            node.status({fill: "green",shape: "dot",text: "close"});
+        });
+        ev.on("error", (e)=>{
+            node.status({fill: "red",shape: "dot",text: "error"});
+            node.send({payload:e});
+        });
+        ev.on("message" ,(data)=>{
+            node.send({payload: JSON.parse(data)});
         });
     }
 
     RED.nodes.registerType("serial-read", RedMobileSerialReadNode);
-}
+};

@@ -44,7 +44,8 @@
       "prompt": "./nodes/notification/prompt.js",
       "camera": "./nodes/camera/camera.js",
       "serial": "./nodes/serial/serial.js",
-      "volume": "./nodes/advance/volume.js"
+      "volume": "./nodes/advance/volume.js",
+      "intent": "./nodes/advance/intent.js"
     }
   }
 }

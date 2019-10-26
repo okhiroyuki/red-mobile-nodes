@@ -30,6 +30,7 @@
             "2": "2"
         },
         "parity":{
+            "none": "None",
             "odd": "Odd",
             "even": "Even"
         },
@@ -39,6 +40,16 @@
     },
     "serial-write":{
         "serial-write": "Serial Write",
+        "label":{
+            "data": "Data"
+        },
+        "errors":{
+            "response": "Could not write serial data.",
+            "payload": "no send data."
+        }
+    },
+    "serial-writeHex":{
+        "serial-writeHex": "Serial Write(Hex)",
         "label":{
             "data": "Data"
         },

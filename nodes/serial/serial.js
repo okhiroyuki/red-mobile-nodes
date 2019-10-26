@@ -146,6 +146,50 @@ module.exports = function(RED) {
 
     RED.nodes.registerType("serial-write", RedMobileSerialWriteNode);
 
+    function RedMobileSerialWriteHexNode(n) {
+        RED.nodes.createNode(this, n);
+        let node = this;
+        node.data = n.data;
+
+        node.on('input', function(msg) {
+            if(node.data.length === 0){
+                if(msg.payload !== undefined){
+                    node.data = msg.payload;
+                }else{
+                    node.error(RED._("serial-writeHex.errors.payload"));
+                    node.status({
+                        fill: "red",
+                        shape: "ring",
+                        text: RED._("serial-writeHex.errors.payload")
+                    });
+                }
+            }
+            const json =  {
+                method: "serial-writeHex",
+                payload: node.data
+            };
+
+            axios.request(getPostConfig(json)).then((res) => {
+                msg.payload = res.data;
+                node.send(msg);
+                node.status({
+                    fill: "blue",
+                    shape: "dot",
+                    text: "success"
+                });
+            }).catch((error) => {
+                node.error(RED._("serial-writeHex.errors.response"));
+                node.status({
+                    fill: "red",
+                    shape: "ring",
+                    text: RED._("serial-writeHex.errors.response")
+                });
+            });
+        });
+    }
+
+    RED.nodes.registerType("serial-writeHex", RedMobileSerialWriteHexNode);
+
     function RedMobileSerialReadNode(n) {
         RED.nodes.createNode(this, n);
         let node = this;

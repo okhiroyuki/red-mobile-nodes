@@ -37,6 +37,7 @@
     <div class="form-row">
         <label for="node-input-parity"><i class="fa fa-list"></i> <span data-i18n="serial-open.label.parity"></span></label>
         <select type="text" id="serial-parity-select">
+            <option value="none" data-i18n="serial-open.parity.none"></option>
             <option value="odd" data-i18n="serial-open.parity.odd"></option>
             <option value="even" data-i18n="serial-open.parity.even"></option>
         </select>
@@ -193,6 +194,42 @@
         icon: "inject.png",
         label: function () {
             return this.name || this._("serial-write.serial-write");
+        },
+        oneditprepare: function() {
+        },
+        oneditsave: function() {
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="serial-writeHex">
+    <div class="form-row">
+        <label for="node-input-data"><i class="fa fa-info"></i> <span data-i18n="serial-writeHex.label.data"></span></label>
+        <input type="text" id="node-input-data">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('serial-writeHex', {
+        category: 'serial',
+        color: '#a9d159',
+        defaults: {
+            name: {
+                value: ""
+            },
+            data:{
+                value: ""
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "inject.png",
+        label: function () {
+            return this.name || this._("serial-writeHex.serial-writeHex");
         },
         oneditprepare: function() {
         },

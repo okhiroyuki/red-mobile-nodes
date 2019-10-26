@@ -1,6 +1,6 @@
 {
   "name": "@red-mobile/red-mobile-nodes",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "Extra nodes for RedMobile",
   "main": "app.js",
   "scripts": {
@@ -14,7 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.19.0",
-    "qs": "^6.7.0",
+    "qs": "^6.9.0",
     "ws": "^6.2.1"
   },
   "devDependencies": {

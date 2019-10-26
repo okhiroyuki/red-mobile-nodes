@@ -41,17 +41,12 @@
     "serial-write":{
         "serial-write": "Serial Write",
         "label":{
-            "data": "Data"
+            "data": "Data",
+            "dataType": "DataType"
         },
-        "errors":{
-            "response": "Could not write serial data.",
-            "payload": "no send data."
-        }
-    },
-    "serial-writeHex":{
-        "serial-writeHex": "Serial Write(Hex)",
-        "label":{
-            "data": "Data"
+        "dataType":{
+            "string": "Strings",
+            "hex": "Hex-Strings"
         },
         "errors":{
             "response": "Could not write serial data.",

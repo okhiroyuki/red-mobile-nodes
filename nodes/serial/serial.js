@@ -123,10 +123,8 @@ module.exports = function(RED) {
             }
             const json =  {
                 method: "serial-write",
-                payload: {
-                    "data": node.data,
-                    "type": node.dataType
-                }
+                payload: node.data,
+                dataType: node.dataType
             };
 
             axios.request(getPostConfig(json)).then((res) => {

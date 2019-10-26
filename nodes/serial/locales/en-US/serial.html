@@ -14,20 +14,10 @@
         <dt>payload<span class="property-type">string</span></dt>
         <dd>The string representation to be written to the serial port. It can be overwritten only when the string is not set in the property.</dd>
     </dl>
-</script>
-
-<script type="text/x-red" data-help-name="serial-writeHex">
-    <p>Write Hex-strings via serial.</p>
-    <h3>Inputs</h3>
-    <dl class="message-properties">
-        <dt>payload<span class="property-type">string</span></dt>
-        <dd>The string representation to be written to the serial port. It can be overwritten only when the string is not set in the property.</dd>
-    </dl>
     <h4>Note</h4>
-    <p>WriteHex to have an easy way to work with RS232 protocol driven hardware from your javascript by using hex-strings.</p>
+    <p>Hex-Strings to have an easy way to work with RS232 protocol driven hardware from your javascript by using hex-strings.</p>
     <p>In a nutshell, serial.writeHex('ff') would write just a single byte where serial.write('ff') would let java write 2 bytes to the serial port.</p>
 </script>
-
 
 <script type="text/x-red" data-help-name="serial-read">
     <p>Read data via serial. Data output starts automatically when the USB serial is opened. When communication is closed, output stops.</p>

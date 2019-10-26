@@ -100,39 +100,48 @@
                 var v = $("#node-input-baudRate").val();
                 return $(this).val() == v;
             }).attr('selected', true);
-            $("#serial-baudRate-select").change(function() {
-                var v = $("#serial-baudRate-select option:selected").val();
-                $("#node-input-baudRate").val(v);
-            });
+            // $("#serial-baudRate-select").change(function() {
+            //     var v = $("#serial-baudRate-select option:selected").val();
+            //     $("#node-input-baudRate").val(v);
+            // });
 
             $("#serial-dataBits-select option").filter(function() {
                 var v = $("#node-input-dataBits").val();
                 return $(this).val() == v;
             }).attr('selected', true);
-            $("#serial-dataBits-select").change(function() {
-                var v = $("#serial-dataBits-select option:selected").val();
-                $("#node-input-dataBits").val(v);
-            });
+            // $("#serial-dataBits-select").change(function() {
+            //     var v = $("#serial-dataBits-select option:selected").val();
+            //     $("#node-input-dataBits").val(v);
+            // });
 
             $("#serial-stopBits-select option").filter(function() {
                 var v = $("#node-input-stopBits").val();
                 return $(this).val() == v;
             }).attr('selected', true);
-            $("#serial-stopBits-select").change(function() {
-                var v = $("#serial-stopBits-select option:selected").val();
-                $("#node-input-stopBits").val(v);
-            });
+            // $("#serial-stopBits-select").change(function() {
+            //     var v = $("#serial-stopBits-select option:selected").val();
+            //     $("#node-input-stopBits").val(v);
+            // });
 
             $("#serial-parity-select option").filter(function() {
                 var v = $("#node-input-parity").val();
                 return $(this).val() == v;
             }).attr('selected', true);
-            $("#serial-parity-select").change(function() {
-                var v = $("#serial-parity-select option:selected").val();
-                $("#node-input-parity").val(v);
-            });
+
+            // $("#serial-parity-select").change(function() {
+            //     var v = $("#serial-parity-select option:selected").val();
+            //     $("#node-input-parity").val(v);
+            // });
         },
         oneditsave: function() {
+            var baudRate = $("#serial-baudRate-select option:selected").val();
+            $("#node-input-baudRate").val(baudRate);
+            var dataBits = $("#serial-dataBits-select option:selected").val();
+            $("#node-input-dataBits").val(dataBits);
+            var stopBits = $("#serial-stopBits-select option:selected").val();
+            $("#node-input-stopBits").val(stopBits);
+            var parity = $("#serial-parity-select option:selected").val();
+            $("#node-input-parity").val(parity);
         }
     });
 </script>
@@ -172,6 +181,14 @@
         <input type="text" id="node-input-data">
     </div>
     <div class="form-row">
+        <label for="node-input-dataType"><i class="fa fa-list"></i> <span data-i18n="serial-write.label.dataType"></span></label>
+        <select type="text" id="serial-write-dataType-select">
+            <option value="string" data-i18n="serial-write.dataType.string"></option>
+            <option value="hex" data-i18n="serial-write.dataType.hex"></option>
+        </select>
+        <input type="hidden" id="node-input-dataType">
+    </div>
+    <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
         <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
     </div>
@@ -187,6 +204,9 @@
             },
             data:{
                 value: ""
+            },
+            dataType:{
+                value: "string"
             }
         },
         inputs: 1,
@@ -196,44 +216,14 @@
             return this.name || this._("serial-write.serial-write");
         },
         oneditprepare: function() {
+            $("#serial-write-dataType-select option").filter(function() {
+                var v = $("#node-input-dataType").val();
+                return $(this).val() == v;
+            }).attr('selected', true);
         },
         oneditsave: function() {
-        }
-    });
-</script>
-
-<script type="text/x-red" data-template-name="serial-writeHex">
-    <div class="form-row">
-        <label for="node-input-data"><i class="fa fa-info"></i> <span data-i18n="serial-writeHex.label.data"></span></label>
-        <input type="text" id="node-input-data">
-    </div>
-    <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
-        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
-    </div>
-</script>
-
-<script type="text/javascript">
-    RED.nodes.registerType('serial-writeHex', {
-        category: 'serial',
-        color: '#a9d159',
-        defaults: {
-            name: {
-                value: ""
-            },
-            data:{
-                value: ""
-            }
-        },
-        inputs: 1,
-        outputs: 1,
-        icon: "inject.png",
-        label: function () {
-            return this.name || this._("serial-writeHex.serial-writeHex");
-        },
-        oneditprepare: function() {
-        },
-        oneditsave: function() {
+            var v = $("#serial-write-dataType-select option:selected").val();
+            $("#node-input-dataType").val(v);
         }
     });
 </script>

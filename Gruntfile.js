@@ -36,26 +36,32 @@ module.exports = function(grunt){
         copy: {
             fire: {
               files: [
-                {expand: true, cwd: './nodes/camera/', src: ['*'], dest: './packages/fire/nodes/camera/'},
-                {expand: true, cwd: './nodes/cognitives/text-to-speech/', src: ['*'], dest: './packages/fire/nodes/cognitives/text-to-speech/'},
-                {expand: true, cwd: './nodes/in-app-browser/', src: ['*'], dest: './packages/fire/nodes/in-app-browser/'},
-                {expand: true, cwd: './nodes/intent/', src: ['*'], dest: './packages/fire/nodes/intent/'},
-                {expand: true, cwd: './nodes/notifications/alert/', src: ['*'], dest: './packages/fire/nodes/notifications/alert/'},
-                {expand: true, cwd: './nodes/notifications/beep/', src: ['*'], dest: './packages/fire/nodes/notifications/beep/'},
-                {expand: true, cwd: './nodes/notifications/confirm/', src: ['*'], dest: './packages/fire/nodes/notifications/confirm/'},
-                {expand: true, cwd: './nodes/notifications/prompt/', src: ['*'], dest: './packages/fire/nodes/notifications/prompt/'},
-                {expand: true, cwd: './nodes/sensors/battery/', src: ['*'], dest: './packages/fire/nodes/sensors/battery/'},
-                {expand: true, cwd: './nodes/sensors/db/', src: ['*'], dest: './packages/fire/nodes/sensors/db/'},
-                {expand: true, cwd: './nodes/sensors/geolocation/', src: ['*'], dest: './packages/fire/nodes/sensors/geolocation/'},
-                {expand: true, cwd: './nodes/sensors/motion/', src: ['*'], dest: './packages/fire/nodes/sensors/motion/'},
-                {expand: true, cwd: './nodes/serial/', src: ['*'], dest: './packages/fire/nodes/serial/'},
-                {expand: true, cwd: './nodes/volume/', src: ['*'], dest: './packages/fire/nodes/volume/'},
+                {expand: true, cwd: './nodes/camera/', src: ['**'], dest: './packages/fire/nodes/camera/'},
+                {expand: true, cwd: './nodes/cognitives/text-to-speech/', src: ['**'], dest: './packages/fire/nodes/cognitives/text-to-speech/'},
+                {expand: true, cwd: './nodes/in-app-browser/', src: ['**'], dest: './packages/fire/nodes/in-app-browser/'},
+                {expand: true, cwd: './nodes/intent/', src: ['**'], dest: './packages/fire/nodes/intent/'},
+                {expand: true, cwd: './nodes/notifications/alert/', src: ['**'], dest: './packages/fire/nodes/notifications/alert/'},
+                {expand: true, cwd: './nodes/notifications/beep/', src: ['**'], dest: './packages/fire/nodes/notifications/beep/'},
+                {expand: true, cwd: './nodes/notifications/confirm/', src: ['**'], dest: './packages/fire/nodes/notifications/confirm/'},
+                {expand: true, cwd: './nodes/notifications/prompt/', src: ['**'], dest: './packages/fire/nodes/notifications/prompt/'},
+                {expand: true, cwd: './nodes/sensors/battery/', src: ['**'], dest: './packages/fire/nodes/sensors/battery/'},
+                {expand: true, cwd: './nodes/sensors/db/', src: ['**'], dest: './packages/fire/nodes/sensors/db/'},
+                {expand: true, cwd: './nodes/sensors/geolocation/', src: ['**'], dest: './packages/fire/nodes/sensors/geolocation/'},
+                {expand: true, cwd: './nodes/sensors/motion/', src: ['**'], dest: './packages/fire/nodes/sensors/motion/'},
+                {expand: true, cwd: './nodes/serial/', src: ['**'], dest: './packages/fire/nodes/serial/'},
+                {expand: true, cwd: './nodes/volume/', src: ['**'], dest: './packages/fire/nodes/volume/'},
                 {expand: true, cwd: './nodes/', src: ['*.js'], dest: './packages/fire/nodes/'},
               ],
             },
+            android:{
+                files:[
+                    {expand: true, cwd: './nodes/', src: ['**'], dest: './packages/android/nodes/'}
+                ]
+            }
         },
         clean: {
             fire: ['./packages/fire/nodes/'],
+            android: ['./packages/android/nodes/'],
         },    
     });
 
@@ -66,5 +72,6 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-clean');
 
     grunt.registerTask("default", ["jshint:all", "jsonlint:all", "inlinelint:html"]);
+    grunt.registerTask("android", ["clean:android", "copy:android"]);
     grunt.registerTask("fire", ["clean:fire", "copy:fire"]);
 };

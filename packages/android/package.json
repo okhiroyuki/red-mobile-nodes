@@ -1,0 +1,46 @@
+{
+    "name": "@red-mobile/red-mobile-nodes",
+    "version": "1.1.11",
+    "description": "Extra nodes for RedMobile",
+    "main": "app.js",
+    "scripts": {
+      "test": "grunt"
+    },
+    "keywords": [
+      "redmobile",
+      "nodered"
+    ],
+    "author": "hiroyuki okada",
+    "license": "MIT",
+    "dependencies": {
+      "axios": "^0.19.0",
+      "qs": "^6.9.0",
+      "ws": "^6.2.1"
+    },
+    "node-red": {
+      "nodes": {
+        "light": "./nodes/sensors/light/light.js",
+        "motion": "./nodes/sensors/motion/motion.js",
+        "gyroscope": "./nodes/sensors/gyroscope/gyroscope.js",
+        "compass": "./nodes/sensors/compass/compass.js",
+        "magnetic": "./nodes/sensors/magnetic/magnetic.js",
+        "dB": "./nodes/sensors/db/db.js",
+        "battery": "./nodes/sensors/battery/battery.js",
+        "location": "./nodes/sensors/geolocation/geolocation.js",
+        "proximity": "./nodes/sensors/proximity/proximity.js",
+        "speech-to-text": "./nodes/cognitives/speech-to-text/speech-to-text.js",
+        "text-to-speech": "./nodes/cognitives/text-to-speech/text-to-speech.js",
+        "in-app-browser": "./nodes/in-app-browser/in-app-browser.js",
+        "vibrate": "./nodes/notifications/vibrate/vibrate.js",
+        "beep": "./nodes/notifications/beep/beep.js",
+        "alert": "./nodes/notifications/alert/alert.js",
+        "confirm": "./nodes/notifications/confirm/confirm.js",
+        "prompt": "./nodes/notifications/prompt/prompt.js",
+        "camera": "./nodes/camera/camera.js",
+        "serial": "./nodes/serial/serial.js",
+        "volume": "./nodes/volume/volume.js",
+        "intent": "./nodes/intent/intent.js"
+      }
+    }
+  }
+  

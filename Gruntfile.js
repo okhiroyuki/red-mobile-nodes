@@ -36,7 +36,6 @@ module.exports = function(grunt){
         copy: {
             fire: {
               files: [
-                {expand: true, cwd: './nodes/camera/', src: ['**'], dest: './packages/fire/nodes/camera/'},
                 {expand: true, cwd: './nodes/cognitives/text-to-speech/', src: ['**'], dest: './packages/fire/nodes/cognitives/text-to-speech/'},
                 {expand: true, cwd: './nodes/in-app-browser/', src: ['**'], dest: './packages/fire/nodes/in-app-browser/'},
                 {expand: true, cwd: './nodes/intent/', src: ['**'], dest: './packages/fire/nodes/intent/'},
@@ -46,7 +45,6 @@ module.exports = function(grunt){
                 {expand: true, cwd: './nodes/notifications/prompt/', src: ['**'], dest: './packages/fire/nodes/notifications/prompt/'},
                 {expand: true, cwd: './nodes/sensors/battery/', src: ['**'], dest: './packages/fire/nodes/sensors/battery/'},
                 {expand: true, cwd: './nodes/sensors/db/', src: ['**'], dest: './packages/fire/nodes/sensors/db/'},
-                {expand: true, cwd: './nodes/sensors/geolocation/', src: ['**'], dest: './packages/fire/nodes/sensors/geolocation/'},
                 {expand: true, cwd: './nodes/sensors/motion/', src: ['**'], dest: './packages/fire/nodes/sensors/motion/'},
                 {expand: true, cwd: './nodes/serial/', src: ['**'], dest: './packages/fire/nodes/serial/'},
                 {expand: true, cwd: './nodes/volume/', src: ['**'], dest: './packages/fire/nodes/volume/'},

@@ -84,4 +84,4 @@ typings/
 # DynamoDB Local files
 .dynamodb/
 
-packages/fire/nodes/
+packages/**/nodes/

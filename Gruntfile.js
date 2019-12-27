@@ -27,6 +27,20 @@ module.exports = function(grunt){
                   ]
             }
         },
+        nr_locales_htmllint: {
+            options: {
+              force: true,
+              "indent-width": false,
+              "tag-bans": [],
+              "attr-bans": [],
+              "link-req-noopener": false,
+              "spec-char-escape": false,
+              "line-no-trailing-whitespace": false
+            },
+            src: [
+              './nodes/**/locales/**/*.html'
+            ],
+        },
         inlinelint: {
             html: ["./nodes/**/*.html", "!node_modules/*/*.html", "!*/node_modules/*.html"],
             options: {
@@ -68,8 +82,9 @@ module.exports = function(grunt){
     grunt.loadNpmTasks("grunt-jsonlint");
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-nr-locales-htmllint');
 
-    grunt.registerTask("default", ["jshint:all", "jsonlint:all", "inlinelint:html"]);
+    grunt.registerTask("default", ["jshint:all", "jsonlint:all", "inlinelint:html", "nr_locales_htmllint"]);
     grunt.registerTask("android", ["clean:android", "copy:android"]);
     grunt.registerTask("fire", ["clean:fire", "copy:fire"]);
 };

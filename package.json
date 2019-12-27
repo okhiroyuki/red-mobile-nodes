@@ -24,7 +24,8 @@
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-jshint": "^2.1.0",
     "grunt-jsonlint": "^2.0.0",
-    "grunt-lint-inline": "^1.0.0"
+    "grunt-lint-inline": "^1.0.0",
+    "grunt-nr-locales-htmllint": "1.0.3"
   },
   "node-red": {
     "nodes": {

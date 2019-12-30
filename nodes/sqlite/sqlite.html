@@ -18,7 +18,7 @@
     RED.nodes.registerType('sqlitedb',{
         category: 'config',
         defaults: {
-            db: {value:""},
+            db: {value:"", required: true},
             mode: {value:"RWC"}
         },
         label: function() {
@@ -61,7 +61,7 @@
         category: 'storage-input',
         color:"#e97b00",
         defaults: {
-            mydb: {type:"sqlitedb"},
+            mydb: {type:"sqlitedb",required:true},
             sqlquery: {value:"msg.topic",required:true},
             sql: {value:""},
             name: {value:""}

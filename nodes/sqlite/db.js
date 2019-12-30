@@ -1,3 +1,8 @@
+const axios = require('axios');
+const qs = require('qs');
+const BASE_URL = 'http://127.0.0.1';
+const PATH =  '/mobile';
+
 let _db;
 
 function DB(db){

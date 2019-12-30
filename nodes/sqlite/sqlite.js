@@ -2,6 +2,7 @@ module.exports = function(RED) {
     "use strict";
     const DB = require("./db");
     const axios = require('axios');
+    const qs = require('qs');
     const BASE_URL = 'http://127.0.0.1';
     const PATH =  '/mobile';
 
@@ -10,9 +11,6 @@ module.exports = function(RED) {
 
         this.dbname = n.db;
         this.mod = n.mode;
-        if (n.mode === "RWC") { this.mode = sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE; }
-        if (n.mode === "RW") { this.mode = sqlite3.OPEN_READWRITE; }
-        if (n.mode === "RO") { this.mode = sqlite3.OPEN_READONLY; }
         var node = this;
 
         node.doConnect = function(){
@@ -34,7 +32,7 @@ module.exports = function(RED) {
             axios.request(config).then((res) => {
                 node.db = new DB(res.db);
                 node.log("opened "+node.dbname+" ok");
-            }).catch((error) => {
+            }).catch((err) => {
                 node.error("failed to open "+node.dbname, err);
             });
         }

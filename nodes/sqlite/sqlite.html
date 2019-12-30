@@ -2,18 +2,16 @@
 <script type="text/html" data-template-name="sqlitedb">
     <div class="form-row">
         <label for="node-config-input-db"><i class="fa fa-database"></i> Database</label>
-        <input type="text" id="node-config-input-db" placeholder="/tmp/sqlite">
+        <input type="text" id="node-config-input-db" placeholder="my.db">
     </div>
     <div class="form-row">
         <label for="node-config-input-mode">Mode</label>
-        <select id="node-config-input-mode" style="width:70%">
+        <select id="node-config-input-mode" style="width:70%" disabled>
             <option value="RWC">Read-Write-Create</option>
             <option value="RW">Read-Write</option>
             <option value="RO">Read-Only</option>
         </select>
     </div>
-    <div class="form-tips"><b>Note</b>: Setting the database name to <code>:memory:</code>
-    will create a non-persistant in memory database.</div>
 </script>
 
 <script type="text/javascript">
@@ -34,10 +32,10 @@
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
-    <!-- <div class="form-row">
+    <div class="form-row">
         <label for="node-input-mydb"><i class="fa fa-database"></i> Database</label>
         <input type="text" id="node-input-mydb">
-    </div> -->
+    </div>
     <div class="form-row">
         <label for=""><i class="fa fa-code"></i> SQL Query</label>
         <select id="node-input-sqlquery">

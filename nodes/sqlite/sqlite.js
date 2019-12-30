@@ -1,5 +1,6 @@
 module.exports = function(RED) {
     "use strict";
+    const DB = require("./db");
     const axios = require('axios');
     const BASE_URL = 'http://127.0.0.1';
     const PATH =  '/mobile';
@@ -8,6 +9,40 @@ module.exports = function(RED) {
         RED.nodes.createNode(this,n);
 
         this.dbname = n.db;
+        this.mod = n.mode;
+        if (n.mode === "RWC") { this.mode = sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE; }
+        if (n.mode === "RW") { this.mode = sqlite3.OPEN_READWRITE; }
+        if (n.mode === "RO") { this.mode = sqlite3.OPEN_READONLY; }
+        var node = this;
+
+        node.doConnect = function(){
+            const json =  {
+                method: "db-open",
+                dbname: node.dbname
+            };
+            let config = {
+                baseURL: BASE_URL + ":" + RED.settings.redMobilePort,
+                url: PATH,
+                method: "post",
+                data: qs.stringify(json),
+                headers: {
+                    'Authorization': "Bearer: " + RED.settings.redMobileAccessKey,
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            };
+    
+            axios.request(config).then((res) => {
+                node.db = new DB(res.db);
+                node.log("opened "+node.dbname+" ok");
+            }).catch((error) => {
+                node.error("failed to open "+node.dbname, err);
+            });
+        }
+
+        node.on('close', function (done) {
+            if (node.db) { node.db.close(done()); }
+            else { done(); }
+        });  
     }
     RED.nodes.registerType("sqlitedb",SqliteNodeDB);
 
@@ -122,95 +157,6 @@ module.exports = function(RED) {
         else {
             node.error("Sqlite database not configured");
         }
-
-        node.on('close', function (done) {
-            if (node.db) { 
-                let config = {
-                    baseURL: BASE_URL + ":" + RED.settings.redMobilePort,
-                    url: PATH,
-                    method: 'close',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': "Bearer: " + RED.settings.redMobileAccessKey
-                    },
-                    params: {
-                        method: "sqlite"
-                    },
-                    timeout: 5000
-                };
-                axios.request(config).then((res) => {
-                    node.db = null;
-                    done();
-                }).catch((err) => {
-                    node.db = null;
-                    done();
-                });
-            }
-            else { done(); }
-        });
     }
     RED.nodes.registerType("sqlite",SqliteNodeIn);
-
-    function doConnect() {
-        let config = {
-            baseURL: BASE_URL + ":" + RED.settings.redMobilePort,
-            url: PATH,
-            method: 'open',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': "Bearer: " + RED.settings.redMobileAccessKey
-            },
-            params: {
-                method: "sqlite"
-            },
-            timeout: 5000
-        };
-        axios.request(config).then((res) => {
-            node.log("opened "+node.dbname+" ok");
-        }).catch((err) => {
-            node.error("failed to open "+node.dbname, err);
-        });
-    }
-
-    function all(sql, params, callback) {
-        let config = {
-            baseURL: BASE_URL + ":" + RED.settings.redMobilePort,
-            url: PATH,
-            method: 'open',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': "Bearer: " + RED.settings.redMobileAccessKey
-            },
-            params: {
-                method: "sqlite"
-            },
-            timeout: 5000
-        };
-        axios.request(config).then((res) => {
-            callback(res, null);
-        }).catch((err) => {
-            callback(null, err);
-        });
-    }
-
-    function exec(sql, callback) {
-        let config = {
-            baseURL: BASE_URL + ":" + RED.settings.redMobilePort,
-            url: PATH,
-            method: 'open',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': "Bearer: " + RED.settings.redMobileAccessKey
-            },
-            params: {
-                method: "sqlite"
-            },
-            timeout: 5000
-        };
-        axios.request(config).then((res) => {
-            callback(null);
-        }).catch((err) => {
-            callback(err);
-        });
-    }
 }

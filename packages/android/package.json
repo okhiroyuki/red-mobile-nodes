@@ -39,7 +39,8 @@
         "camera": "./nodes/camera/camera.js",
         "serial": "./nodes/serial/serial.js",
         "volume": "./nodes/volume/volume.js",
-        "intent": "./nodes/intent/intent.js"
+        "intent": "./nodes/intent/intent.js",
+        "sqlite": "./nodes/sqlite/sqlite.js"
       }
     }
   }

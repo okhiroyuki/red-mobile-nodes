@@ -90,7 +90,7 @@ module.exports = function(RED) {
                     }
                 }
                 if (node.sqlquery == "prepared") {
-                    if (typeof node.sql === 'string' && typeof msg.params !== "undefined" && typeof msg.params === "object") {
+                    if (typeof node.sql === 'string' && typeof msg.params !== "undefined" && Array.isArray(msg.params)) {
                         if (node.sql.length > 0) {
                             node.mydbConfig.db.all(node.sql, msg.params, function(err, row) {
                                 if (err) { node.error(err,msg); }
@@ -110,9 +110,9 @@ module.exports = function(RED) {
                             node.error("msg.params not passed");
                             node.status({fill:"red",shape:"dot",text:"msg.params not defined"});
                         }
-                        else if (typeof msg.params != "object") {
-                            node.error("msg.params not an object");
-                            node.status({fill:"red",shape:"dot",text:"msg.params not an object"});
+                        else if (!Array.isArray(msg.params)) {
+                            node.error("msg.params not an array");
+                            node.status({fill:"red",shape:"dot",text:"msg.params not an array"});
                         }
                     }
                 }

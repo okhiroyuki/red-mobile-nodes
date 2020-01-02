@@ -54,7 +54,7 @@ module.exports = function(RED) {
                     }
                 }
                 if (node.sqlquery == "batch") {
-                    if (typeof msg.topic === 'string') {
+                    if (Array.isArray(msg.topic)) {
                         if (msg.topic.length > 0) {
                             node.mydbConfig.db.exec(msg.topic, function(err) {
                                 if (err) { node.error(err,msg);}
@@ -66,9 +66,9 @@ module.exports = function(RED) {
                         }
                     }
                     else {
-                        node.error("msg.topic : the query is not defined as string", msg);
-                        node.status({fill:"red", shape:"dot",text:"msg.topic error"});
-                    }
+                        node.error("msg.topic: the query is not defined as an array", msg);
+                        node.status({fill:"red",shape:"dot",text:"msg.topic error"});
+                }
                 }
                 if (node.sqlquery == "fixed") {
                     if (typeof node.sql === 'string') {

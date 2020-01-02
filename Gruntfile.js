@@ -63,11 +63,12 @@ module.exports = function(grunt){
                 {expand: true, cwd: './nodes/serial/', src: ['**'], dest: './packages/fire/nodes/serial/'},
                 {expand: true, cwd: './nodes/volume/', src: ['**'], dest: './packages/fire/nodes/volume/'},
                 {expand: true, cwd: './nodes/', src: ['*.js'], dest: './packages/fire/nodes/'},
-              ],
+            ],
             },
             android:{
                 files:[
-                    {expand: true, cwd: './nodes/', src: ['**'], dest: './packages/android/nodes/'}
+                    {expand: true, cwd: './nodes/', src: ['**'], dest: './packages/android/nodes/'},
+                    {expand: true, cwd: './examples/', src: ['**'], dest: './packages/android/examples/'},
                 ]
             }
         },

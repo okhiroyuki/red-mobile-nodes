@@ -62,7 +62,9 @@ module.exports = function(grunt){
                 {expand: true, cwd: './nodes/sensors/motion/', src: ['**'], dest: './packages/fire/nodes/sensors/motion/'},
                 {expand: true, cwd: './nodes/serial/', src: ['**'], dest: './packages/fire/nodes/serial/'},
                 {expand: true, cwd: './nodes/volume/', src: ['**'], dest: './packages/fire/nodes/volume/'},
+                {expand: true, cwd: './nodes/sqlite/', src: ['**'], dest: './packages/fire/nodes/sqlite/'},
                 {expand: true, cwd: './nodes/', src: ['*.js'], dest: './packages/fire/nodes/'},
+                {expand: true, cwd: './examples/', src: ['**'], dest: './packages/fire/examples/'},
             ],
             },
             android:{

@@ -1,6 +1,6 @@
 {
   "name": "@red-mobile/red-mobile-fire-nodes",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Extra nodes for RedMobileFire",
   "main": "app.js",
   "scripts": {
@@ -31,8 +31,7 @@
       "prompt": "./nodes/notifications/prompt/prompt.js",
       "serial": "./nodes/serial/serial.js",
       "volume": "./nodes/volume/volume.js",
-      "intent": "./nodes/intent/intent.js",
-      "sqlite": "./nodes/sqlite/sqlite.js"
+      "intent": "./nodes/intent/intent.js"
     }
   }
 }

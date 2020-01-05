@@ -84,4 +84,5 @@ typings/
 # DynamoDB Local files
 .dynamodb/
 
-packages/**/nodes/
+packages/
+!packages/package.json

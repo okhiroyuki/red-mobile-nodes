@@ -109,9 +109,14 @@ module.exports = function(RED) {
         node.dataType = n.dataType;
 
         node.on('input', function(msg) {
-            if(node.data.length === 0){
-                if(msg.payload !== undefined){
-                    node.data = msg.payload;
+            const json =  {
+                method: "serial-write",
+                payload: node.data,
+                dataType: node.dataType
+            };
+            if(!node.data){
+                if(msg.payload){
+                    json.payload = msg.payload;
                 }else{
                     node.error(RED._("serial-write.errors.payload"));
                     node.status({
@@ -119,13 +124,9 @@ module.exports = function(RED) {
                         shape: "ring",
                         text: RED._("serial-write.errors.payload")
                     });
+                    return;
                 }
             }
-            const json =  {
-                method: "serial-write",
-                payload: node.data,
-                dataType: node.dataType
-            };
 
             axios.request(getPostConfig(json)).then((res) => {
                 msg.payload = res.data;

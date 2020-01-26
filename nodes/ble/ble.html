@@ -1,0 +1,115 @@
+<script type="text/x-red" data-template-name="ble connect">
+    <div class="form-row">
+        <label for="node-input-deviceId"><i class="fa fa-info"></i> <span data-i18n="ble.label.deviceId"></span></label>
+        <input type="text" id="node-input-deviceId">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-auto"><i class="fa fa-toggle-on"></i> <span data-i18n="ble.label.auto"></span></label>
+        <input type="checkbox" id="node-input-auot" placeholder="" style="display:inline-block; width:auto; vertical-align:top;">
+        <input type="hidden" id="node-input-auto">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('ble connect', {
+        category: 'ble',
+        color: '#4d94ff',
+        defaults: {
+            name: {
+                value: ""
+            },
+            auto:{
+                value: false
+            },
+            deviceId: {
+                value: ""
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "ble.png",
+        label: function () {
+            return this.name || this._("ble.ble-connect");
+        },
+        oneditprepare: function() {
+            
+        },
+        oneditsave: function() {
+            
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="ble disconnect">
+    <div class="form-row">
+        <label for="node-input-deviceId"><i class="fa fa-info"></i> <span data-i18n="ble.label.deviceId"></span></label>
+        <input type="text" id="node-input-deviceId">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('ble disconnect', {
+        category: 'ble',
+        color: '#4d94ff',
+        defaults: {
+            name: {
+                value: ""
+            },
+            deviceId: {
+                value: ""
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "ble.png",
+        label: function () {
+            return this.name || this._("ble.ble-disconnect");
+        },
+        oneditprepare: function() {
+        },
+        oneditsave: function() {
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="ble scan">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('ble scan', {
+        category: 'ble',
+        color: '#4d94ff',
+        defaults: {
+            name: {
+                value: ""
+            },
+            timeout: {
+                value: 5
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "ble.png",
+        label: function () {
+            return this.name || this._("ble.ble-scan");
+        },
+        oneditprepare: function() {
+        },
+        oneditsave: function() {
+        }
+    });
+</script>

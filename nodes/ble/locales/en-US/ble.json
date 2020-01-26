@@ -1,0 +1,11 @@
+{
+    "ble":{
+        "ble-connect": "ble connect",
+        "ble-disconnect": "ble disconnect",
+        "ble-scan": "ble scan",
+        "label":{
+            "deviceId": "DeviceId",
+            "auto": "Auto"
+        }
+    }
+}

@@ -3,9 +3,12 @@
         "ble-connect": "ble connect",
         "ble-disconnect": "ble disconnect",
         "ble-scan": "ble scan",
+        "ble-device": "ble device",
         "label":{
+            "device": "Device",
             "deviceId": "DeviceId",
-            "auto": "Auto"
+            "auto": "Auto",
+            "timeout": "Timeout"
         }
     }
 }

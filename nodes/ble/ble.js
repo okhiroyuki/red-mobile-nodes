@@ -25,9 +25,11 @@ module.exports = function(RED) {
     function RedMobileBleConnectNode(n) {
         RED.nodes.createNode(this, n);
         let node = this;
-        node.opts = {
-            device_id: n.deviceId
-        };
+
+        node.opts = {};
+        if (RED.nodes.getNode(n.device)){
+            node.opts.deviceId = RED.nodes.getNode(n.device).deviceId;
+        }
 
         node.on('input', function(msg) {
             const json =  {
@@ -60,9 +62,10 @@ module.exports = function(RED) {
     function RedMobileBleDisconnectNode(n) {
         RED.nodes.createNode(this, n);
         let node = this;
-        node.opts = {
-            device_id: n.deviceId
-        };
+        node.opts = {};
+        if (RED.nodes.getNode(n.device)){
+            node.opts.deviceId = RED.nodes.getNode(n.device).deviceId;
+        }
 
         node.on('input', function(msg) {
             const json =  {
@@ -126,6 +129,12 @@ module.exports = function(RED) {
     }
 
     RED.nodes.registerType("ble scan", RedMobileBleScanNode);
+
+    function bleDevice(n){
+        RED.nodes.createNode(this, n);
+        this.deviceId = n.deviceId;
+    }
+    RED.nodes.registerType("bledevice", bleDevice);
 
     // function RedMobileSerialWriteNode(n) {
     //     RED.nodes.createNode(this, n);

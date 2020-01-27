@@ -1,13 +1,7 @@
 <script type="text/x-red" data-template-name="ble connect">
     <div class="form-row">
-        <label for="node-input-deviceId"><i class="fa fa-info"></i> <span data-i18n="ble.label.deviceId"></span></label>
-        <input type="text" id="node-input-deviceId">
-    </div>
-
-    <div class="form-row">
-        <label for="node-input-auto"><i class="fa fa-toggle-on"></i> <span data-i18n="ble.label.auto"></span></label>
-        <input type="checkbox" id="node-input-auot" placeholder="" style="display:inline-block; width:auto; vertical-align:top;">
-        <input type="hidden" id="node-input-auto">
+        <label for="node-input-device"><i class="fa fa-info"></i> <span data-i18n="ble.label.device"></span></label>
+        <input type="text" id="node-input-device">
     </div>
 
     <div class="form-row">
@@ -24,11 +18,9 @@
             name: {
                 value: ""
             },
-            auto:{
-                value: false
-            },
-            deviceId: {
-                value: ""
+            device: {
+                value: "",
+                type: "bledevice"
             }
         },
         inputs: 1,
@@ -48,9 +40,10 @@
 
 <script type="text/x-red" data-template-name="ble disconnect">
     <div class="form-row">
-        <label for="node-input-deviceId"><i class="fa fa-info"></i> <span data-i18n="ble.label.deviceId"></span></label>
-        <input type="text" id="node-input-deviceId">
+        <label for="node-input-device"><i class="fa fa-info"></i> <span data-i18n="ble.label.device"></span></label>
+        <input type="text" id="node-input-device">
     </div>
+
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
         <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
@@ -65,12 +58,14 @@
             name: {
                 value: ""
             },
-            deviceId: {
-                value: ""
+            device: {
+                value: "",
+                type: "bledevice"
             }
         },
         inputs: 1,
         outputs: 1,
+        align: 'right',
         icon: "ble.png",
         label: function () {
             return this.name || this._("ble.ble-disconnect");
@@ -84,10 +79,23 @@
 
 <script type="text/x-red" data-template-name="ble scan">
     <div class="form-row">
+        <label for="node-input-timeout"> <i class="fa fa-fw fa-clock-o"></i> <span data-i18n="ble.label.timeout"></label>
+        <input type="text" id="node-input-timeout">
+    </div>
+
+    <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
         <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
     </div>
 </script>
+
+<style>
+    input#node-input-timeout{
+        text-align: end;
+        width:50px !important;
+    }
+</style>
+
 
 <script type="text/javascript">
     RED.nodes.registerType('ble scan', {
@@ -98,7 +106,8 @@
                 value: ""
             },
             timeout: {
-                value: 5
+                value: 5,
+                validate:RED.validators.number()
             }
         },
         inputs: 1,
@@ -108,8 +117,42 @@
             return this.name || this._("ble.ble-scan");
         },
         oneditprepare: function() {
+            $("#node-input-timeout").spinner({min: 1});
         },
         oneditsave: function() {
+            var s = $("#node-input-timeout").val();
+            if(s < 1){
+                $("#node-input-timeout").val(1);
+            }
+
         }
     });
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('bledevice', {
+        category: 'config',
+        defaults: {
+            name: {value:""},
+            deviceId: {
+                value:"",
+                required: true
+            }
+        },
+        label: function () {
+            return this.name || this.deviceId;
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="bledevice">
+    <div class="form-row">
+        <label for="node-config-input-deviceId"><i class="fa fa-info"></i> <span data-i18n="ble.label.deviceId"></span></label>
+        <input type="text" id="node-config-input-deviceId">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-config-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
 </script>

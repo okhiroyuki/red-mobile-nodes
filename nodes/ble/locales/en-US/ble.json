@@ -4,11 +4,16 @@
         "ble-disconnect": "ble disconnect",
         "ble-scan": "ble scan",
         "ble-device": "ble device",
+        "ble-write": "ble write",
+        "ble-read": "ble read",
         "label":{
             "device": "Device",
             "deviceId": "DeviceId",
+            "serviceUuid": "Service Uuid",
+            "characteristicUuid": "Characteristic Uuid",
             "auto": "Auto",
-            "timeout": "Timeout"
+            "timeout": "Timeout",
+            "response": "Response"
         }
     }
 }

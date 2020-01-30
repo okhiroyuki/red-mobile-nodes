@@ -9,6 +9,17 @@
         <input type="checkbox" id="node-input-notification">
     </div>
 
+    <div class="form-row select-notification" hidden>
+        <label for="node-config-input-serviceUuid"><i class="fa fa-info"></i> <span data-i18n="ble.label.serviceUuid"></span></label>
+        <input type="text" id="node-config-input-serviceUuid">
+    </div>
+
+    <div class="form-row select-notification" hidden>
+        <label for="node-config-input-characteristicUuid"><i class="fa fa-info"></i> <span data-i18n="ble.label.characteristicUuid"></span></label>
+        <input type="text" id="node-config-input-characteristicUuid">
+    </div>
+
+
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
         <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
@@ -29,6 +40,12 @@
             },
             notification:{
                 value: false
+            },
+            serviceUuid: {
+                value:""
+            },
+            characteristicUuid: {
+                value: ""
             }
         },
         inputs: 1,
@@ -38,7 +55,19 @@
             return this.name || this._("ble.ble-connect");
         },
         oneditprepare: function() {
-            
+            toggleSelectNotification();
+
+            $("#node-input-notification").change(function() {
+                toggleSelectNotification();
+            });
+
+            function toggleSelectNotification(){
+                if($("#node-input-notification").prop('checked')){
+                    $(".select-notification").show();
+                }else{
+                    $(".select-notification").hide();
+                }
+            }
         },
         oneditsave: function() {
             

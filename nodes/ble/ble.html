@@ -5,6 +5,11 @@
     </div>
 
     <div class="form-row">
+        <label for="node-input-notification"><i class="fa fa-sign-out"></i> <span data-i18n="ble.label.notification"></span></label>
+        <input type="checkbox" id="node-input-notification">
+    </div>
+
+    <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
         <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
     </div>
@@ -21,6 +26,9 @@
             device: {
                 value: "",
                 type: "bledevice"
+            },
+            notification:{
+                value: false
             }
         },
         inputs: 1,
@@ -137,14 +145,7 @@
             deviceId: {
                 value:"",
                 required: true
-            },
-            serviceUuid: {
-                value:""
-            },
-            characteristicUuid: {
-                value: ""
             }
-
         },
         label: function () {
             return this.name || this.deviceId;
@@ -159,16 +160,6 @@
     </div>
 
     <div class="form-row">
-        <label for="node-config-input-serviceUuid"><i class="fa fa-info"></i> <span data-i18n="ble.label.serviceUuid"></span></label>
-        <input type="text" id="node-config-input-serviceUuid">
-    </div>
-
-    <div class="form-row">
-        <label for="node-config-input-characteristicUuid"><i class="fa fa-info"></i> <span data-i18n="ble.label.characteristicUuid"></span></label>
-        <input type="text" id="node-config-input-characteristicUuid">
-    </div>
-
-    <div class="form-row">
         <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="node-red:common.label.name"></span></label>
         <input type="text" id="node-config-input-name" data-i18n="[placeholder]node-red:common.label.name">
     </div>
@@ -178,6 +169,16 @@
     <div class="form-row">
         <label for="node-input-device"><i class="fa fa-info"></i> <span data-i18n="ble.label.device"></span></label>
         <input type="text" id="node-input-device">
+    </div>
+
+    <div class="form-row">
+        <label for="node-config-input-serviceUuid"><i class="fa fa-info"></i> <span data-i18n="ble.label.serviceUuid"></span></label>
+        <input type="text" id="node-config-input-serviceUuid">
+    </div>
+
+    <div class="form-row">
+        <label for="node-config-input-characteristicUuid"><i class="fa fa-info"></i> <span data-i18n="ble.label.characteristicUuid"></span></label>
+        <input type="text" id="node-config-input-characteristicUuid">
     </div>
 
     <div class="form-row">
@@ -203,6 +204,12 @@
                 value: "",
                 type: "bledevice"
             },
+            serviceUuid: {
+                value:""
+            },
+            characteristicUuid: {
+                value: ""
+            },
             response:{
                 value: true
             }
@@ -227,6 +234,16 @@
     </div>
 
     <div class="form-row">
+        <label for="node-config-input-serviceUuid"><i class="fa fa-info"></i> <span data-i18n="ble.label.serviceUuid"></span></label>
+        <input type="text" id="node-config-input-serviceUuid">
+    </div>
+
+    <div class="form-row">
+        <label for="node-config-input-characteristicUuid"><i class="fa fa-info"></i> <span data-i18n="ble.label.characteristicUuid"></span></label>
+        <input type="text" id="node-config-input-characteristicUuid">
+    </div>
+
+    <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
         <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
     </div>
@@ -243,6 +260,12 @@
             device: {
                 value: "",
                 type: "bledevice"
+            },
+            serviceUuid: {
+                value:""
+            },
+            characteristicUuid: {
+                value: ""
             }
         },
         inputs: 1,
@@ -251,6 +274,44 @@
         icon: "ble.png",
         label: function () {
             return this.name || this._("ble.ble-read");
+        },
+        oneditprepare: function() {
+        },
+        oneditsave: function() {
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="ble notification">
+    <div class="form-row">
+        <label for="node-input-device"><i class="fa fa-info"></i> <span data-i18n="ble.label.device"></span></label>
+        <input type="text" id="node-input-device">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('ble notification', {
+        category: 'ble',
+        color: '#4d94ff',
+        defaults: {
+            name: {
+                value: ""
+            },
+            device: {
+                value: "",
+                type: "bledevice"
+            }
+        },
+        inputs: 0,
+        outputs: 1,
+        icon: "ble.png",
+        label: function () {
+            return this.name || this._("ble.ble-notification");
         },
         oneditprepare: function() {
         },

@@ -26,7 +26,9 @@ module.exports = function(RED) {
         RED.nodes.createNode(this, n);
         let node = this;
 
-        node.opts = {};
+        node.opts = {
+            notification: n.notification
+        };
         if (RED.nodes.getNode(n.device)){
             node.opts.deviceId = RED.nodes.getNode(n.device).deviceId;
         }
@@ -98,11 +100,12 @@ module.exports = function(RED) {
     function RedMobileBleWriteNode(n) {
         RED.nodes.createNode(this, n);
         let node = this;
-        node.opts = {};
+        node.opts = {
+            service_uuid: n.serviceUuid,
+            characteristic_uuid: n.characteristicUuid
+        };
         if (RED.nodes.getNode(n.device)){
             node.opts.deviceId = RED.nodes.getNode(n.device).deviceId;
-            node.opts.service_uuid = RED.nodes.getNode(n.device).serviceUuid;
-            node.opts.characteristic_uuid = RED.nodes.getNode(n.device).characteristicUuid;    
         }
         node.opts.response = n.response;
 
@@ -137,11 +140,12 @@ module.exports = function(RED) {
     function RedMobileBleReadNode(n) {
         RED.nodes.createNode(this, n);
         let node = this;
-        node.opts = {};
+        node.opts = {
+            service_uuid: n.serviceUuid,
+            characteristic_uuid: n.characteristicUuid
+        };
         if (RED.nodes.getNode(n.device)){
             node.opts.deviceId = RED.nodes.getNode(n.device).deviceId;
-            node.opts.service_uuid = RED.nodes.getNode(n.device).serviceUuid;
-            node.opts.characteristic_uuid = RED.nodes.getNode(n.device).characteristicUuid;    
         }
 
         node.on('input', function(msg) {
@@ -210,9 +214,33 @@ module.exports = function(RED) {
     function bleDevice(n){
         RED.nodes.createNode(this, n);
         this.deviceId = n.deviceId;
-        this.serviceUuid = n.serviceUuid;
-        this.characteristicUuid = n.characteristicUuid;
     }
     RED.nodes.registerType("bledevice", bleDevice);
 
+    function RedMobileBleNotificationNode(n) {
+        RED.nodes.createNode(this, n);
+        let node = this;
+        node.opts = {
+            notification: n.notification
+        };
+        const ev = new EventEmitter();
+        const ws = new WebSocketClient(ev);
+
+        ws.open("ws://localhost:" + RED.settings.redMobileWsPort + "/mobile/serial");
+        ev.on("open",() => {
+            node.status({fill: "blue",shape: "dot",text: "connect"});
+        });
+        ev.on("close", () => {
+            node.status({fill: "green",shape: "dot",text: "close"});
+        });
+        ev.on("error", (e)=>{
+            node.status({fill: "red",shape: "dot",text: "error"});
+            node.send({payload:e});
+        });
+        ev.on("message" ,(data)=>{
+            node.send({payload: JSON.parse(data)});
+        });
+    }
+
+    RED.nodes.registerType("ble notification", RedMobileBleNotificationNode);
 };

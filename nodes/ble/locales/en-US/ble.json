@@ -1,11 +1,12 @@
 {
     "ble":{
-        "ble-connect": "ble connect",
-        "ble-disconnect": "ble disconnect",
-        "ble-scan": "ble scan",
-        "ble-device": "ble device",
-        "ble-write": "ble write",
-        "ble-read": "ble read",
+        "ble-connect": "connect",
+        "ble-disconnect": "disconnect",
+        "ble-scan": "scan",
+        "ble-device": "device",
+        "ble-write": "write",
+        "ble-read": "read",
+        "ble-notification": "notification",
         "label":{
             "device": "Device",
             "deviceId": "DeviceId",
@@ -13,7 +14,8 @@
             "characteristicUuid": "Characteristic Uuid",
             "auto": "Auto",
             "timeout": "Timeout",
-            "response": "Response"
+            "response": "Response",
+            "notification": "Notification"
         }
     }
 }

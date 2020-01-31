@@ -26,9 +26,6 @@ module.exports = function(RED) {
         RED.nodes.createNode(this, n);
         let node = this;
 
-        node.opts = {
-            notification: n.notification
-        };
         if (RED.nodes.getNode(n.device)){
             node.opts.deviceId = RED.nodes.getNode(n.device).deviceId;
         }
@@ -221,24 +218,53 @@ module.exports = function(RED) {
         RED.nodes.createNode(this, n);
         let node = this;
         node.opts = {
-            notification: n.notification
+            service_uuid: n.serviceUuid,
+            characteristic_uuid: n.characteristicUuid
         };
-        const ev = new EventEmitter();
-        const ws = new WebSocketClient(ev);
 
-        ws.open("ws://localhost:" + RED.settings.redMobileWsPort + "/mobile/ble");
-        ev.on("open",() => {
-            node.status({fill: "blue",shape: "dot",text: "connect"});
+        node.on('input', function(msg) {
+            const json =  {
+                method: "ble-notification-open",
+                payload: msg.payload,
+                opts: node.opts
+            };
+
+            axios.request(getPostConfig(json)).then((res) => {
+                const ev = new EventEmitter();
+                const ws = new WebSocketClient(ev);
+                ws.open("ws://localhost:" + RED.settings.redMobileWsPort + "/mobile/ble");
+                ev.on("open",() => {
+                    node.status({fill: "blue",shape: "dot",text: "connect"});
+                });
+                ev.on("close", () => {
+                    node.status({fill: "green",shape: "dot",text: "close"});
+                });
+                ev.on("error", (e)=>{
+                    node.status({fill: "red",shape: "dot",text: "error"});
+                    node.send({payload:e});
+                });
+                ev.on("message" ,(data)=>{
+                    node.send({payload: JSON.parse(data)});
+                });
+            }).catch((error) => {
+                node.error(error.message);
+                node.status({
+                    fill: "red",
+                    shape: "ring",
+                    text: error.message
+                });
+            });
         });
-        ev.on("close", () => {
-            node.status({fill: "green",shape: "dot",text: "close"});
-        });
-        ev.on("error", (e)=>{
-            node.status({fill: "red",shape: "dot",text: "error"});
-            node.send({payload:e});
-        });
-        ev.on("message" ,(data)=>{
-            node.send({payload: JSON.parse(data)});
+
+        node.on('close', function(msg) {
+            const json =  {
+                method: "ble-notification-close",
+                payload: msg.payload,
+                opts: node.opts
+            };
+            axios.request(getPostConfig(json)).then((res) => {
+
+            });
         });
     }
 

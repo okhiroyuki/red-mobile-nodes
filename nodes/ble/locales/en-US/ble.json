@@ -1,0 +1,19 @@
+{
+    "ble":{
+        "ble-connect": "connect",
+        "ble-disconnect": "disconnect",
+        "ble-scan": "scan",
+        "ble-device": "device",
+        "ble-write": "write",
+        "ble-read": "read",
+        "ble-subscribe": "subscribe",
+        "label":{
+            "device": "Device",
+            "address": "Address",
+            "service": "Service",
+            "characteristic": "Characteristic",
+            "timeout": "Timeout",
+            "response": "Response"
+        }
+    }
+}

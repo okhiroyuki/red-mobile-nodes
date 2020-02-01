@@ -1,0 +1,323 @@
+<script type="text/x-red" data-template-name="ble connect">
+    <div class="form-row">
+        <label for="node-input-device"><i class="fa fa-info"></i> <span data-i18n="ble.label.device"></span></label>
+        <input type="text" id="node-input-device">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('ble connect', {
+        category: 'ble',
+        color: '#4d94ff',
+        defaults: {
+            name: {
+                value: ""
+            },
+            device: {
+                value: "",
+                type: "bledevice"
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "ble.png",
+        label: function () {
+            return this.name || this._("ble.ble-connect");
+        },
+        oneditprepare: function() {
+
+        },
+        oneditsave: function() {
+            
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="ble disconnect">
+    <div class="form-row">
+        <label for="node-input-device"><i class="fa fa-info"></i> <span data-i18n="ble.label.device"></span></label>
+        <input type="text" id="node-input-device">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('ble disconnect', {
+        category: 'ble',
+        color: '#4d94ff',
+        defaults: {
+            name: {
+                value: ""
+            },
+            device: {
+                value: "",
+                type: "bledevice"
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        align: 'right',
+        icon: "ble.png",
+        label: function () {
+            return this.name || this._("ble.ble-disconnect");
+        },
+        oneditprepare: function() {
+        },
+        oneditsave: function() {
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="ble scan">
+    <div class="form-row">
+        <label for="node-input-timeout"> <i class="fa fa-fw fa-clock-o"></i> <span data-i18n="ble.label.timeout"></label>
+        <input type="text" id="node-input-timeout">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<style>
+    input#node-input-timeout{
+        text-align: end;
+        width:50px !important;
+    }
+</style>
+
+
+<script type="text/javascript">
+    RED.nodes.registerType('ble scan', {
+        category: 'ble',
+        color: '#4d94ff',
+        defaults: {
+            name: {
+                value: ""
+            },
+            timeout: {
+                value: 5,
+                validate:RED.validators.number()
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "ble.png",
+        label: function () {
+            return this.name || this._("ble.ble-scan");
+        },
+        oneditprepare: function() {
+            $("#node-input-timeout").spinner({min: 1});
+        },
+        oneditsave: function() {
+            var s = $("#node-input-timeout").val();
+            if(s < 1){
+                $("#node-input-timeout").val(1);
+            }
+
+        }
+    });
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('bledevice', {
+        category: 'config',
+        defaults: {
+            name: {value:""},
+            address: {
+                value:"",
+                required: true
+            }
+        },
+        label: function () {
+            return this.name || this.address;
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="bledevice">
+    <div class="form-row">
+        <label for="node-config-input-address"><i class="fa fa-info"></i> <span data-i18n="ble.label.address"></span></label>
+        <input type="text" id="node-config-input-address">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-config-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/x-red" data-template-name="ble write">
+    <div class="form-row">
+        <label for="node-input-device"><i class="fa fa-info"></i> <span data-i18n="ble.label.device"></span></label>
+        <input type="text" id="node-input-device">
+    </div>
+
+    <div class="form-row">
+        <label for="node-config-input-service"><i class="fa fa-info"></i> <span data-i18n="ble.label.service"></span></label>
+        <input type="text" id="node-input-service">
+    </div>
+
+    <div class="form-row">
+        <label for="node-config-input-characteristic"><i class="fa fa-info"></i> <span data-i18n="ble.label.characteristic"></span></label>
+        <input type="text" id="node-input-characteristic">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('ble write', {
+        category: 'ble',
+        color: '#4d94ff',
+        defaults: {
+            name: {
+                value: ""
+            },
+            device: {
+                value: "",
+                type: "bledevice"
+            },
+            service: {
+                value:""
+            },
+            characteristic: {
+                value: ""
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "ble.png",
+        label: function () {
+            return this.name || this._("ble.ble-write");
+        },
+        oneditprepare: function() {
+        },
+        oneditsave: function() {
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="ble read">
+    <div class="form-row">
+        <label for="node-input-device"><i class="fa fa-info"></i> <span data-i18n="ble.label.device"></span></label>
+        <input type="text" id="node-input-device">
+    </div>
+
+    <div class="form-row">
+        <label for="node-config-input-service"><i class="fa fa-info"></i> <span data-i18n="ble.label.service"></span></label>
+        <input type="text" id="node-input-service">
+    </div>
+
+    <div class="form-row">
+        <label for="node-config-input-characteristic"><i class="fa fa-info"></i> <span data-i18n="ble.label.characteristic"></span></label>
+        <input type="text" id="node-input-characteristic">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('ble read', {
+        category: 'ble',
+        color: '#4d94ff',
+        defaults: {
+            name: {
+                value: ""
+            },
+            device: {
+                value: "",
+                type: "bledevice"
+            },
+            service: {
+                value:""
+            },
+            characteristic: {
+                value: ""
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        align: 'right',
+        icon: "ble.png",
+        label: function () {
+            return this.name || this._("ble.ble-read");
+        },
+        oneditprepare: function() {
+        },
+        oneditsave: function() {
+        }
+    });
+</script>
+
+<!-- <script type="text/x-red" data-template-name="ble subscribe">
+    <div class="form-row">
+        <label for="node-input-device"><i class="fa fa-info"></i> <span data-i18n="ble.label.device"></span></label>
+        <input type="text" id="node-input-device">
+    </div>
+
+    <div class="form-row">
+        <label for="node-config-input-service"><i class="fa fa-info"></i> <span data-i18n="ble.label.service"></span></label>
+        <input type="text" id="node-input-service">
+    </div>
+
+    <div class="form-row">
+        <label for="node-config-input-characteristic"><i class="fa fa-info"></i> <span data-i18n="ble.label.characteristic"></span></label>
+        <input type="text" id="node-input-characteristic">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('ble subscribe', {
+        category: 'ble',
+        color: '#4d94ff',
+        defaults: {
+            name: {
+                value: ""
+            },
+            device: {
+                value: "",
+                type: "bledevice"
+            },
+            service: {
+                value:"",
+                required: true
+            },
+            characteristic: {
+                value: "",
+                required: true
+            }
+        },
+        inputs: 0,
+        outputs: 1,
+        icon: "ble.png",
+        label: function () {
+            return this.name || this._("ble.ble-subscribe");
+        },
+        oneditprepare: function() {
+        },
+        oneditsave: function() {
+        }
+    }); -->
+</script>

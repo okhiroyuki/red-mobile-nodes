@@ -134,21 +134,21 @@
         category: 'config',
         defaults: {
             name: {value:""},
-            deviceId: {
+            address: {
                 value:"",
                 required: true
             }
         },
         label: function () {
-            return this.name || this.deviceId;
+            return this.name || this.address;
         }
     });
 </script>
 
 <script type="text/x-red" data-template-name="bledevice">
     <div class="form-row">
-        <label for="node-config-input-deviceId"><i class="fa fa-info"></i> <span data-i18n="ble.label.deviceId"></span></label>
-        <input type="text" id="node-config-input-deviceId">
+        <label for="node-config-input-address"><i class="fa fa-info"></i> <span data-i18n="ble.label.address"></span></label>
+        <input type="text" id="node-config-input-address">
     </div>
 
     <div class="form-row">
@@ -164,18 +164,13 @@
     </div>
 
     <div class="form-row">
-        <label for="node-config-input-serviceUuid"><i class="fa fa-info"></i> <span data-i18n="ble.label.serviceUuid"></span></label>
-        <input type="text" id="node-config-input-serviceUuid">
+        <label for="node-config-input-service"><i class="fa fa-info"></i> <span data-i18n="ble.label.service"></span></label>
+        <input type="text" id="node-input-service">
     </div>
 
     <div class="form-row">
-        <label for="node-config-input-characteristicUuid"><i class="fa fa-info"></i> <span data-i18n="ble.label.characteristicUuid"></span></label>
-        <input type="text" id="node-config-input-characteristicUuid">
-    </div>
-
-    <div class="form-row">
-        <label for="node-input-reqponse"><i class="fa fa-sign-out"></i> <span data-i18n="ble.label.response"></span></label>
-        <input type="checkbox" id="node-input-response">
+        <label for="node-config-input-characteristic"><i class="fa fa-info"></i> <span data-i18n="ble.label.characteristic"></span></label>
+        <input type="text" id="node-input-characteristic">
     </div>
 
     <div class="form-row">
@@ -196,14 +191,11 @@
                 value: "",
                 type: "bledevice"
             },
-            serviceUuid: {
+            service: {
                 value:""
             },
-            characteristicUuid: {
+            characteristic: {
                 value: ""
-            },
-            response:{
-                value: true
             }
         },
         inputs: 1,
@@ -226,13 +218,13 @@
     </div>
 
     <div class="form-row">
-        <label for="node-config-input-serviceUuid"><i class="fa fa-info"></i> <span data-i18n="ble.label.serviceUuid"></span></label>
-        <input type="text" id="node-config-input-serviceUuid">
+        <label for="node-config-input-service"><i class="fa fa-info"></i> <span data-i18n="ble.label.service"></span></label>
+        <input type="text" id="node-input-service">
     </div>
 
     <div class="form-row">
-        <label for="node-config-input-characteristicUuid"><i class="fa fa-info"></i> <span data-i18n="ble.label.characteristicUuid"></span></label>
-        <input type="text" id="node-config-input-characteristicUuid">
+        <label for="node-config-input-characteristic"><i class="fa fa-info"></i> <span data-i18n="ble.label.characteristic"></span></label>
+        <input type="text" id="node-input-characteristic">
     </div>
 
     <div class="form-row">
@@ -253,10 +245,10 @@
                 value: "",
                 type: "bledevice"
             },
-            serviceUuid: {
+            service: {
                 value:""
             },
-            characteristicUuid: {
+            characteristic: {
                 value: ""
             }
         },
@@ -274,20 +266,20 @@
     });
 </script>
 
-<script type="text/x-red" data-template-name="ble notification">
+<!-- <script type="text/x-red" data-template-name="ble subscribe">
     <div class="form-row">
         <label for="node-input-device"><i class="fa fa-info"></i> <span data-i18n="ble.label.device"></span></label>
         <input type="text" id="node-input-device">
     </div>
 
     <div class="form-row">
-        <label for="node-config-input-serviceUuid"><i class="fa fa-info"></i> <span data-i18n="ble.label.serviceUuid"></span></label>
-        <input type="text" id="node-input-serviceUuid">
+        <label for="node-config-input-service"><i class="fa fa-info"></i> <span data-i18n="ble.label.service"></span></label>
+        <input type="text" id="node-input-service">
     </div>
 
     <div class="form-row">
-        <label for="node-config-input-characteristicUuid"><i class="fa fa-info"></i> <span data-i18n="ble.label.characteristicUuid"></span></label>
-        <input type="text" id="node-input-characteristicUuid">
+        <label for="node-config-input-characteristic"><i class="fa fa-info"></i> <span data-i18n="ble.label.characteristic"></span></label>
+        <input type="text" id="node-input-characteristic">
     </div>
 
     <div class="form-row">
@@ -297,7 +289,7 @@
 </script>
 
 <script type="text/javascript">
-    RED.nodes.registerType('ble notification', {
+    RED.nodes.registerType('ble subscribe', {
         category: 'ble',
         color: '#4d94ff',
         defaults: {
@@ -308,11 +300,11 @@
                 value: "",
                 type: "bledevice"
             },
-            serviceUuid: {
+            service: {
                 value:"",
                 required: true
             },
-            characteristicUuid: {
+            characteristic: {
                 value: "",
                 required: true
             }
@@ -321,11 +313,11 @@
         outputs: 1,
         icon: "ble.png",
         label: function () {
-            return this.name || this._("ble.ble-notification");
+            return this.name || this._("ble.ble-subscribe");
         },
         oneditprepare: function() {
         },
         oneditsave: function() {
         }
-    });
+    }); -->
 </script>

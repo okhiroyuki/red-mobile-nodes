@@ -3,10 +3,14 @@ module.exports = function(RED) {
 
     const axios = require('axios');
     const qs = require('qs');
-    const EventEmitter = require('events').EventEmitter;
-    const WebSocketClient = require('../WebSocketClient');
     const BASE_URL = 'http://127.0.0.1';
     const PATH =  '/mobile';
+    const isBase64 = require('is-base64');
+    // const EventEmitter = require('events').EventEmitter;
+    // const WebSocketClient = require('../WebSocketClient');
+    // const ev = new EventEmitter();
+    // const ws = new WebSocketClient(ev);
+    // ws.open("ws://localhost:" + RED.settings.redMobileWsPort + "/mobile/ble");
 
     function getPostConfig(json){
         const config = {
@@ -22,13 +26,44 @@ module.exports = function(RED) {
         return config;
     }
 
+    function sendSuccess(node, msg, res){
+        msg.payload = res.data;
+        node.send(msg);
+        node.status({
+            fill: "blue",
+            shape: "dot",
+            text: "success"
+        });
+    }
+
+    function sendError(node, err){
+        const payload = err.response.data.message;
+        node.error(payload);
+        node.status({
+            fill: "red",
+            shape: "ring",
+            text: payload
+        });
+    }
+
+    function generateOpts(n){
+        let opts = {};
+        if (RED.nodes.getNode(n.device)){
+            opts.address = RED.nodes.getNode(n.device).address;
+        }
+        if(n.service){
+            opts.service = n.service;
+        }
+        if(n.characteristic){
+            opts.characteristic = n.characteristic;
+        }
+        return opts;
+    }
+
     function RedMobileBleConnectNode(n) {
         RED.nodes.createNode(this, n);
         let node = this;
-
-        if (RED.nodes.getNode(n.device)){
-            node.opts.deviceId = RED.nodes.getNode(n.device).deviceId;
-        }
+        node.opts = generateOpts(n);
 
         node.on('input', function(msg) {
             const json =  {
@@ -38,20 +73,9 @@ module.exports = function(RED) {
             };
 
             axios.request(getPostConfig(json)).then((res) => {
-                msg.payload = res.data;
-                node.send(msg);
-                node.status({
-                    fill: "blue",
-                    shape: "dot",
-                    text: "success"
-                });
-            }).catch((error) => {
-                node.error(error.message);
-                node.status({
-                    fill: "red",
-                    shape: "ring",
-                    text: error.message
-                });
+                sendSuccess(node, msg, res);
+            }).catch((err) => {
+                sendError(node, err);
             });
         });
     }
@@ -62,9 +86,7 @@ module.exports = function(RED) {
         RED.nodes.createNode(this, n);
         let node = this;
         node.opts = {};
-        if (RED.nodes.getNode(n.device)){
-            node.opts.deviceId = RED.nodes.getNode(n.device).deviceId;
-        }
+        node.opts = generateOpts(n);
 
         node.on('input', function(msg) {
             const json =  {
@@ -74,20 +96,9 @@ module.exports = function(RED) {
             };
 
             axios.request(getPostConfig(json)).then((res) => {
-                msg.payload = res.data;
-                node.send(msg);
-                node.status({
-                    fill: "blue",
-                    shape: "dot",
-                    text: "success"
-                });
-            }).catch((error) => {
-                node.error(error.message);
-                node.status({
-                    fill: "red",
-                    shape: "ring",
-                    text: error.message
-                });
+                sendSuccess(node, msg, res);
+            }).catch((err) => {
+                sendError(node, err);
             });
         });
     }
@@ -97,16 +108,18 @@ module.exports = function(RED) {
     function RedMobileBleWriteNode(n) {
         RED.nodes.createNode(this, n);
         let node = this;
-        node.opts = {
-            service_uuid: n.serviceUuid,
-            characteristic_uuid: n.characteristicUuid
-        };
-        if (RED.nodes.getNode(n.device)){
-            node.opts.deviceId = RED.nodes.getNode(n.device).deviceId;
-        }
-        node.opts.response = n.response;
+        node.opts = generateOpts(n);
 
         node.on('input', function(msg) {
+            if(!isBase64(msg.payload)){
+                node.error("msg.payload must Base64 encoded string");
+                node.status({
+                    fill: "red",
+                    shape: "ring",
+                    text: "error"
+                });
+                return;
+            }
             const json =  {
                 method: "ble-write",
                 payload: msg.payload,
@@ -114,20 +127,9 @@ module.exports = function(RED) {
             };
 
             axios.request(getPostConfig(json)).then((res) => {
-                msg.payload = res.data;
-                node.send(msg);
-                node.status({
-                    fill: "blue",
-                    shape: "dot",
-                    text: "success"
-                });
-            }).catch((error) => {
-                node.error(error.message);
-                node.status({
-                    fill: "red",
-                    shape: "ring",
-                    text: error.message
-                });
+                sendSuccess(node, msg, res);
+            }).catch((err) => {
+                sendError(node, err);
             });
         });
     }
@@ -137,13 +139,7 @@ module.exports = function(RED) {
     function RedMobileBleReadNode(n) {
         RED.nodes.createNode(this, n);
         let node = this;
-        node.opts = {
-            service_uuid: n.serviceUuid,
-            characteristic_uuid: n.characteristicUuid
-        };
-        if (RED.nodes.getNode(n.device)){
-            node.opts.deviceId = RED.nodes.getNode(n.device).deviceId;
-        }
+        node.opts = generateOpts(n);
 
         node.on('input', function(msg) {
             const json =  {
@@ -153,20 +149,9 @@ module.exports = function(RED) {
             };
 
             axios.request(getPostConfig(json)).then((res) => {
-                msg.payload = res.data;
-                node.send(msg);
-                node.status({
-                    fill: "blue",
-                    shape: "dot",
-                    text: "success"
-                });
-            }).catch((error) => {
-                node.error(error.message);
-                node.status({
-                    fill: "red",
-                    shape: "ring",
-                    text: error.message
-                });
+                sendSuccess(node, msg, res);
+            }).catch((err) => {
+                sendError(node, err);
             });
         });
     }
@@ -188,20 +173,9 @@ module.exports = function(RED) {
             };
 
             axios.request(getPostConfig(json)).then((res) => {
-                msg.payload = res.data;
-                node.send(msg);
-                node.status({
-                    fill: "blue",
-                    shape: "dot",
-                    text: "success"
-                });
-            }).catch((error) => {
-                node.error(error.message);
-                node.status({
-                    fill: "red",
-                    shape: "ring",
-                    text: error.message
-                });
+                sendSuccess(node, msg, res);
+            }).catch((err) => {
+                sendError(node, err);
             });
         });
     }
@@ -210,63 +184,63 @@ module.exports = function(RED) {
 
     function bleDevice(n){
         RED.nodes.createNode(this, n);
-        this.deviceId = n.deviceId;
+        this.address = n.address;
     }
     RED.nodes.registerType("bledevice", bleDevice);
 
-    function RedMobileBleNotificationNode(n) {
-        RED.nodes.createNode(this, n);
-        let node = this;
-        node.opts = {
-            service_uuid: n.serviceUuid,
-            characteristic_uuid: n.characteristicUuid
-        };
+    // function RedMobileBleSubscribeNode(n) {
+    //     RED.nodes.createNode(this, n);
+    //     let node = this;
+    //     node.opts = generateOpts(n);
+        
+    //     const json =  {
+    //         method: "ble-subscribe",
+    //         payload: {},
+    //         opts: node.opts
+    //     };
+    //     let timer = setInterval(() => {
+    //         axios.request(getPostConfig(json)).then((res) => {
+    //             clearInterval(timer);
+    //             sendSuccess(node, {}, res);
+                
+    //             ev.on("message" ,(data) => {
+    //                 const payload = JSON.parse(data);
+    //                 if(node.opts.address === payload.address &&  
+    //                     node.opts.service === payload.service && 
+    //                     node.opts.characteristic === payload.characteristic){
+    //                         if(payload.status === "subscribed"){
+    //                             node.status({
+    //                                 fill: "blue",
+    //                                 shape: "dot",
+    //                                 text: "success"
+    //                             });
+    //                         }        
+    //                         node.send({"payload": payload});
+    //                 }
+    //             });        
+    //         }).catch((err) => {
+    //             node.status({
+    //                 fill: "red",
+    //                 shape: "ring",
+    //                 text: err.response.data.message
+    //                 });
+    //             });
+    //         },1000);
 
-        node.on('input', function(msg) {
-            const json =  {
-                method: "ble-notification-open",
-                payload: msg.payload,
-                opts: node.opts
-            };
+    //     node.on('close', function(done) {
+    //         clearInterval(timer);
+    //         const json =  {
+    //             method: "ble-unsubscribe",
+    //             payload: {},
+    //             opts: node.opts
+    //         };
+    //         axios.request(getPostConfig(json)).then((res) => {
+    //             done();
+    //         }).catch((err) => {
+    //             done();
+    //         });
+    //     });
+    // }
 
-            axios.request(getPostConfig(json)).then((res) => {
-                const ev = new EventEmitter();
-                const ws = new WebSocketClient(ev);
-                ws.open("ws://localhost:" + RED.settings.redMobileWsPort + "/mobile/ble");
-                ev.on("open",() => {
-                    node.status({fill: "blue",shape: "dot",text: "connect"});
-                });
-                ev.on("close", () => {
-                    node.status({fill: "green",shape: "dot",text: "close"});
-                });
-                ev.on("error", (e)=>{
-                    node.status({fill: "red",shape: "dot",text: "error"});
-                    node.send({payload:e});
-                });
-                ev.on("message" ,(data)=>{
-                    node.send({payload: JSON.parse(data)});
-                });
-            }).catch((error) => {
-                node.error(error.message);
-                node.status({
-                    fill: "red",
-                    shape: "ring",
-                    text: error.message
-                });
-            });
-        });
-
-        node.on('close', function(msg) {
-            const json =  {
-                method: "ble-notification-close",
-                payload: msg.payload,
-                opts: node.opts
-            };
-            axios.request(getPostConfig(json)).then((res) => {
-
-            });
-        });
-    }
-
-    RED.nodes.registerType("ble notification", RedMobileBleNotificationNode);
+    // RED.nodes.registerType("ble subscribe", RedMobileBleSubscribeNode);
 };

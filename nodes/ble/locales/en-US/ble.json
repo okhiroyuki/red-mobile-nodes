@@ -6,16 +6,14 @@
         "ble-device": "device",
         "ble-write": "write",
         "ble-read": "read",
-        "ble-notification": "notification",
+        "ble-subscribe": "subscribe",
         "label":{
             "device": "Device",
-            "deviceId": "DeviceId",
-            "serviceUuid": "Service Uuid",
-            "characteristicUuid": "Characteristic Uuid",
-            "auto": "Auto",
+            "address": "Address",
+            "service": "Service",
+            "characteristic": "Characteristic",
             "timeout": "Timeout",
-            "response": "Response",
-            "notification": "Notification"
+            "response": "Response"
         }
     }
 }

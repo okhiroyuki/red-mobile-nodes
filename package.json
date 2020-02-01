@@ -4,8 +4,7 @@
   "description": "Extra nodes for RedMobile",
   "main": "app.js",
   "scripts": {
-    "test": "grunt",
-    "commit": "./node_modules/cz-customizable/standalone.js"
+    "test": "grunt"
   },
   "private": true,
   "keywords": [
@@ -21,7 +20,6 @@
     "ws": "^6.2.1"
   },
   "devDependencies": {
-    "cz-customizable": "^6.2.0",
     "grunt": "^1.0.4",
     "grunt-contrib-clean": "^2.0.0",
     "grunt-contrib-copy": "^1.0.0",

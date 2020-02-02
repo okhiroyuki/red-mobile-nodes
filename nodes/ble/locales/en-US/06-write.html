@@ -1,0 +1,21 @@
+<script type="text/x-red" data-help-name="ble write">
+    <p>Write a particular service's characteristic.</p>
+    <h3>Input</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">string</span></dt>
+        <dd>Base64 encoded string</dd>
+    </dl>
+    <h3>Outputs</h3>
+    <dl class="message-properties">
+        <dt>payload.address <span class="property-type">string</span></dt>
+        <dd>Device address</dd>
+        <dt>payload.service <span class="property-type">string</span></dt>
+        <dd>Service UUID</dd>
+        <dt>payload.characteristic <span class="property-type">string</span></dt>
+        <dd>Characteristic UUID</dd>
+        <dt>payload.value <span class="property-type">string</span></dt>
+        <dd>Base64 encoded string of bytes</dd>
+        <dt>payload.status <span class="property-type">string</span></dt>
+        <dd>status</dd>
+    </dl>
+</script>

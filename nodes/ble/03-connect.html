@@ -1,0 +1,39 @@
+<script type="text/x-red" data-template-name="ble connect">
+    <div class="form-row">
+        <label for="node-input-device"><i class="fa fa-info"></i> <span data-i18n="ble-connect.label.device"></span></label>
+        <input type="text" id="node-input-device">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('ble connect', {
+        category: 'ble',
+        color: '#4d94ff',
+        defaults: {
+            name: {
+                value: ""
+            },
+            device: {
+                value: "",
+                type: "bledevice"
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "ble.png",
+        label: function () {
+            return this.name || this._("ble-connect.ble-connect");
+        },
+        oneditprepare: function() {
+
+        },
+        oneditsave: function() {
+            
+        }
+    });
+</script>

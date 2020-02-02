@@ -1,0 +1,8 @@
+{
+    "bledevice":{
+        "bledevice": "device",
+        "label":{
+            "address": "Address"
+        }
+    }
+}

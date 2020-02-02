@@ -1,0 +1,23 @@
+module.exports = function(RED) {
+    'use strcit';
+
+    const EventEmitter = require('events').EventEmitter;
+    const WebSocketClient = require('../WebSocketClient');
+    const ev = new EventEmitter();
+    const ws = new WebSocketClient(ev);
+    if(RED.settings.redMobileWsPort){
+        ws.open("ws://localhost:" + RED.settings.redMobileWsPort + "/mobile/ble");
+    }
+
+    function RedMobileBleNotificationNode(n) {
+        RED.nodes.createNode(this, n);
+        let node = this;
+
+        ev.on("message" ,(data) => {
+            const payload = JSON.parse(data).payload;
+            node.send({"payload": payload});    
+        });
+    }
+
+    RED.nodes.registerType("ble notification", RedMobileBleNotificationNode);
+};

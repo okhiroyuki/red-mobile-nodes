@@ -1,0 +1,15 @@
+<script type="text/x-red" data-help-name="ble scan">
+    <p>Scan for Bluetooth LE devices.</p>
+    <h3>Outputs</h3>
+    <dl class="message-properties">
+        <dt>payload.name <span class="property-type">string</span></dt>
+        <dd>Device name</dd>
+        <dt>payload.address <span class="property-type">string</span></dt>
+        <dd>Device address</dd>
+        <dt>payload.rssi <span class="property-type">number</span></dt>
+        <dd>signal strength</dd>
+        <dt>payload.advertisement <span class="property-type">string</span></dt>
+        <dd>advertisement data in encoded string of bytes</dd>
+    </dl>
+    <p><strong>Note: </strong>Since scanning is expensive, stop as soon as possible.</p>
+</script>

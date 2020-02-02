@@ -1,0 +1,8 @@
+{
+    "ble-disconnect":{
+        "ble-disconnect": "disconnect",
+        "label":{
+            "device": "Device"
+        }
+    }
+}

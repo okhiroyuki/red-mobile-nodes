@@ -6,7 +6,8 @@ module.exports = function(RED) {
     const ev = new EventEmitter();
     const ws = new WebSocketClient(ev);
     if(RED.settings.redMobileWsPort){
-        ws.open("ws://localhost:" + RED.settings.redMobileWsPort + "/mobile/ble");
+        const port = RED.settings.redMobileWsPort + 1;
+        ws.open("ws://localhost:" + port + "/mobile/ble");
     }
 
     function RedMobileBleNotificationNode(n) {

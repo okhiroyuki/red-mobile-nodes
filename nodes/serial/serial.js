@@ -3,10 +3,14 @@ module.exports = function(RED) {
 
     const axios = require('axios');
     const qs = require('qs');
-    const EventEmitter = require('events').EventEmitter;
-    const WebSocketClient = require('../WebSocketClient');
     const BASE_URL = 'http://127.0.0.1';
     const PATH =  '/mobile';
+    const EventEmitter = require('events').EventEmitter;
+    const WebSocketClient = require('../WebSocketClient');
+    const ev = new EventEmitter();
+    const ws = new WebSocketClient(ev);
+
+    ws.open("ws://localhost:" + RED.settings.redMobileWsPort + "/mobile/serial");
 
     function getPostConfig(json){
         const config = {
@@ -152,20 +156,6 @@ module.exports = function(RED) {
     function RedMobileSerialReadNode(n) {
         RED.nodes.createNode(this, n);
         let node = this;
-        const ev = new EventEmitter();
-        const ws = new WebSocketClient(ev);
-
-        ws.open("ws://localhost:" + RED.settings.redMobileWsPort + "/mobile/serial");
-        ev.on("open",() => {
-            node.status({fill: "blue",shape: "dot",text: "connect"});
-        });
-        ev.on("close", () => {
-            node.status({fill: "green",shape: "dot",text: "close"});
-        });
-        ev.on("error", (e)=>{
-            node.status({fill: "red",shape: "dot",text: "error"});
-            node.send({payload:e});
-        });
         ev.on("message" ,(data)=>{
             node.send({payload: JSON.parse(data)});
         });

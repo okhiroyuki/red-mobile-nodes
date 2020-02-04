@@ -6,7 +6,7 @@ module.exports = function(RED) {
     const ev = new EventEmitter();
     const ws = new WebSocketClient(ev);
     if(RED.settings.redMobileWsPort){
-        const port = RED.settings.redMobileWsPort + 1;
+        const port = RED.settings.redMobileWsPort;
         ws.open("ws://localhost:" + port + "/mobile/ble");
     }
 

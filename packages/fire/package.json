@@ -1,6 +1,6 @@
 {
   "name": "@red-mobile/red-mobile-fire-nodes",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Extra nodes for RedMobileFire",
   "main": "app.js",
   "scripts": {
@@ -31,7 +31,17 @@
       "prompt": "./nodes/notifications/prompt/prompt.js",
       "serial": "./nodes/serial/serial.js",
       "volume": "./nodes/volume/volume.js",
-      "intent": "./nodes/intent/intent.js"
+      "intent": "./nodes/intent/intent.js",
+      "sqlite": "./nodes/sqlite/sqlite.js",
+      "ble-bledevice": "./nodes/ble/00-bledevice.js",
+      "ble-notification": "./nodes/ble/01-notification.js",
+      "ble-scan": "./nodes/ble/02-scan.js",
+      "ble-connect": "./nodes/ble/03-connect.js",
+      "ble-disconnect": "./nodes/ble/04-disconnect.js",
+      "ble-read": "./nodes/ble/05-read.js",
+      "ble-write": "./nodes/ble/06-write.js",
+      "ble-subscribe": "./nodes/ble/07-subscribe.js",
+      "ble-unsubscribe": "./nodes/ble/08-unsubscribe.js"
     }
   }
 }

@@ -14,9 +14,9 @@
   "author": "hiroyuki okada",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.19.2",
     "is-base64": "^1.0.0",
-    "qs": "^6.9.0",
+    "qs": "^6.9.1",
     "ws": "^6.2.1"
   },
   "devDependencies": {
@@ -24,9 +24,9 @@
     "grunt-contrib-clean": "^2.0.0",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-jshint": "^2.1.0",
-    "grunt-jsonlint": "^2.0.0",
+    "grunt-jsonlint": "^2.1.1",
     "grunt-lint-inline": "^1.0.0",
-    "grunt-nr-locales-htmllint": "1.0.3"
+    "grunt-nr-locales-htmllint": "^1.1.0"
   },
   "node-red": {
     "nodes": {

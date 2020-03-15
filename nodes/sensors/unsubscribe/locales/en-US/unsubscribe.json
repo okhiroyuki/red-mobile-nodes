@@ -1,0 +1,17 @@
+{
+    "sensor-unsubscribe": {
+        "unsubscribe": "unsubscribe",
+        "label": {
+            "sensor": "Sensor",
+            "name": "Name"
+        },
+        "sensor":{
+            "motion": "Motion",
+            "compass": "Compass",
+            "geolocation": "GeoLocation",
+            "magnetic": "Magnetic",
+            "gyroscope": "Gyroscope",
+            "light": "Light"
+        }
+    }
+}

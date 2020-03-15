@@ -1,44 +1,22 @@
 module.exports = function(RED) {
     'use strcit';
 
-    const axios = require('axios');
-    const BASE_URL = 'http://127.0.0.1';
-    const PATH =  '/mobile';
+    const EventEmitter = require('events').EventEmitter;
+    const WebSocketClient = require('../../WebSocketClient');
+    const ev = new EventEmitter();
+    const ws = new WebSocketClient(ev);
+    if(RED.settings.redMobileWsPort){
+        const port = RED.settings.redMobileWsPort;
+        ws.open("ws://localhost:" + port + "/mobile/compass");
+    }
 
     function RedMobileCompassNode(n) {
         RED.nodes.createNode(this, n);
         let node = this;
 
-        node.on('input', function(msg) {
-            let config = {
-                baseURL: BASE_URL + ":" + RED.settings.redMobilePort,
-                url: PATH,
-                method: 'get',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': "Bearer: " + RED.settings.redMobileAccessKey
-                },
-                params: {
-                    method: "compass"
-                }
-            };
-
-            axios.request(config).then((res) => {
-                msg.payload = res.data;
-                node.send(msg);
-                node.status({
-                    fill: "blue",
-                    shape: "dot",
-                    text: "success"
-                });
-            }).catch((error) => {
-                node.error(RED._("compass.errors.response"));
-                node.status({
-                    fill: "red",
-                    shape: "ring",
-                    text: RED._("compass.errors.response")
-                });
-            });
+        ev.on("message" ,(data) => {
+            const payload = JSON.parse(data).payload;
+            node.send({"payload": payload});    
         });
     }
 

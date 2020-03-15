@@ -1,7 +1,7 @@
 <script type="text/x-red" data-template-name="sensor subscribe">
     <div class="form-row">
         <label for="node-input-sensor"><i class="fa fa-list"></i> <span data-i18n="sensor-subscribe.label.sensor"></span></label>
-        <select type="text" id="sensor-sensor-select">
+        <select type="text" id="subscribe-sensor-select">
             <option value="motion" data-i18n="sensor-subscribe.sensor.motion"></option>
             <option value="compass" data-i18n="sensor-subscribe.sensor.compass"></option>
             <option value="geolocation" data-i18n="sensor-subscribe.sensor.geolocation"></option>
@@ -53,6 +53,14 @@
         },
         oneditprepare: function() {
             $( "#node-input-freq" ).spinner({min:100,step:100});
+            $("#subscribe-sensor-select option").filter(function() {
+                var v = $("#node-input-sensor").val();
+                return $(this).val() == v;
+            }).attr('selected', true);
+            $("#subscribe-sensor-select").change(function() {
+                var v = $("#subscribe-sensor-select option:selected").val();
+                $("#node-input-sensor").val(v);
+            });
         },
         oneditsave: function() {
             if($( "#node-input-freq" ).val() < 100){

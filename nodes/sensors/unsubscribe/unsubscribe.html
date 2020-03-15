@@ -1,7 +1,7 @@
 <script type="text/x-red" data-template-name="sensor unsubscribe">
     <div class="form-row">
         <label for="node-input-sensor"><i class="fa fa-list"></i> <span data-i18n="sensor-unsubscribe.label.sensor"></span></label>
-        <select type="text" id="sensor-sensor-select">
+        <select type="text" id="unsubscribe-sensor-select">
             <option value="motion" data-i18n="sensor-unsubscribe.sensor.motion"></option>
             <option value="compass" data-i18n="sensor-unsubscribe.sensor.compass"></option>
             <option value="geolocation" data-i18n="sensor-unsubscribe.sensor.geolocation"></option>
@@ -36,7 +36,16 @@
         label: function () {
             return this.name || this._("sensor-unsubscribe.unsubscribe");
         },
-        oneditprepare: function() { },
+        oneditprepare: function() { 
+            $("#unsubscribe-sensor-select option").filter(function() {
+                var v = $("#node-input-sensor").val();
+                return $(this).val() == v;
+            }).attr('selected', true);
+            $("#unsubscribe-sensor-select").change(function() {
+                var v = $("#unsubscribe-sensor-select option:selected").val();
+                $("#node-input-sensor").val(v);
+            });
+        },
         oneditsave: function() { }
     });
 </script>

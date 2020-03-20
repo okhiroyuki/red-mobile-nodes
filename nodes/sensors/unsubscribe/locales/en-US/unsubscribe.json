@@ -11,7 +11,8 @@
             "geolocation": "GeoLocation",
             "magnetic": "Magnetic",
             "gyroscope": "Gyroscope",
-            "light": "Light"
+            "light": "Light",
+            "proximity": "Proximity"
         }
     }
 }

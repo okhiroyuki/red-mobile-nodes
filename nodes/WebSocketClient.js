@@ -56,28 +56,28 @@ WebSocketClient.prototype.reconnect = function (e) {
     var that = this;
 
     setTimeout(function () {
-        console.log("WebSocketClient: reconnecting...");
+        // console.log("WebSocketClient: reconnecting...");
         that.open(that.url);
     }, this.autoReconnectInterval);
 };
 
 WebSocketClient.prototype.onopen = function (e) {
-    console.log("WebSocketClient: open", arguments);
+    // console.log("WebSocketClient: open", arguments);
     this.ev.emit("open");
 };
 
 WebSocketClient.prototype.onmessage = function (data, flags, number) {
-    console.log("WebSocketClient: message", arguments);
+    // console.log("WebSocketClient: message", arguments);
     this.ev.emit("message", data);
 };
 
 WebSocketClient.prototype.onerror = function (e) {
-    console.log("WebSocketClient: error", arguments);
+    // console.log("WebSocketClient: error", arguments);
     this.ev.emit("error", e);
 };
 
 WebSocketClient.prototype.onclose = function (e) {
-    console.log("WebSocketClient: closed", arguments);
+    // console.log("WebSocketClient: closed", arguments);
     this.ev.emit("close");
 };
 

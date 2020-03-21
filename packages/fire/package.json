@@ -14,10 +14,10 @@
   "author": "hiroyuki okada",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.19.0",
-    "qs": "^6.9.0",
-    "ws": "^6.2.1",
-    "is-base64": "^1.0.0"
+    "axios": "^0.19.2",
+    "is-base64": "^1.1.0",
+    "qs": "^6.9.1",
+    "ws": "^6.2.1"
   },
   "node-red": {
     "nodes": {

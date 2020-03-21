@@ -13,7 +13,7 @@
         <input type="hidden" id="node-input-sensor">
     </div>
 
-    <div class="form-row">
+    <div class="form-row sensor-freq" hidden>
         <label for="node-input-freq"><i class="fa fa-volume-up fa-fw"></i> <span data-i18n="sensor-subscribe.label.freq"></span></label>
         <input type="text" id="node-input-freq" >
     </div>
@@ -56,12 +56,22 @@
             $( "#node-input-freq" ).spinner({min:100,step:100});
             $("#subscribe-sensor-select option").filter(function() {
                 var v = $("#node-input-sensor").val();
+                toggleFreq(v);
                 return $(this).val() == v;
             }).attr('selected', true);
             $("#subscribe-sensor-select").change(function() {
                 var v = $("#subscribe-sensor-select option:selected").val();
+                toggleFreq(v);
                 $("#node-input-sensor").val(v);
             });
+
+            function toggleFreq(v){
+                if(v === "geolocation"){
+                    $(".sensor-freq").hidden();
+                }else{
+                    $(".sensor-freq").show();
+                }
+            }
         },
         oneditsave: function() {
             if($( "#node-input-freq" ).val() < 100){

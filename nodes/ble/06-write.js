@@ -1,7 +1,7 @@
 module.exports = function(RED) {
     'use strcit';
 
-    const util = require("./lib/util");
+    const util = require("../../lib/util");
     const axios = require('axios');
     const isBase64 = require('is-base64');
 

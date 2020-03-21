@@ -20,6 +20,8 @@
   },
   "node-red": {
     "nodes": {
+      "sensor subscribe": "./nodes/sensors/subscribe/subscribe.js",
+      "sensor unsubscribe": "./nodes/sensors/unsubscribe/unsubscribe.js",
       "light": "./nodes/sensors/light/light.js",
       "motion": "./nodes/sensors/motion/motion.js",
       "gyroscope": "./nodes/sensors/gyroscope/gyroscope.js",

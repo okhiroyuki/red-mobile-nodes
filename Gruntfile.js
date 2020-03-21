@@ -50,6 +50,7 @@ module.exports = function(grunt){
         copy: {
             fire: {
               files: [
+                {expand: true, cwd: './lib/', src: ['**'], dest: './packages/android/lib/'},
                 {expand: true, cwd: './nodes/cognitives/text-to-speech/', src: ['**'], dest: './packages/fire/nodes/cognitives/text-to-speech/'},
                 {expand: true, cwd: './nodes/in-app-browser/', src: ['**'], dest: './packages/fire/nodes/in-app-browser/'},
                 {expand: true, cwd: './nodes/intent/', src: ['**'], dest: './packages/fire/nodes/intent/'},
@@ -71,6 +72,7 @@ module.exports = function(grunt){
             },
             android:{
                 files:[
+                    {expand: true, cwd: './lib/', src: ['**'], dest: './packages/android/lib/'},
                     {expand: true, cwd: './nodes/', src: ['**'], dest: './packages/android/nodes/'},
                     {expand: true, cwd: './examples/', src: ['**'], dest: './packages/android/examples/'},
                 ]

@@ -1,18 +1,20 @@
 module.exports = function(RED) {
     'use strcit';
 
-    const util = require("../../lib/util");
+    const util = require("../../../lib/util");
     const axios = require('axios');
 
-    function RedMobileBleConnectNode(n) {
+    function RedMobileSensorUnSubscribeNode(n) {
         RED.nodes.createNode(this, n);
         util.init(RED);
         let node = this;
-        node.opts = util.generateOpts(n);
-
+        node.opts = {
+            sensor: n.sensor
+        };
+        
         node.on('input', function(msg) {
             const json =  {
-                method: "ble-connect",
+                method: "sensor-unsubscribe",
                 payload: msg.payload,
                 opts: node.opts
             };
@@ -24,6 +26,5 @@ module.exports = function(RED) {
             });
         });
     }
-
-    RED.nodes.registerType("ble connect", RedMobileBleConnectNode);
+    RED.nodes.registerType("sensor unsubscribe", RedMobileSensorUnSubscribeNode);
 };

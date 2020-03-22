@@ -25,6 +25,7 @@ module.exports = function(RED) {
                 return;
             }
             const json =  {
+                id: node.id,
                 method: "vibrate",
                 payload: msg.payload
             };

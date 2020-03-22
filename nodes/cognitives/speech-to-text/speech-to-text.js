@@ -12,6 +12,7 @@ module.exports = function(RED) {
 
         node.on('input', function(msg) {
             const json =  {
+                id: node.id,
                 method: "speech-to-text",
                 payload: msg.payload
             };

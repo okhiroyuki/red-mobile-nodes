@@ -23,6 +23,7 @@ module.exports = function(RED) {
 
         node.on('input', function(msg) {
             const json =  {
+                id: node.id,
                 method: "camera-open",
                 payload: msg.payload,
                 options: node.options
@@ -73,6 +74,7 @@ module.exports = function(RED) {
                     'Authorization': "Bearer: " + RED.settings.redMobileAccessKey
                 },
                 params: {
+                    id: node.id,
                     method: "camera-close"
                 },
                 timeout: 5000
@@ -113,6 +115,7 @@ module.exports = function(RED) {
                     'Authorization': "Bearer: " + RED.settings.redMobileAccessKey
                 },
                 params: {
+                    id: node.id,
                     method: "camera-take-picture"
                 },
                 timeout: 5000
@@ -153,6 +156,7 @@ module.exports = function(RED) {
                     'Authorization': "Bearer: " + RED.settings.redMobileAccessKey
                 },
                 params: {
+                    id: node.id,
                     method: "camera-switch"
                 },
                 timeout: 5000

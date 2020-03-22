@@ -40,6 +40,7 @@ module.exports = function(RED) {
 
         node.on('input', function(msg) {
             const json =  {
+                id: node.id,
                 method: "serial-open",
                 payload: msg.payload,
                 opts: node.opts
@@ -80,6 +81,7 @@ module.exports = function(RED) {
                     'Authorization': "Bearer: " + RED.settings.redMobileAccessKey
                 },
                 params: {
+                    id: node.id,
                     method: "serial-close"
                 },
                 timeout: 5000
@@ -114,6 +116,7 @@ module.exports = function(RED) {
 
         node.on('input', function(msg) {
             const json =  {
+                id: node.id,
                 method: "serial-write",
                 payload: node.data,
                 dataType: node.dataType

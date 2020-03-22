@@ -13,6 +13,7 @@ module.exports = function(RED) {
 
         node.on('input', function(msg) {
             const json =  {
+                id: node.id,
                 method: "ble-disconnect",
                 payload: msg.payload,
                 opts: node.opts

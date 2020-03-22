@@ -16,6 +16,7 @@ module.exports = function(RED) {
                 return;
             }
             const json =  {
+                id: node.id,
                 method: "confirm",
                 payload: msg.payload
             };

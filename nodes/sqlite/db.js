@@ -11,8 +11,9 @@ function DB(_settings, _dbname){
     dbname = _dbname;
 }
 
-DB.prototype.all = (sql, params, callback) => {
+DB.prototype.all = (id, sql, params, callback) => {
     const json =  {
+        id: id,
         method: "sqlite-all",
         dbname: dbname,
         payload: sql,
@@ -26,8 +27,9 @@ DB.prototype.all = (sql, params, callback) => {
     });
 };
 
-DB.prototype.exec = (sql, callback) => {
+DB.prototype.exec = (id, sql, callback) => {
     const json =  {
+        id: id,
         method: "sqlite-exec",
         dbname: dbname,
         payload: sql,
@@ -44,8 +46,9 @@ DB.prototype.loadExtension = (extension, callback) => {
     callback(new Error("extension is not supported"));
 };
 
-DB.prototype.close = function(done){
+DB.prototype.close = function(id, done){
     const json =  {
+        id: id,
         method: "sqlite-close",
         dbname: dbname
     };
@@ -57,8 +60,9 @@ DB.prototype.close = function(done){
     });
 };
 
-DB.prototype.delete = function(callback){
+DB.prototype.delete = function(id, callback){
     const json =  {
+        id: id,
         method: "sqlite-delete",
         dbname: dbname
     };

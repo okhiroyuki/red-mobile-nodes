@@ -14,6 +14,7 @@ module.exports = function(RED) {
         
         node.on('input', function(msg) {
             const json =  {
+                id: node.id,
                 method: "sensor-unsubscribe",
                 payload: msg.payload,
                 opts: node.opts

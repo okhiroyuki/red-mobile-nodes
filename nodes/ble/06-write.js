@@ -22,6 +22,7 @@ module.exports = function(RED) {
                 return;
             }
             const json =  {
+                id: node.id,
                 method: "ble-write",
                 payload: msg.payload,
                 opts: node.opts

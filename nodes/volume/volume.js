@@ -13,6 +13,7 @@ module.exports = function(RED) {
 
         node.on('input', function(msg) {
             const json =  {
+                id: node.id,
                 method: "volume-get",
                 payload: msg.payload,
                 target: node.target
@@ -74,6 +75,7 @@ module.exports = function(RED) {
                 }
             }
             const json =  {
+                id: node.id,
                 method: "volume-set",
                 payload: msg.payload,
                 volume: node.volume,

@@ -19,6 +19,7 @@ module.exports = function(RED) {
                     'Authorization': "Bearer: " + RED.settings.redMobileAccessKey
                 },
                 params: {
+                    id: node.id,
                     method: "db"
                 }
             };

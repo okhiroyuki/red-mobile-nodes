@@ -14,7 +14,7 @@ module.exports = function(RED) {
         };
 
         node.on('close', function (done) {
-            if (node.db) { node.db.close(done()); }
+            if (node.db) { node.db.close(node.id, done()); }
             else { done(); }
         });  
     }
@@ -30,7 +30,7 @@ module.exports = function(RED) {
         node.status({});
 
         if (node.mydbConfig) {
-            node.mydbConfig.doConnect();
+            node.mydbConfig.doConnect(node.id);
             node.status({fill:"green",shape:"dot",text:this.mydbConfig.mod});
             var bind = [];
 
@@ -39,7 +39,7 @@ module.exports = function(RED) {
                     if (typeof msg.topic === 'string') {
                         if (msg.topic.length > 0) {
                             bind = Array.isArray(msg.payload) ? msg.payload : [];
-                            node.mydbConfig.db.all(msg.topic, bind, function(err, row) {
+                            node.mydbConfig.db.all(node.id, msg.topic, bind, function(err, row) {
                                 if (err) { node.error(err,msg); }
                                 else {
                                     msg.payload = row;
@@ -56,7 +56,7 @@ module.exports = function(RED) {
                 if (node.sqlquery == "batch") {
                     if (Array.isArray(msg.topic)) {
                         if (msg.topic.length > 0) {
-                            node.mydbConfig.db.exec(msg.topic, function(err) {
+                            node.mydbConfig.db.exec(node.id, msg.topic, function(err) {
                                 if (err) { node.error(err,msg);}
                                 else {
                                     msg.payload = [];
@@ -73,7 +73,7 @@ module.exports = function(RED) {
                 if (node.sqlquery == "fixed") {
                     if (typeof node.sql === 'string') {
                         if (node.sql.length > 0) {
-                            node.mydbConfig.db.all(node.sql, bind, function(err, row) {
+                            node.mydbConfig.db.all(node.id, node.sql, bind, function(err, row) {
                                 if (err) { node.error(err,msg); }
                                 else {
                                     msg.payload = row;
@@ -92,7 +92,7 @@ module.exports = function(RED) {
                 if (node.sqlquery == "prepared") {
                     if (typeof node.sql === 'string' && typeof msg.params !== "undefined" && Array.isArray(msg.params)) {
                         if (node.sql.length > 0) {
-                            node.mydbConfig.db.all(node.sql, msg.params, function(err, row) {
+                            node.mydbConfig.db.all(node.id, node.sql, msg.params, function(err, row) {
                                 if (err) { node.error(err,msg); }
                                 else {
                                     msg.payload = row;
@@ -117,7 +117,7 @@ module.exports = function(RED) {
                     }
                 }
                 if(node.sqlquery === "delete"){
-                    node.mydbConfig.db.delete(function(err, result){
+                    node.mydbConfig.db.delete(node.id, function(err, result){
                         if (err) { node.error(err,msg); }
                         else {
                             msg.payload = result;

@@ -15,6 +15,11 @@ module.exports = function(RED) {
         }else{
             node.options.toBack = true;
         }
+        if(n.direction){
+            node.option.direction = n.direction;
+        }else{
+            node.option.direction = "back";
+        }
 
         node.on('input', function(msg) {
             const json =  {

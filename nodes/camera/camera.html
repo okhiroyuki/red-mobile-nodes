@@ -1,5 +1,14 @@
 <script type="text/x-red" data-template-name="camera-open">
     <div class="form-row">
+        <label for="node-input-direction"><i class="fa fa-list"></i> <span data-i18n="camera-open.label.direction"></span></label>
+        <select type="text" id="camera-direction-select">
+            <option value="back" data-i18n="camera-open.direction.back"></option>
+            <option value="front" data-i18n="camera-open.direction.front"></option>
+        </select>
+        <input type="hidden" id="node-input-direction">
+    </div>
+
+    <div class="form-row">
         <label for="node-input-preview"><i class="fa fa-list"></i> <span data-i18n="camera-open.label.preview"></span></label>
         <select type="text" id="camera-preview-select">
             <option value="enable" data-i18n="camera-open.preview.enable"></option>
@@ -19,6 +28,9 @@
         category: 'camera',
         color: '#839e2e',
         defaults: {
+            direction: {
+                value: "back"
+            },
             name: {
                 value: ""
             },
@@ -33,6 +45,15 @@
             return this.name || this._("camera-open.camera-open");
         },
         oneditprepare: function() {
+            $("#camera-direction-select option").filter(function() {
+                var v = $("#node-input-direction").val();
+                return $(this).val() == v;
+            }).attr('selected', true);
+            $("#camera-direction-select").change(function() {
+                var v = $("#camera-direction-select option:selected").val();
+                $("#node-input-direction").val(v);
+            });
+
             $("#camera-preview-select option").filter(function() {
                 var v = $("#node-input-preview").val();
                 return $(this).val() == v;

@@ -2,11 +2,16 @@
     "camera-open":{
         "camera-open": "Camera Open",
         "label":{
-            "preview": "Preview"
+            "preview": "Preview",
+            "direction": "Direction"
         },
         "preview":{
             "enable": "Enable",
             "disable": "Disable"
+        },
+        "direction":{
+            "front": "Front",
+            "back": "Back"
         },
         "errors":{
             "response": "Could not open camera."

@@ -16,9 +16,9 @@ module.exports = function(RED) {
             node.options.toBack = true;
         }
         if(n.direction){
-            node.option.direction = n.direction;
+            node.options.direction = n.direction;
         }else{
-            node.option.direction = "back";
+            node.options.direction = "back";
         }
 
         node.on('input', function(msg) {

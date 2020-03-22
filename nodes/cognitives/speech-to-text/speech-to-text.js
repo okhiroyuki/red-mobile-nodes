@@ -2,9 +2,8 @@ module.exports = function(RED) {
     'use strcit';
 
     const axios = require('axios');
-    const qs = require('qs');
-    const BASE_URL = 'http://127.0.0.1';
-    const PATH =  '/mobile';
+    const util = require('../../../lib/util');
+    util.init(RED);
 
     function RedMobileSpeechToTextNode(n) {
         RED.nodes.createNode(this, n);
@@ -16,33 +15,7 @@ module.exports = function(RED) {
                 method: "speech-to-text",
                 payload: msg.payload
             };
-            let config = {
-                baseURL: BASE_URL + ":" + RED.settings.redMobilePort,
-                url: PATH,
-                method: "post",
-                data: qs.stringify(json),
-                headers: {
-                    'Authorization': "Bearer: " + RED.settings.redMobileAccessKey,
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            };
-
-            axios.request(config).then((res) => {
-                msg.payload = res.data;
-                node.send(msg);
-                node.status({
-                    fill: "blue",
-                    shape: "dot",
-                    text: "success"
-                });
-            }).catch((error) => {
-                node.error(RED._("speech-to-text.errors.response"));
-                node.status({
-                    fill: "red",
-                    shape: "ring",
-                    text: RED._("speech-to-text.errors.response")
-                });
-            });
+            util.postRequest(node, msg, json);
         });
     }
 

@@ -1,46 +1,19 @@
 module.exports = function(RED) {
     'use strcit';
 
-    const axios = require('axios');
-    const BASE_URL = 'http://127.0.0.1';
-    const PATH =  '/mobile';
+    const util = require("../../../lib/util");
+    util.init(RED);
 
     function RedMobileBatteryNode(n) {
         RED.nodes.createNode(this, n);
         let node = this;
 
         node.on('input', function(msg) {
-            let config = {
-                baseURL: BASE_URL + ":" + RED.settings.redMobilePort,
-                url: PATH,
-                method: 'get',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': "Bearer: " + RED.settings.redMobileAccessKey
-                },
-                params: {
-                    id: node.id,
-                    method: "battery"
-                },
-                timeout: 5000
-            };
-
-            axios.request(config).then((res) => {
-                msg.payload = res.data;
-                node.send(msg);
-                node.status({
-                    fill: "blue",
-                    shape: "dot",
-                    text: "success"
-                });
-            }).catch((error) => {
-                node.error(RED._("battery.errors.response"));
-                node.status({
-                    fill: "red",
-                    shape: "ring",
-                    text: RED._("battery.errors.response")
-                });
-            });
+            const params = {
+                id: node.id,
+                method: "battery"
+            }
+            util.getRequest(node, msg, params, 5000);
         });
     }
 

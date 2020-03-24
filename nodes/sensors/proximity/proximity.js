@@ -16,7 +16,7 @@ module.exports = function(RED) {
 
         ev.on("message" ,(data) => {
             const payload = JSON.parse(data).payload;
-            node.send({"payload": Number(payload)});
+            node.send({"payload": payload.distance});
         });
     }
 

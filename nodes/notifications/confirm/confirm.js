@@ -13,6 +13,10 @@ module.exports = function(RED) {
                 sendError(node);
                 return;
             }
+            const json =  {
+                method: "confirm",
+                payload: msg.payload
+            };
             util.postRequest(node, msg, json);
         });
     }

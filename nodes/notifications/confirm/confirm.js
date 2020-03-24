@@ -1,10 +1,8 @@
 module.exports = function(RED) {
     'use strcit';
 
-    const axios = require('axios');
-    const qs = require('qs');
-    const BASE_URL = 'http://127.0.0.1';
-    const PATH =  '/mobile';
+    const util = require("../../../lib/util");
+    util.init(RED);
 
     function RedMobileConfirmNode(n) {
         RED.nodes.createNode(this, n);
@@ -19,28 +17,7 @@ module.exports = function(RED) {
                 method: "confirm",
                 payload: msg.payload
             };
-            let config = {
-                baseURL: BASE_URL + ":" + RED.settings.redMobilePort,
-                url: PATH,
-                method: 'post',
-                data: qs.stringify(json),
-                headers: {
-                    'Authorization': "Bearer: " + RED.settings.redMobileAccessKey,
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            };
-
-            axios.request(config).then((res) => {
-                msg.payload = res.data;
-                node.send(msg);
-                node.status({
-                    fill: "blue",
-                    shape: "dot",
-                    text: "success"
-                });
-            }).catch((error) => {
-                sendError(node);
-            });
+            util.postRequest(node, msg, json);
         });
     }
 

@@ -1,10 +1,8 @@
 module.exports = function(RED) {
     'use strcit';
 
-    const axios = require('axios');
-    const qs = require('qs');
-    const BASE_URL = 'http://127.0.0.1';
-    const PATH =  '/mobile';
+    const util = require('../../lib/util');
+    util.init(RED);
 
     function RedMobileCameraOpenNode(n) {
         RED.nodes.createNode(this, n);
@@ -23,37 +21,13 @@ module.exports = function(RED) {
 
         node.on('input', function(msg) {
             const json =  {
+                id: node.id,
                 method: "camera-open",
                 payload: msg.payload,
                 options: node.options
             };
-            let config = {
-                baseURL: BASE_URL + ":" + RED.settings.redMobilePort,
-                url: PATH,
-                method: "post",
-                data: qs.stringify(json),
-                headers: {
-                    'Authorization': "Bearer: " + RED.settings.redMobileAccessKey,
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            };
-
-            axios.request(config).then((res) => {
-                msg.payload = res.data;
-                node.send(msg);
-                node.status({
-                    fill: "blue",
-                    shape: "dot",
-                    text: "success"
-                });
-            }).catch((error) => {
-                node.error(RED._("camera-open.errors.response"));
-                node.status({
-                    fill: "red",
-                    shape: "ring",
-                    text: RED._("camera-open.errors.response")
-                });
-            });
+            
+            util.postRequest(node, msg, json);
         });
     }
 
@@ -64,36 +38,12 @@ module.exports = function(RED) {
         let node = this;
 
         node.on('input', function(msg) {
-            let config = {
-                baseURL: BASE_URL + ":" + RED.settings.redMobilePort,
-                url: PATH,
-                method: 'get',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': "Bearer: " + RED.settings.redMobileAccessKey
-                },
-                params: {
-                    method: "camera-close"
-                },
-                timeout: 5000
-            };
+            const params = {
+                id: node.id,
+                method: "camera-close"
+            }
 
-            axios.request(config).then((res) => {
-                msg.payload = res.data;
-                node.send(msg);
-                node.status({
-                    fill: "blue",
-                    shape: "dot",
-                    text: "success"
-                });
-            }).catch((error) => {
-                node.error(RED._("camera-close.errors.response"));
-                node.status({
-                    fill: "red",
-                    shape: "ring",
-                    text: RED._("camera-close.errors.response")
-                });
-            });
+            util.getRequest(node, msg, params, 5000);
         });
     }
 
@@ -104,36 +54,11 @@ module.exports = function(RED) {
         let node = this;
 
         node.on('input', function(msg) {
-            let config = {
-                baseURL: BASE_URL + ":" + RED.settings.redMobilePort,
-                url: PATH,
-                method: 'get',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': "Bearer: " + RED.settings.redMobileAccessKey
-                },
-                params: {
-                    method: "camera-take-picture"
-                },
-                timeout: 5000
-            };
-
-            axios.request(config).then((res) => {
-                msg.payload = res.data;
-                node.send(msg);
-                node.status({
-                    fill: "blue",
-                    shape: "dot",
-                    text: "success"
-                });
-            }).catch((error) => {
-                node.error(RED._("take-picture.errors.response"));
-                node.status({
-                    fill: "red",
-                    shape: "ring",
-                    text: RED._("take-picture.errors.response")
-                });
-            });
+            const params =  {
+                id: node.id,
+                method: "camera-take-picture"
+            }
+            util.getRequest(node, msg, params, 5000);
         });
     }
 
@@ -144,36 +69,11 @@ module.exports = function(RED) {
         let node = this;
 
         node.on('input', function(msg) {
-            let config = {
-                baseURL: BASE_URL + ":" + RED.settings.redMobilePort,
-                url: PATH,
-                method: 'get',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': "Bearer: " + RED.settings.redMobileAccessKey
-                },
-                params: {
-                    method: "camera-switch"
-                },
-                timeout: 5000
-            };
-
-            axios.request(config).then((res) => {
-                msg.payload = res.data;
-                node.send(msg);
-                node.status({
-                    fill: "blue",
-                    shape: "dot",
-                    text: "success"
-                });
-            }).catch((error) => {
-                node.error(RED._("camera-switch.errors.response"));
-                node.status({
-                    fill: "red",
-                    shape: "ring",
-                    text: RED._("camera-switch.errors.response")
-                });
-            });
+            const params =  {
+                id: node.id,
+                method: "camera-switch"
+            }
+            util.getRequest(node, msg, params, 5000);
         });
     }
 

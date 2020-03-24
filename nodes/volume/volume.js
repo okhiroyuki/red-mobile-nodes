@@ -2,9 +2,8 @@ module.exports = function(RED) {
     'use strcit';
 
     const axios = require('axios');
-    const qs = require('qs');
-    const BASE_URL = 'http://127.0.0.1';
-    const PATH =  '/mobile';
+    const util = require("../../lib/util");
+    util.init(RED);
 
     function RedMobileVolumeGetNode(n) {
         RED.nodes.createNode(this, n);
@@ -13,36 +12,17 @@ module.exports = function(RED) {
 
         node.on('input', function(msg) {
             const json =  {
+                id: node.id,
                 method: "volume-get",
                 payload: msg.payload,
                 target: node.target
             };
-            let config = {
-                baseURL: BASE_URL + ":" + RED.settings.redMobilePort,
-                url: PATH,
-                method: "post",
-                data: qs.stringify(json),
-                headers: {
-                    'Authorization': "Bearer: " + RED.settings.redMobileAccessKey,
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            };
 
-            axios.request(config).then((res) => {
+            axios.request(util.getPostConfig(json)).then((res) => {
                 msg.payload = Number(res.data);
-                node.send(msg);
-                node.status({
-                    fill: "blue",
-                    shape: "dot",
-                    text: "success"
-                });
-            }).catch((error) => {
-                node.error(RED._("in-app-browser.errors.response-get"));
-                node.status({
-                    fill: "red",
-                    shape: "ring",
-                    text: RED._("in-app-browser.errors.response-get")
-                });
+                util.sendSuccess(node, msg);
+            }).catch((err) => {
+                util.sendError(node, err);
             });
         });
     }
@@ -74,37 +54,18 @@ module.exports = function(RED) {
                 }
             }
             const json =  {
+                id: node.id,
                 method: "volume-set",
                 payload: msg.payload,
                 volume: node.volume,
                 target: node.target
             };
-            let config = {
-                baseURL: BASE_URL + ":" + RED.settings.redMobilePort,
-                url: PATH,
-                method: "post",
-                data: qs.stringify(json),
-                headers: {
-                    'Authorization': "Bearer: " + RED.settings.redMobileAccessKey,
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            };
 
-            axios.request(config).then((res) => {
+            axios.request(util.getPostConfig(json)).then((res) => {
                 msg.payload = Number(res.data);
-                node.send(msg);
-                node.status({
-                    fill: "blue",
-                    shape: "dot",
-                    text: "success"
-                });
-            }).catch((error) => {
-                node.error(RED._("in-app-browser.errors.response-set"));
-                node.status({
-                    fill: "red",
-                    shape: "ring",
-                    text: RED._("in-app-browser.errors.response-set")
-                });
+                util.sendSuccess(node, msg);
+            }).catch((err) => {
+                util.sendError(node, err);
             });
         });
     }

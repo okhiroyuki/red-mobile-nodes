@@ -16,7 +16,7 @@ module.exports = function(RED) {
 
         ev.on("message" ,(data) => {
             const payload = JSON.parse(data).payload;
-            node.send({"payload": payload});    
+            node.send({"payload": payload});
         });
     }
 

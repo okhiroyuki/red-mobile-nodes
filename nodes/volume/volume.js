@@ -1,7 +1,6 @@
 module.exports = function(RED) {
     'use strcit';
 
-    const axios = require('axios');
     const util = require("../../lib/util");
     util.init(RED);
 
@@ -18,12 +17,7 @@ module.exports = function(RED) {
                 target: node.target
             };
 
-            axios.request(util.getPostConfig(json)).then((res) => {
-                msg.payload = Number(res.data);
-                util.sendSuccess(node, msg);
-            }).catch((err) => {
-                util.sendError(node, err);
-            });
+            util.postRequest(node, msg, json);
         });
     }
 
@@ -61,12 +55,7 @@ module.exports = function(RED) {
                 target: node.target
             };
 
-            axios.request(util.getPostConfig(json)).then((res) => {
-                msg.payload = Number(res.data);
-                util.sendSuccess(node, msg);
-            }).catch((err) => {
-                util.sendError(node, err);
-            });
+            util.postRequest(node, msg, json);
         });
     }
 

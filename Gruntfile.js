@@ -61,6 +61,8 @@ module.exports = function(grunt){
                 {expand: true, cwd: './nodes/sensors/battery/', src: ['**'], dest: './packages/fire/nodes/sensors/battery/'},
                 {expand: true, cwd: './nodes/sensors/db/', src: ['**'], dest: './packages/fire/nodes/sensors/db/'},
                 {expand: true, cwd: './nodes/sensors/motion/', src: ['**'], dest: './packages/fire/nodes/sensors/motion/'},
+                {expand: true, cwd: './nodes/sensors/subscribe/', src: ['**'], dest: './packages/fire/nodes/sensors/subscribe/'},
+                {expand: true, cwd: './nodes/sensors/unsubscribe/', src: ['**'], dest: './packages/fire/nodes/sensors/unsubscribe/'},
                 {expand: true, cwd: './nodes/serial/', src: ['**'], dest: './packages/fire/nodes/serial/'},
                 {expand: true, cwd: './nodes/volume/', src: ['**'], dest: './packages/fire/nodes/volume/'},
                 {expand: true, cwd: './nodes/sqlite/', src: ['**'], dest: './packages/fire/nodes/sqlite/'},

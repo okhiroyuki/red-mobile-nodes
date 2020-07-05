@@ -4,7 +4,9 @@
   "description": "Extra nodes for RedMobile",
   "main": "app.js",
   "scripts": {
-    "test": "grunt"
+    "test": "grunt",
+    "build:android": "grunt android",
+    "build:fire": "grunt fire" 
   },
   "private": true,
   "keywords": [
@@ -16,7 +18,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "is-base64": "^1.1.0",
-    "qs": "^6.9.1",
+    "qs": "^6.9.4",
     "ws": "^6.2.1"
   },
   "devDependencies": {

@@ -30,23 +30,10 @@
             return this.name || this._("clipboard.clipboard");
         },
         oneditprepare: function() {
-            var that = this;
             $("#clipboard-mode-select option").filter(function() {
                 var v = $("#node-input-mode").val();
-                changeOutputs(v)
                 return $(this).val() == v;
             }).attr('selected', true);
-            $("#clipboard-mode-select").change(function() {
-                var v = $("#node-input-mode option:selected").val();
-                changeOutputs(v);
-            });
-            function changeOutputs(v){
-                if(v === "copy"){
-                    that.outputs = 1;
-                }else{
-                    that.outputs = 0;
-                }
-            }
         },
         oneditsave: function() {
             var mode = $("#clipboard-mode-select option:selected").val();

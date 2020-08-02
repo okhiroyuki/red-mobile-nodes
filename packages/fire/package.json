@@ -1,6 +1,6 @@
 {
   "name": "@red-mobile/red-mobile-fire-nodes",
-  "version": "2.0.4",
+  "version": "2.1.0",
   "description": "Extra nodes for RedMobileFire",
   "main": "app.js",
   "scripts": {

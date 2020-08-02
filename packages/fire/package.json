@@ -44,7 +44,8 @@
       "ble-read": "./nodes/ble/05-read.js",
       "ble-write": "./nodes/ble/06-write.js",
       "ble-subscribe": "./nodes/ble/07-subscribe.js",
-      "ble-unsubscribe": "./nodes/ble/08-unsubscribe.js"
+      "ble-unsubscribe": "./nodes/ble/08-unsubscribe.js",
+      "clipboard": "./nodes/clipboard/clipboard.js"
     }
   }
 }

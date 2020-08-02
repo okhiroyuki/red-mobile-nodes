@@ -67,6 +67,7 @@ module.exports = function(grunt){
                 {expand: true, cwd: './nodes/volume/', src: ['**'], dest: './packages/fire/nodes/volume/'},
                 {expand: true, cwd: './nodes/sqlite/', src: ['**'], dest: './packages/fire/nodes/sqlite/'},
                 {expand: true, cwd: './nodes/ble/', src: ['**'], dest: './packages/fire/nodes/ble/'},
+                {expand: true, cwd: './nodes/clipboard/', src: ['**'], dest: './packages/fire/nodes/clipboard/'},
                 {expand: true, cwd: './examples/', src: ['sqlite.json'], dest: './packages/fire/examples/'},
                 {expand: true, cwd: './examples/', src: ['ble.json'], dest: './packages/fire/examples/'},
                 {expand: true, cwd: './nodes/', src: ['*.js'], dest: './packages/fire/nodes/'},

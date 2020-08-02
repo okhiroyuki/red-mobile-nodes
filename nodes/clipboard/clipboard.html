@@ -1,0 +1,56 @@
+
+<script type="text/html" data-template-name="clipboard">
+    <div class="form-row">
+        <label for="node-input-mode"><i class="fa fa-list"></i> <span data-i18n="clipboard.label.mode"></span></label>
+        <select id="clipboard-mode-select">
+            <option value="copy" data-i18n="clipboard.mode.copy"></option>
+            <option value="paste" data-i18n="clipboard.mode.paste"></option>
+            <option value="clear" data-i18n="clipboard.mode.clear"></option>
+        </select>
+        <input type="hidden" id="node-input-mode">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('clipboard',{
+        category: 'advanced-output',
+        color: '#a4c639',
+        defaults: {
+            mode: {
+                value: "copy"
+            },
+            name: {
+                value:""
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "clipboard.png",
+        label: function () {
+            return this.name || this._("clipboard.clipboard");
+        },
+        oneditprepare: function() {
+            var that = this;
+            $("#clipboard-mode-select option").filter(function() {
+                var v = $("#node-input-mode").val();
+                changeOutputs(v)
+                return $(this).val() == v;
+            }).attr('selected', true);
+            $("#clipboard-mode-select").change(function() {
+                var v = $("#node-input-mode option:selected").val();
+                changeOutputs(v);
+            });
+            function changeOutputs(v){
+                if(v === "copy"){
+                    that.outputs = 1;
+                }else{
+                    that.outputs = 0;
+                }
+            }
+        },
+        oneditsave: function() {
+            var mode = $("#clipboard-mode-select option:selected").val();
+            $("#node-input-mode").val(mode);
+        }
+    });
+</script>

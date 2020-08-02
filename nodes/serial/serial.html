@@ -100,38 +100,21 @@
                 var v = $("#node-input-baudRate").val();
                 return $(this).val() == v;
             }).attr('selected', true);
-            // $("#serial-baudRate-select").change(function() {
-            //     var v = $("#serial-baudRate-select option:selected").val();
-            //     $("#node-input-baudRate").val(v);
-            // });
 
             $("#serial-dataBits-select option").filter(function() {
                 var v = $("#node-input-dataBits").val();
                 return $(this).val() == v;
             }).attr('selected', true);
-            // $("#serial-dataBits-select").change(function() {
-            //     var v = $("#serial-dataBits-select option:selected").val();
-            //     $("#node-input-dataBits").val(v);
-            // });
 
             $("#serial-stopBits-select option").filter(function() {
                 var v = $("#node-input-stopBits").val();
                 return $(this).val() == v;
             }).attr('selected', true);
-            // $("#serial-stopBits-select").change(function() {
-            //     var v = $("#serial-stopBits-select option:selected").val();
-            //     $("#node-input-stopBits").val(v);
-            // });
 
             $("#serial-parity-select option").filter(function() {
                 var v = $("#node-input-parity").val();
                 return $(this).val() == v;
             }).attr('selected', true);
-
-            // $("#serial-parity-select").change(function() {
-            //     var v = $("#serial-parity-select option:selected").val();
-            //     $("#node-input-parity").val(v);
-            // });
         },
         oneditsave: function() {
             var baudRate = $("#serial-baudRate-select option:selected").val();

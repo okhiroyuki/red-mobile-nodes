@@ -51,7 +51,6 @@ module.exports = function(grunt){
             fire: {
               files: [
                 {expand: true, cwd: './lib/', src: ['**'], dest: './packages/fire/lib/'},
-                {expand: true, cwd: './nodes/cognitives/text-to-speech/', src: ['**'], dest: './packages/fire/nodes/cognitives/text-to-speech/'},
                 {expand: true, cwd: './nodes/in-app-browser/', src: ['**'], dest: './packages/fire/nodes/in-app-browser/'},
                 {expand: true, cwd: './nodes/intent/', src: ['**'], dest: './packages/fire/nodes/intent/'},
                 {expand: true, cwd: './nodes/notifications/alert/', src: ['**'], dest: './packages/fire/nodes/notifications/alert/'},

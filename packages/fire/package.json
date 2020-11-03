@@ -1,6 +1,6 @@
 {
   "name": "@red-mobile/red-mobile-fire-nodes",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "Extra nodes for RedMobileFire",
   "main": "app.js",
   "scripts": {
@@ -26,7 +26,6 @@
       "motion": "./nodes/sensors/motion/motion.js",
       "dB": "./nodes/sensors/db/db.js",
       "battery": "./nodes/sensors/battery/battery.js",
-      "text-to-speech": "./nodes/cognitives/text-to-speech/text-to-speech.js",
       "in-app-browser": "./nodes/in-app-browser/in-app-browser.js",
       "beep": "./nodes/notifications/beep/beep.js",
       "alert": "./nodes/notifications/alert/alert.js",

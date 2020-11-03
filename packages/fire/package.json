@@ -1,6 +1,6 @@
 {
   "name": "@red-mobile/red-mobile-fire-nodes",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Extra nodes for RedMobileFire",
   "main": "app.js",
   "scripts": {
@@ -14,7 +14,7 @@
   "author": "hiroyuki okada",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.0",
     "is-base64": "^1.1.0",
     "qs": "^6.9.4",
     "ws": "^6.2.1"

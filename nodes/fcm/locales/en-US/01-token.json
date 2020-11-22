@@ -1,0 +1,8 @@
+{
+    "fcm":{
+        "token": "get token",
+        "label":{
+            "name": "Name"
+        }
+    }
+}

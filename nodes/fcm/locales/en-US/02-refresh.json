@@ -1,0 +1,8 @@
+{
+    "fcm":{
+        "refresh": "refresh token",
+        "label":{
+            "name": "Name"
+        }
+    }
+}

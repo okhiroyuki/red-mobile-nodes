@@ -1,0 +1,8 @@
+{
+    "fcm":{
+        "message": "data message",
+        "label":{
+            "name": "Name"
+        }
+    }
+}

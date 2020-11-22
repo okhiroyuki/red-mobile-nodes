@@ -19,7 +19,7 @@ module.exports = function(RED) {
         node.on('input', function(msg) {
             const json =  {
                 id: node.id,
-                method: "qrcode",
+                method: "qrcode-scan",
                 payload: msg.payload,
                 opts: node.opts
             };

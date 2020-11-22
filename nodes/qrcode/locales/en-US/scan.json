@@ -1,0 +1,21 @@
+{
+    "qrcode": {
+        "qrcode": "qrcode scan",
+        "label":{
+            "camera": "Camera",
+            "showFlipCameraButton": "show Flip Button",
+            "showTorchButton": "show Touch Button",
+            "torchOn": "TouchOn",
+            "orientation": "Orientation",
+            "prompt": "Prompt"
+        },
+        "camera":{
+            "front": "Front",
+            "back": "Back"
+        },
+        "orientation":{
+            "portrait": "Portrait",
+            "landscape": "Landscape"
+        }
+    }
+}

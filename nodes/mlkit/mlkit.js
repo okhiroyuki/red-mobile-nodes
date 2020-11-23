@@ -27,7 +27,7 @@ module.exports = function(RED) {
         node.on('input', function(msg) {
             const json =  {
                 id: node.id,
-                method: "image labeler",
+                method: "image-labeler",
                 payload: msg.payload
             };
             util.postRequest(node, msg, json);

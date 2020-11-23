@@ -1,20 +1,21 @@
-<script type="text/x-red" data-template-name="camera-open">
-    <div class="form-row">
-        <label for="node-input-direction"><i class="fa fa-list"></i> <span data-i18n="camera-open.label.direction"></span></label>
-        <select type="text" id="camera-direction-select">
-            <option value="back" data-i18n="camera-open.direction.back"></option>
-            <option value="front" data-i18n="camera-open.direction.front"></option>
-        </select>
-        <input type="hidden" id="node-input-direction">
+<script type="text/x-red" data-template-name="camera">
+    <div class="form-row" id="delay-details-for">
+        <label for="node-input-quality"><i class="fa fa-empire"></i> <span data-i18n="camera.label.quality"></span></label>
+        <input type="text" id="node-input-quality" style="text-align:end; width:50px !important">
     </div>
 
     <div class="form-row">
-        <label for="node-input-preview"><i class="fa fa-list"></i> <span data-i18n="camera-open.label.preview"></span></label>
-        <select type="text" id="camera-preview-select">
-            <option value="enable" data-i18n="camera-open.preview.enable"></option>
-            <option value="disable" data-i18n="camera-open.preview.disable"></option>
+        <label for="node-input-destinationType"><i class="fa fa-list"></i> <span data-i18n="camera.label.destinationType"></span></label>
+        <select type="text" id="camera-destinationType-select">
+            <option value="data" data-i18n="camera.destinationType.data"></option>
+            <option value="file" data-i18n="camera.destinationType.file"></option>
         </select>
-        <input type="hidden" id="node-input-preview">
+        <input type="hidden" id="node-input-destinationType">
+    </div>
+
+    <div class="form-row">
+        <input type="checkbox" id="node-input-saveToPhotoAlbum" style="display: inline-block; width: auto; vertical-align: top;">
+        <label for="node-input-saveToPhotoAlbum" style="width: auto;"><span data-i18n="camera.label.saveToPhotoAlbum"></span></label>
     </div>
 
     <div class="form-row">
@@ -24,133 +25,37 @@
 </script>
 
 <script type="text/javascript">
-    RED.nodes.registerType('camera-open', {
+    RED.nodes.registerType('camera', {
         category: 'camera',
         color: '#839e2e',
         defaults: {
-            direction: {
-                value: "back"
+            quality: { value:50, required:true, validate:function(v) { return RED.validators.number(v) && (v >= 0) && (v <= 100); }},
+            destinationType: {
+                value: "data"
+            },
+            saveToPhotoAlbum:{
+                value: false
             },
             name: {
                 value: ""
-            },
-            preview:{
-                value: "enable"
             }
         },
         inputs: 1,
         outputs: 1,
-        icon: "camera-open.png",
+        icon: "camera.png",
         label: function () {
-            return this.name || this._("camera-open.camera-open");
+            return this.name || this._("camera.camera");
         },
         oneditprepare: function() {
-            $("#camera-direction-select option").filter(function() {
-                var v = $("#node-input-direction").val();
+            $( "#node-input-quality" ).spinner({min:0, max:100});
+            $("#camera-destinationType-select option").filter(function() {
+                var v = $("#node-input-destinationType").val();
                 return $(this).val() == v;
             }).attr('selected', true);
-            $("#camera-direction-select").change(function() {
-                var v = $("#camera-direction-select option:selected").val();
-                $("#node-input-direction").val(v);
-            });
-
-            $("#camera-preview-select option").filter(function() {
-                var v = $("#node-input-preview").val();
-                return $(this).val() == v;
-            }).attr('selected', true);
-            $("#camera-preview-select").change(function() {
-                var v = $("#camera-preview-select option:selected").val();
-                $("#node-input-preview").val(v);
-            });
         },
         oneditsave: function() {
-        }
-    });
-</script>
-
-<script type="text/x-red" data-template-name="camera-close">
-    <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
-        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
-    </div>
-</script>
-
-<script type="text/javascript">
-    RED.nodes.registerType('camera-close', {
-        category: 'camera',
-        color: '#839e2e',
-        defaults: {
-            name: {
-                value: ""
-            }
-        },
-        inputs: 1,
-        outputs: 1,
-        icon: "camera-close.png",
-        label: function () {
-            return this.name || this._("camera-close.camera-close");
-        },
-        oneditprepare: function() {
-        },
-        oneditsave: function() {
-        }
-    });
-</script>
-
-<script type="text/x-red" data-template-name="take-picture">
-    <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
-        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
-    </div>
-</script>
-
-<script type="text/javascript">
-    RED.nodes.registerType('take-picture', {
-        category: 'camera',
-        color: '#839e2e',
-        defaults: {
-            name: {
-                value: ""
-            }
-        },
-        inputs: 1,
-        outputs: 1,
-        icon: "camera-take-picture.png",
-        label: function () {
-            return this.name || this._("take-picture.take-picture");
-        },
-        oneditprepare: function() {
-        },
-        oneditsave: function() {
-        }
-    });
-</script>
-
-<script type="text/x-red" data-template-name="camera-switch">
-    <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
-        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
-    </div>
-</script>
-
-<script type="text/javascript">
-    RED.nodes.registerType('camera-switch', {
-        category: 'camera',
-        color: '#839e2e',
-        defaults: {
-            name: {
-                value: ""
-            }
-        },
-        inputs: 1,
-        outputs: 1,
-        icon: "switch.png",
-        label: function () {
-            return this.name || this._("camera-switch.camera-switch");
-        },
-        oneditprepare: function() {
-        },
-        oneditsave: function() {
+            var v = $("#camera-destinationType-select option:selected").val();
+            $("#node-input-destinationType").val(v);
         }
     });
 </script>

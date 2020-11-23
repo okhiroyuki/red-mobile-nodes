@@ -52,7 +52,7 @@
       "confirm": "./nodes/notifications/confirm/confirm.js",
       "prompt": "./nodes/notifications/prompt/prompt.js",
       "camera": "./nodes/camera/camera.js",
-      "camera-legacy": "./nodes/camera-legacy/camera.js",
+      "camera-command": "./nodes/camera-command/camera.js",
       "serial": "./nodes/serial/serial.js",
       "volume": "./nodes/volume/volume.js",
       "intent": "./nodes/intent/intent.js",

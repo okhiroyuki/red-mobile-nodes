@@ -1,6 +1,6 @@
 {
   "name": "@red-mobile/red-mobile-nodes",
-  "version": "2.4.2",
+  "version": "2.5.2",
   "description": "Extra nodes for RedMobile",
   "main": "app.js",
   "scripts": {
@@ -40,6 +40,7 @@
       "confirm": "./nodes/notifications/confirm/confirm.js",
       "prompt": "./nodes/notifications/prompt/prompt.js",
       "camera": "./nodes/camera/camera.js",
+      "camera-legacy": "./nodes/camera-legacy/camera.js",
       "serial": "./nodes/serial/serial.js",
       "volume": "./nodes/volume/volume.js",
       "intent": "./nodes/intent/intent.js",

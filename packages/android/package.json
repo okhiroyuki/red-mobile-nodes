@@ -1,6 +1,6 @@
 {
   "name": "@red-mobile/red-mobile-nodes",
-  "version": "2.6.7",
+  "version": "2.6.8",
   "description": "Extra nodes for RedMobile",
   "main": "app.js",
   "scripts": {
@@ -40,7 +40,6 @@
       "confirm": "./nodes/notifications/confirm/confirm.js",
       "prompt": "./nodes/notifications/prompt/prompt.js",
       "camera": "./nodes/camera/camera.js",
-      "camera-deprecated": "./nodes/camera-deprecated/camera.js",
       "serial": "./nodes/serial/serial.js",
       "volume": "./nodes/volume/volume.js",
       "intent": "./nodes/intent/intent.js",
@@ -58,8 +57,7 @@
       "fcm-token": "./nodes/fcm/01-token.js",
       "fcm-refresh-token": "./nodes/fcm/02-refresh.js",
       "fcm-data-message": "./nodes/fcm/03-datamessage.js",
-      "qrcode-scan": "./nodes/qrcode/scan.js",
-      "mlkit": "./nodes/mlkit/mlkit.js"
+      "qrcode-scan": "./nodes/qrcode/scan.js"
     }
   }
 }

@@ -1,0 +1,61 @@
+<script type="text/x-red" data-template-name="camera">
+    <div class="form-row" id="delay-details-for">
+        <label for="node-input-quality"><i class="fa fa-empire"></i> <span data-i18n="camera.label.quality"></span></label>
+        <input type="text" id="node-input-quality" style="text-align:end; width:50px !important">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-destinationType"><i class="fa fa-list"></i> <span data-i18n="camera.label.destinationType"></span></label>
+        <select type="text" id="camera-destinationType-select">
+            <option value="data" data-i18n="camera.destinationType.data"></option>
+            <option value="file" data-i18n="camera.destinationType.file"></option>
+        </select>
+        <input type="hidden" id="node-input-destinationType">
+    </div>
+
+    <div class="form-row">
+        <input type="checkbox" id="node-input-saveToPhotoAlbum" style="display: inline-block; width: auto; vertical-align: top;">
+        <label for="node-input-saveToPhotoAlbum" style="width: auto;"><span data-i18n="camera.label.saveToPhotoAlbum"></span></label>
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('camera', {
+        category: 'camera',
+        color: '#c6d9ab',
+        defaults: {
+            quality: { value:50, required:true, validate:function(v) { return RED.validators.number(v) && (v >= 0) && (v <= 100); }},
+            destinationType: {
+                value: "data"
+            },
+            saveToPhotoAlbum:{
+                value: false
+            },
+            name: {
+                value: ""
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "camera.png",
+        label: function () {
+            return this.name || this._("camera.camera");
+        },
+        oneditprepare: function() {
+            $( "#node-input-quality" ).spinner({min:0, max:100});
+            $("#camera-destinationType-select option").filter(function() {
+                var v = $("#node-input-destinationType").val();
+                return $(this).val() == v;
+            }).attr('selected', true);
+        },
+        oneditsave: function() {
+            var v = $("#camera-destinationType-select option:selected").val();
+            $("#node-input-destinationType").val(v);
+        }
+    });
+</script>

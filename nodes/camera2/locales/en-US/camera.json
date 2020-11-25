@@ -1,0 +1,14 @@
+{
+    "camera":{
+        "camera": "camera",
+        "label":{
+            "quality": "Quality",
+            "destinationType": "Format",
+            "saveToPhotoAlbum": "SaveToPhotoAlbum"
+        },
+        "destinationType":{
+            "data": "base64 encoded string",
+            "file": "file uri"
+        }
+    }
+}

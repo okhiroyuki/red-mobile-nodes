@@ -51,7 +51,7 @@
       "alert": "./nodes/notifications/alert/alert.js",
       "confirm": "./nodes/notifications/confirm/confirm.js",
       "prompt": "./nodes/notifications/prompt/prompt.js",
-      "camera2": "./nodes/camera2/camera.js",
+      "camera-command": "./nodes/camera-command/camera.js",
       "camera": "./nodes/camera/camera.js",
       "serial": "./nodes/serial/serial.js",
       "volume": "./nodes/volume/volume.js",

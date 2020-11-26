@@ -1,24 +1,12 @@
-<script type="text/x-red" data-help-name="camera-open">
-    <p>Starts the camera.</p>
-    <p><b>Note</b>: It cannot be executed if the app (redmobile) is in the background.</p>
-</script>
-
-<script type="text/x-red" data-help-name="camera-close">
-    <p>Stop the camera.</p>
-    <p><b>Note</b>: It cannot be executed if the app (redmobile) is in the background.</p>
-</script>
-
-<script type="text/x-red" data-help-name="take-picture">
-    <p>Take the picture.</p>
+<script type="text/x-red" data-help-name="camera">
+    <p>Takes a photo using the camera, or retrieves a photo from the device's image gallery. The image is passed to the success callback as a Base64-encoded String, or as the URI for the image file.</p>
     <h3>Outputs</h3>
     <dl class="message-properties">
         <dt>payload<span class="property-type">string</span></dt>
-        <dd>base64 encoded jpeg image</dd>
+        <dd>File URI or Base64 Format</dd>
     </dl>
-    <p><b>Note</b>: It cannot be executed if the app (redmobile) is in the background.</p>
-</script>
-
-<script type="text/x-red" data-help-name="camera-switch">
-    <p>Switch between the rear camera and front camera, if available.</p>
-    <p><b>Note</b>: It cannot be executed if the app (redmobile) is in the background.</p>
+    <p><b>Note</b>: Photo resolution on newer devices is quite good. 
+        Photos selected from the device's gallery are not downscaled to a lower quality, even if a quality parameter is specified.
+        To avoid common memory problems, set format to file uri.
+    </p>
 </script>

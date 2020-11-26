@@ -1,38 +1,14 @@
 {
-    "camera-open":{
-        "camera-open": "Camera Open",
+    "camera":{
+        "camera": "camera",
         "label":{
-            "preview": "Preview",
-            "direction": "Direction"
+            "quality": "Quality",
+            "destinationType": "Format",
+            "saveToPhotoAlbum": "SaveToPhotoAlbum"
         },
-        "preview":{
-            "enable": "Enable",
-            "disable": "Disable"
-        },
-        "direction":{
-            "front": "Front",
-            "back": "Back"
-        },
-        "errors":{
-            "response": "Could not open camera."
-        }
-    },
-    "take-picture":{
-        "take-picture": "Take Picture",
-        "errors":{
-            "response": "Could not take Picture."
-        }
-    },
-    "camera-close":{
-        "camera-close": "Camera Close",
-        "errors":{
-            "response": "Could not close camera."
-        }
-    },
-    "camera-switch":{
-        "camera-switch": "Camera Switch",
-        "errors":{
-            "response": "Could not switch camera."
+        "destinationType":{
+            "data": "base64 encoded string",
+            "file": "file uri"
         }
     }
 }

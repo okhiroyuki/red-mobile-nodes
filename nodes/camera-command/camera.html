@@ -1,0 +1,156 @@
+<script type="text/x-red" data-template-name="camera-open">
+    <div class="form-row">
+        <label for="node-input-direction"><i class="fa fa-list"></i> <span data-i18n="camera-open.label.direction"></span></label>
+        <select type="text" id="camera-direction-select">
+            <option value="back" data-i18n="camera-open.direction.back"></option>
+            <option value="front" data-i18n="camera-open.direction.front"></option>
+        </select>
+        <input type="hidden" id="node-input-direction">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-preview"><i class="fa fa-list"></i> <span data-i18n="camera-open.label.preview"></span></label>
+        <select type="text" id="camera-preview-select">
+            <option value="enable" data-i18n="camera-open.preview.enable"></option>
+            <option value="disable" data-i18n="camera-open.preview.disable"></option>
+        </select>
+        <input type="hidden" id="node-input-preview">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('camera-open', {
+        category: 'camera command',
+        color: '#839e2e',
+        defaults: {
+            direction: {
+                value: "back"
+            },
+            name: {
+                value: ""
+            },
+            preview:{
+                value: "enable"
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "camera-open.png",
+        label: function () {
+            return this.name || this._("camera-open.camera-open");
+        },
+        oneditprepare: function() {
+            $("#camera-direction-select option").filter(function() {
+                var v = $("#node-input-direction").val();
+                return $(this).val() == v;
+            }).attr('selected', true);
+            $("#camera-direction-select").change(function() {
+                var v = $("#camera-direction-select option:selected").val();
+                $("#node-input-direction").val(v);
+            });
+
+            $("#camera-preview-select option").filter(function() {
+                var v = $("#node-input-preview").val();
+                return $(this).val() == v;
+            }).attr('selected', true);
+            $("#camera-preview-select").change(function() {
+                var v = $("#camera-preview-select option:selected").val();
+                $("#node-input-preview").val(v);
+            });
+        },
+        oneditsave: function() {
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="camera-close">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('camera-close', {
+        category: 'camera command',
+        color: '#839e2e',
+        defaults: {
+            name: {
+                value: ""
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "camera-close.png",
+        label: function () {
+            return this.name || this._("camera-close.camera-close");
+        },
+        oneditprepare: function() {
+        },
+        oneditsave: function() {
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="take-picture">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('take-picture', {
+        category: 'camera command',
+        color: '#839e2e',
+        defaults: {
+            name: {
+                value: ""
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "camera-take-picture.png",
+        label: function () {
+            return this.name || this._("take-picture.take-picture");
+        },
+        oneditprepare: function() {
+        },
+        oneditsave: function() {
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="camera-switch">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('camera-switch', {
+        category: 'camera command',
+        color: '#839e2e',
+        defaults: {
+            name: {
+                value: ""
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "switch.png",
+        label: function () {
+            return this.name || this._("camera-switch.camera-switch");
+        },
+        oneditprepare: function() {
+        },
+        oneditsave: function() {
+        }
+    });
+</script>

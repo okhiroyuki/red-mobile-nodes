@@ -61,12 +61,12 @@ WebSocketClient.prototype.reconnect = function (e) {
     }, this.autoReconnectInterval);
 };
 
-WebSocketClient.prototype.onopen = function (e) {
+WebSocketClient.prototype.onopen = function () {
     // console.log("WebSocketClient: open", arguments);
     this.ev.emit("open");
 };
 
-WebSocketClient.prototype.onmessage = function (data, flags, number) {
+WebSocketClient.prototype.onmessage = function (data) {
     // console.log("WebSocketClient: message", arguments);
     this.ev.emit("message", data);
 };
@@ -76,7 +76,7 @@ WebSocketClient.prototype.onerror = function (e) {
     this.ev.emit("error", e);
 };
 
-WebSocketClient.prototype.onclose = function (e) {
+WebSocketClient.prototype.onclose = function () {
     // console.log("WebSocketClient: closed", arguments);
     this.ev.emit("close");
 };

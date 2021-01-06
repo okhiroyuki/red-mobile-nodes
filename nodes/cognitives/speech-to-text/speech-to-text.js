@@ -1,7 +1,6 @@
 module.exports = function(RED) {
     'use strcit';
 
-    const axios = require('axios');
     const util = require('../../../lib/util');
     util.init(RED);
 

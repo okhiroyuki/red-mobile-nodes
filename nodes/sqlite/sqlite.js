@@ -128,7 +128,7 @@ module.exports = function(RED) {
             };
 
             node.on("input", function(msg) {
-                if (msg.hasOwnProperty("extension")) {
+                if (msg && Object.prototype.hasOwnProperty.call(msg, "extension")) {
                     node.mydbConfig.db.loadExtension(msg.extension, function(err) {
                         if (err) { node.error(err,msg); }
                         else { doQuery(msg); }

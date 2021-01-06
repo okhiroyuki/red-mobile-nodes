@@ -35,7 +35,7 @@ DB.prototype.exec = (id, sql, callback) => {
         payload: sql,
     };
     const config = generateConfig(json);
-    axios.request(config).then((res) => {
+    axios.request(config).then(() => {
         callback(null);
     }).catch((err) => {
         callback(new Error(err.response.data));
@@ -53,9 +53,9 @@ DB.prototype.close = function(id, done){
         dbname: dbname
     };
     const config = generateConfig(json);
-    axios.request(config).then((res) => {
+    axios.request(config).then(() => {
         done();
-    }).catch((err) => {
+    }).catch(() => {
         done();
     });
 };

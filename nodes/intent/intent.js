@@ -4,15 +4,6 @@ module.exports = function(RED) {
     const util = require("../../lib/util");
     util.init(RED);
 
-    function sendError(node, message){
-        node.error(message);
-        node.status({
-            fill: "red",
-            shape: "ring",
-            text: message
-        });
-    }
-
     function RedMobileStartActivityNode(n) {
         RED.nodes.createNode(this, n);
         let node = this;

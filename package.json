@@ -6,7 +6,8 @@
   "scripts": {
     "test": "grunt",
     "build:android": "grunt android",
-    "build:fire": "grunt fire"
+    "build:fire": "grunt fire",
+    "lint": "eslint ./nodes ./lib --fix"
   },
   "private": true,
   "keywords": [
@@ -22,6 +23,7 @@
     "ws": "^6.2.1"
   },
   "devDependencies": {
+    "eslint": "^7.17.0",
     "grunt": "^1.3.0",
     "grunt-contrib-clean": "^2.0.0",
     "grunt-contrib-copy": "^1.0.0",

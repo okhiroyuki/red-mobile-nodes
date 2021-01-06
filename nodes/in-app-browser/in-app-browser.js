@@ -1,22 +1,22 @@
-module.exports = function(RED) {
-    'use strcit';
+module.exports = (RED) => {
+  'use strcit';
 
-    const util = require("../../lib/util");
-    util.init(RED);
+  const util = import('../../lib/util');
+  util.init(RED);
 
-    function RedMobileInAppBrowserNode(n) {
-        RED.nodes.createNode(this, n);
-        let node = this;
+  function RedMobileInAppBrowserNode(n) {
+    RED.nodes.createNode(this, n);
+    const node = this;
 
-        node.on('input', function(msg) {
-            const json =  {
-                id: node.id,
-                method: "in-app-browser",
-                payload: msg.payload
-            };
-            util.postRequest(node, msg, json);
-        });
-    }
+    node.on('input', (msg) => {
+      const json = {
+        id: node.id,
+        method: 'in-app-browser',
+        payload: msg.payload,
+      };
+      util.postRequest(node, msg, json);
+    });
+  }
 
-    RED.nodes.registerType("in-app-browser", RedMobileInAppBrowserNode);
+  RED.nodes.registerType('in-app-browser', RedMobileInAppBrowserNode);
 };

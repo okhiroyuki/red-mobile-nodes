@@ -1,24 +1,24 @@
-module.exports = function(RED) {
-    'use strcit';
+module.exports = (RED) => {
+  'use strcit';
 
-    const EventEmitter = require('events').EventEmitter;
-    const WebSocketClient = require('../../WebSocketClient');
-    const ev = new EventEmitter();
-    const ws = new WebSocketClient(ev);
-    if(RED.settings.redMobileWsPort){
-        const port = RED.settings.redMobileWsPort;
-        ws.open("ws://localhost:" + port + "/mobile/gyroscope");
-    }
+  const { EventEmitter } = import('events');
+  const WebSocketClient = import('../../WebSocketClient');
+  const ev = new EventEmitter();
+  const ws = new WebSocketClient(ev);
+  if (RED.settings.redMobileWsPort) {
+    const port = RED.settings.redMobileWsPort;
+    ws.open(`ws://localhost:${port}/mobile/gyroscope`);
+  }
 
-    function RedMobileGyroscopeNode(n) {
-        RED.nodes.createNode(this, n);
-        let node = this;
+  function RedMobileGyroscopeNode(n) {
+    RED.nodes.createNode(this, n);
+    const node = this;
 
-        ev.on("message" ,(data) => {
-            const payload = JSON.parse(data).payload;
-            node.send({"payload": payload});    
-        });
-    }
+    ev.on('message', (data) => {
+      const { payload } = JSON.parse(data);
+      node.send({ payload });
+    });
+  }
 
-    RED.nodes.registerType("gyroscope", RedMobileGyroscopeNode);
+  RED.nodes.registerType('gyroscope', RedMobileGyroscopeNode);
 };

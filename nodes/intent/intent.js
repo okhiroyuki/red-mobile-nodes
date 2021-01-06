@@ -1,31 +1,22 @@
-module.exports = function(RED) {
-    'use strcit';
+module.exports = (RED) => {
+  'use strcit';
 
-    const util = require("../../lib/util");
-    util.init(RED);
+  const util = import('../../lib/util');
+  util.init(RED);
 
-    function sendError(node, message){
-        node.error(message);
-        node.status({
-            fill: "red",
-            shape: "ring",
-            text: message
-        });
-    }
+  function RedMobileStartActivityNode(n) {
+    RED.nodes.createNode(this, n);
+    const node = this;
 
-    function RedMobileStartActivityNode(n) {
-        RED.nodes.createNode(this, n);
-        let node = this;
+    node.on('input', (msg) => {
+      const json = {
+        id: node.id,
+        method: 'intent-start-activity',
+        payload: msg.payload,
+      };
+      util.postRequest(node, msg, json);
+    });
+  }
 
-        node.on('input', function(msg) {
-            const json =  {
-                id: node.id,
-                method: "intent-start-activity",
-                payload: msg.payload
-            };
-            util.postRequest(node, msg, json);
-        });
-    }
-
-    RED.nodes.registerType("start-activity", RedMobileStartActivityNode);
+  RED.nodes.registerType('start-activity', RedMobileStartActivityNode);
 };

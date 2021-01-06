@@ -1,81 +1,81 @@
-module.exports = function(RED) {
-    'use strcit';
+module.exports = (RED) => {
+  'use strcit';
 
-    const util = require('../../lib/util');
-    util.init(RED);
+  const util = import('../../lib/util');
+  util.init(RED);
 
-    function RedMobileCameraOpenNode(n) {
-        RED.nodes.createNode(this, n);
-        let node = this;
-        node.options = {};
-        if(n.preview === "enable"){
-            node.options.toBack = false;
-        }else{
-            node.options.toBack = true;
-        }
-        if(n.direction){
-            node.options.direction = n.direction;
-        }else{
-            node.options.direction = "back";
-        }
-
-        node.on('input', function(msg) {
-            const json =  {
-                id: node.id,
-                method: "camera-open",
-                payload: msg.payload,
-                options: node.options
-            };
-            
-            util.postRequest(node, msg, json);
-        });
+  function RedMobileCameraOpenNode(n) {
+    RED.nodes.createNode(this, n);
+    const node = this;
+    node.options = {};
+    if (n.preview === 'enable') {
+      node.options.toBack = false;
+    } else {
+      node.options.toBack = true;
+    }
+    if (n.direction) {
+      node.options.direction = n.direction;
+    } else {
+      node.options.direction = 'back';
     }
 
-    RED.nodes.registerType("camera-open", RedMobileCameraOpenNode);
+    node.on('input', (msg) => {
+      const json = {
+        id: node.id,
+        method: 'camera-open',
+        payload: msg.payload,
+        options: node.options,
+      };
 
-    function RedMobileCameraCloseNode(n) {
-        RED.nodes.createNode(this, n);
-        let node = this;
+      util.postRequest(node, msg, json);
+    });
+  }
 
-        node.on('input', function(msg) {
-            const params = {
-                id: node.id,
-                method: "camera-close"
-            }
+  RED.nodes.registerType('camera-open', RedMobileCameraOpenNode);
 
-            util.getRequest(node, msg, params, 5000);
-        });
-    }
+  function RedMobileCameraCloseNode(n) {
+    RED.nodes.createNode(this, n);
+    const node = this;
 
-    RED.nodes.registerType("camera-close", RedMobileCameraCloseNode);
+    node.on('input', (msg) => {
+      const params = {
+        id: node.id,
+        method: 'camera-close',
+      };
 
-    function RedMobileTakePictureNode(n) {
-        RED.nodes.createNode(this, n);
-        let node = this;
+      util.getRequest(node, msg, params, 5000);
+    });
+  }
 
-        node.on('input', function(msg) {
-            const params =  {
-                id: node.id,
-                method: "camera-take-picture"
-            }
-            util.getRequest(node, msg, params, 5000);
-        });
-    }
+  RED.nodes.registerType('camera-close', RedMobileCameraCloseNode);
 
-    RED.nodes.registerType("take-picture", RedMobileTakePictureNode);
+  function RedMobileTakePictureNode(n) {
+    RED.nodes.createNode(this, n);
+    const node = this;
 
-    function RedMobileCameraSwitchNode(n) {
-        RED.nodes.createNode(this, n);
-        let node = this;
+    node.on('input', (msg) => {
+      const params = {
+        id: node.id,
+        method: 'camera-take-picture',
+      };
+      util.getRequest(node, msg, params, 5000);
+    });
+  }
 
-        node.on('input', function(msg) {
-            const params =  {
-                id: node.id,
-                method: "camera-switch"
-            }
-            util.getRequest(node, msg, params, 5000);
-        });
-    }
+  RED.nodes.registerType('take-picture', RedMobileTakePictureNode);
 
-    RED.nodes.registerType("camera-switch", RedMobileCameraSwitchNode);
+  function RedMobileCameraSwitchNode(n) {
+    RED.nodes.createNode(this, n);
+    const node = this;
+
+    node.on('input', (msg) => {
+      const params = {
+        id: node.id,
+        method: 'camera-switch',
+      };
+      util.getRequest(node, msg, params, 5000);
+    });
+  }
+
+  RED.nodes.registerType('camera-switch', RedMobileCameraSwitchNode);
 };

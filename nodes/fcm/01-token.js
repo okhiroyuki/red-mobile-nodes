@@ -1,21 +1,21 @@
-module.exports = function(RED) {
-    'use strcit';
+module.exports = (RED) => {
+  'use strcit';
 
-    const util = require("../../lib/util");
-    util.init(RED);
+  const util = import('../../lib/util');
+  util.init(RED);
 
-    function getToken(n) {
-        RED.nodes.createNode(this, n);
-        let node = this;
+  function getToken(n) {
+    RED.nodes.createNode(this, n);
+    const node = this;
 
-        node.on('input', function(msg) {
-            const params = {
-                id: node.id,
-                method: "fcm-token"
-            }
-            util.getRequest(node, msg, params, 5000);
-        });
-    }
+    node.on('input', (msg) => {
+      const params = {
+        id: node.id,
+        method: 'fcm-token',
+      };
+      util.getRequest(node, msg, params, 5000);
+    });
+  }
 
-    RED.nodes.registerType("fcm token", getToken);
+  RED.nodes.registerType('fcm token', getToken);
 };

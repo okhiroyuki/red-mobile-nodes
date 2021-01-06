@@ -16,7 +16,7 @@
   "author": "hiroyuki okada",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "is-base64": "^1.1.0",
     "qs": "^6.9.4",
     "ws": "^6.2.1"

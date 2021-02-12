@@ -1,5 +1,13 @@
 <script type="text/x-red" data-template-name="in-app-browser">
     <div class="form-row">
+        <label for="node-input-target"><i class="fa fa-list"></i> <span data-i18n="in-app-browser.label.target"></span></label>
+        <select id="in-app-browser-target-select">
+            <option value="system" data-i18n="in-app-browser.target.system"></option>
+            <option value="blank" data-i18n="in-app-browser.target.blank"></option>
+        </select>
+        <input type="hidden" id="node-input-target">
+    </div>
+    <div class="form-row">
         <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="in-app-browser.label.name"></span></label>
         <input type="text" id="node-input-name" data-i18n="[placeholder]in-app-browser.label.name">
     </div>
@@ -12,6 +20,9 @@
         defaults: {
             name: {
                 value: ""
+            },
+            target: {
+                value: "system"
             }
         },
         inputs: 1,
@@ -21,8 +32,14 @@
             return this.name || this._("in-app-browser.in-app-browser");
         },
         oneditprepare: function() {
+            $("#in-app-browser-target-select option").filter(function() {
+                var v = $("#node-input-target").val();
+                return $(this).val() == v;
+            }).attr('selected', true);
         },
         oneditsave: function() {
+            var v = $("#in-app-browser-target-select option:selected").val();
+            $("#node-input-target").val(v);
         }
     });
 </script>

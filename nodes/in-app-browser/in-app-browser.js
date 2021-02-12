@@ -16,7 +16,7 @@ module.exports = function(RED) {
                 id: node.id,
                 method: "browser-open",
                 payload: node.payload ? node.payload : msg.payload,
-                target: node.target,
+                target: node.target === "blank" ? "_blank" : "_system",
                 options: node.options ? node.options : msg.options,
             };
             util.postRequest(node, msg, json);

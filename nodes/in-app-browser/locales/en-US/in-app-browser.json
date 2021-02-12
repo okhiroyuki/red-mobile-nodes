@@ -3,7 +3,9 @@
         "in-app-browser": "InAppBrowser",
         "label": {
             "name": "Name",
-            "target": "Target"
+            "target": "Target",
+            "url": "Url",
+            "options": "Options"
         },
         "target": {
             "system": "System",

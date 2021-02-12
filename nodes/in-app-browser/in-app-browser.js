@@ -7,19 +7,21 @@ module.exports = function(RED) {
     function RedMobileInAppBrowserNode(n) {
         RED.nodes.createNode(this, n);
         let node = this;
+        node.payload = n.url;
+        node.options = n.options;
         node.target = n.target;
 
         node.on('input', function(msg) {
             const json =  {
                 id: node.id,
                 method: "in-app-browser",
-                payload: msg.payload,
+                payload: node.payload ? node.payload : msg.payload,
                 target: node.target,
-                options: msg.options,
+                options: node.options ? node.options : msg.options,
             };
             util.postRequest(node, msg, json);
         });
     }
 
-    RED.nodes.registerType("in-app-browser", RedMobileInAppBrowserNode);
+    RED.nodes.registerType("in app browser", RedMobileInAppBrowserNode);
 };

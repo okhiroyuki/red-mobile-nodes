@@ -1,4 +1,4 @@
-<script type="text/x-red" data-help-name="in app browser">
+<script type="text/x-red" data-help-name="browser open">
     <p>Opens a URL in a new [InAppBrowser] instance, the system browser.</p>
     <h3>Inputs</h3>
     <dl class="message-properties">
@@ -6,6 +6,11 @@
         <dd>The URL to load. It can be overwritten only when the string is not set in the property.</dd>
         <dt>options <span class="property-type">string</span></dt>
         <dd>Options for the [InAppBrowser]. It can be overwritten only when the string is not set in the property.</dd>
+    </dl>
+    <h3>Outputs</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">string</span></dt>
+        <dd>the URL</dd>
     </dl>
     <h3>Details</h3>
     <h4>Target</h4>
@@ -16,4 +21,8 @@
     </ul>
     <h4>Options</h4>
     <p>For more information, please click <a href="https://github.com/apache/cordova-plugin-inappbrowser#cordovainappbrowseropen">here</a>.</p>
+</script>
+
+<script type="text/x-red" data-help-name="browser close">
+    <p>Closes the InAppBrowser window.</p>
 </script>

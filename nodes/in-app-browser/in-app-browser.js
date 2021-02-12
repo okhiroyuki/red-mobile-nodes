@@ -4,7 +4,7 @@ module.exports = function(RED) {
     const util = require("../../lib/util");
     util.init(RED);
 
-    function RedMobileInAppBrowserNode(n) {
+    function BrowserOpen(n) {
         RED.nodes.createNode(this, n);
         let node = this;
         node.payload = n.url;
@@ -14,7 +14,7 @@ module.exports = function(RED) {
         node.on('input', function(msg) {
             const json =  {
                 id: node.id,
-                method: "in-app-browser",
+                method: "browser-open",
                 payload: node.payload ? node.payload : msg.payload,
                 target: node.target,
                 options: node.options ? node.options : msg.options,
@@ -23,5 +23,20 @@ module.exports = function(RED) {
         });
     }
 
-    RED.nodes.registerType("in app browser", RedMobileInAppBrowserNode);
+    RED.nodes.registerType("browser open", BrowserOpen);
+
+    function BrowserClose(n) {
+        RED.nodes.createNode(this, n);
+        let node = this;
+
+        node.on('input', function(msg) {
+            const json =  {
+                id: node.id,
+                method: "browser-close",
+            };
+            util.postRequest(node, msg, json);
+        });
+    }
+
+    RED.nodes.registerType("browser close", BrowserClose);
 };

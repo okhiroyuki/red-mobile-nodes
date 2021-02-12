@@ -1,29 +1,29 @@
-<script type="text/x-red" data-template-name="in app browser">
+<script type="text/x-red" data-template-name="browser open">
     <div class="form-row">
-        <label for="node-input-url"> <i class="fa fa-globe fa-fw"></i> <span data-i18n="in-app-browser.label.url"></span></label>
-        <input type="text" id="node-input-url" data-i18n="[placeholder]in-app-browser.label.url">
+        <label for="node-input-url"> <i class="fa fa-globe fa-fw"></i> <span data-i18n="browser.label.url"></span></label>
+        <input type="text" id="node-input-url" data-i18n="[placeholder]browser.label.url">
     </div>
     <div class="form-row">
-        <label for="node-input-options"> <i class="fa fa-cog fa-fw"></i> <span data-i18n="in-app-browser.label.options"></span></label>
-        <input type="text" id="node-input-options" data-i18n="[placeholder]in-app-browser.label.options">
-    </div>
-    <div class="form-row">
-        <label for="node-input-target"><i class="fa fa-list"></i> <span data-i18n="in-app-browser.label.target"></span></label>
-        <select id="in-app-browser-target-select">
-            <option value="system" data-i18n="in-app-browser.target.system"></option>
-            <option value="blank" data-i18n="in-app-browser.target.blank"></option>
+        <label for="node-input-target"><i class="fa fa-list"></i> <span data-i18n="browser.label.target"></span></label>
+        <select id="browser-target-select">
+            <option value="system" data-i18n="browser.target.system"></option>
+            <option value="blank" data-i18n="browser.target.blank"></option>
         </select>
         <input type="hidden" id="node-input-target">
     </div>
+    <div class="form-row select-options" hidden>
+        <label for="node-input-options"> <i class="fa fa-cog fa-fw"></i> <span data-i18n="browser.label.options"></span></label>
+        <input type="text" id="node-input-options" data-i18n="[placeholder]browser.label.options">
+    </div>
     <div class="form-row">
-        <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="in-app-browser.label.name"></span></label>
-        <input type="text" id="node-input-name" data-i18n="[placeholder]in-app-browser.label.name">
+        <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
     </div>
 </script>
 
 <script type="text/javascript">
-    RED.nodes.registerType('in app browser', {
-        category: 'advanced-output',
+    RED.nodes.registerType('browser open', {
+        category: 'browser',
         color: '#a4c639',
         defaults: {
             name: {
@@ -43,17 +43,56 @@
         outputs: 1,
         icon: "in-app-browser.png",
         label: function () {
-            return this.name || this._("in-app-browser.in-app-browser");
+            return this.name || this._("browser.open");
         },
         oneditprepare: function() {
-            $("#in-app-browser-target-select option").filter(function() {
+            function toggleOptions(v){
+                if (v === "blank") {
+                    $(".select-options").show();
+                } else {
+                    $(".select-options").hide();
+                }
+            }
+
+            $("#browser-target-select option").filter(function() {
                 var v = $("#node-input-target").val();
+                toggleOptions(v);
                 return $(this).val() == v;
             }).attr('selected', true);
+
+            $("#browser-target-select").change(function() {
+                var v = $("#browser-target-select option:selected").val();
+                toggleOptions(v);
+            });
         },
         oneditsave: function() {
-            var v = $("#in-app-browser-target-select option:selected").val();
+            var v = $("#browser-target-select option:selected").val();
             $("#node-input-target").val(v);
         }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="browser close">
+    <div class="form-row">
+        <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="browser.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('browser close', {
+        category: 'browser',
+        color: '#a4c639',
+        defaults: {
+            name: {
+                value: ""
+            },
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "in-app-browser.png",
+        label: function () {
+            return this.name || this._("browser.close");
+        },
     });
 </script>

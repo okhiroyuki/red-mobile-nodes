@@ -1,8 +1,8 @@
 {
-    "in-app-browser": {
-        "in-app-browser": "InAppBrowser",
+    "browser": {
+        "open": "browser open",
+        "close": "browser close",
         "label": {
-            "name": "Name",
             "target": "Target",
             "url": "Url",
             "options": "Options"

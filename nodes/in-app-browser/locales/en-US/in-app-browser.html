@@ -1,19 +1,30 @@
-<script type="text/x-red" data-help-name="in-app-browser">
+<script type="text/x-red" data-help-name="browser open">
     <p>Opens a URL in a new [InAppBrowser] instance, the system browser.</p>
     <h3>Inputs</h3>
     <dl class="message-properties">
-        <dt>payload.url<span class="property-type">string</span></dt>
-        <dd>The URL to load. Call encodeURI() on this if the URL contains Unicode characters.</dd>
-        <dt>payload.options <span class="property-type">string</span></dt>
-        <dd>Options for the [InAppBrowser].</dd>
+        <dt>payload <span class="property-type">string</span></dt>
+        <dd>The URL to load. It can be overwritten only when the string is not set in the property.</dd>
+        <dt>options <span class="property-type">string</span></dt>
+        <dd>Options for the [InAppBrowser]. It can be overwritten only when the string is not set in the property.</dd>
     </dl>
-    <p>Example</p>
-<pre>
-msg.payload = {
-    "url": "redmobile://",
-    "options": "location=true"
-}
-</pre>
-    <p><b>Note</b>: The options string must not contain any blank space, and each feature's name/value pairs must be separated by a comma. Feature names are case insensitive.<br>
-        All platforms support the value below: location: Set to yes or no to turn the InAppBrowser's location bar on or off.</p>
+    <h3>Outputs</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">string</span></dt>
+        <dd>the URL</dd>
+    </dl>
+    <h3>Details</h3>
+    <h4>URL</h4>
+    <p>If your target is a system, you can also use Deeplink (Custom URL Scheme). For example, RedMobile would be <code>redmobile://</code>. </p>
+    <h4>Target</h4>
+    <p>The target in which to load the URL, an optional parameter that defaults to <code>system</code>.</p>
+    <ul>
+        <li><strong>system</strong>: Opens in the system's web browser.</li>
+        <li><strong>blank</strong>: Opens in the InAppBrowser.</li>
+    </ul>
+    <h4>Options</h4>
+    <p>For more information, please click <a href="https://github.com/apache/cordova-plugin-inappbrowser#cordovainappbrowseropen">here</a>.</p>
+</script>
+
+<script type="text/x-red" data-help-name="browser close">
+    <p>Closes the InAppBrowser window.</p>
 </script>

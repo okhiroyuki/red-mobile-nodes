@@ -1,8 +1,15 @@
 {
-    "in-app-browser": {
-        "in-app-browser": "InAppBrowser",
+    "browser": {
+        "open": "browser open",
+        "close": "browser close",
         "label": {
-            "name": "Name"
+            "target": "Target",
+            "url": "Url",
+            "options": "Options"
+        },
+        "target": {
+            "system": "System",
+            "blank": "Blank"
         },
         "errors": {
             "response": "Could not get sensor data."

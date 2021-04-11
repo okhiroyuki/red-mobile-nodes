@@ -45,6 +45,7 @@
       "battery": "./nodes/sensors/battery/battery.js",
       "location": "./nodes/sensors/geolocation/geolocation.js",
       "proximity": "./nodes/sensors/proximity/proximity.js",
+      "nfc": "./nodes/sensors/nfc/nfc.js",
       "speech-to-text": "./nodes/cognitives/speech-to-text/speech-to-text.js",
       "text-to-speech": "./nodes/cognitives/text-to-speech/text-to-speech.js",
       "in-app-browser": "./nodes/in-app-browser/in-app-browser.js",

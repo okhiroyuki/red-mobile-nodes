@@ -13,7 +13,8 @@
             "magnetic": "Magnetic",
             "gyroscope": "Gyroscope",
             "light": "Light",
-            "proximity": "Proximity"
+            "proximity": "Proximity",
+            "nfc": "NFC"
         }
     }
 }

@@ -9,6 +9,7 @@
             <option value="gyroscope" data-i18n="sensor-subscribe.sensor.gyroscope"></option>
             <option value="light" data-i18n="sensor-subscribe.sensor.light"></option>
             <option value="proximity" data-i18n="sensor-subscribe.sensor.proximity"></option>
+            <option value="nfc" data-i18n="sensor-subscribe.sensor.nfc"></option>
         </select>
         <input type="hidden" id="node-input-sensor">
     </div>
@@ -66,7 +67,7 @@
             });
 
             function toggleFreq(v){
-                if(v === "geolocation"){
+                if(v === "geolocation" || v === "nfc"){
                     $(".sensor-freq").hide();
                 }else{
                     $(".sensor-freq").show();

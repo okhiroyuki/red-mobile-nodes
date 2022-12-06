@@ -19,7 +19,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "is-base64": "^1.1.0",
-    "qs": "^6.9.6",
+    "qs": "^6.10.3",
     "ws": "^6.2.1"
   },
   "devDependencies": {

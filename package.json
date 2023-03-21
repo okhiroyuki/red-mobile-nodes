@@ -1,6 +1,6 @@
 {
   "name": "@red-mobile/red-mobile-nodes",
-  "version": "2.6.4",
+  "version": "2.6.5",
   "description": "Extra nodes for RedMobile",
   "main": "app.js",
   "scripts": {
@@ -20,7 +20,7 @@
     "axios": "^0.21.1",
     "is-base64": "^1.1.0",
     "qs": "^6.9.6",
-    "ws": "^6.2.1"
+    "ws": "^8.13.0"
   },
   "devDependencies": {
     "eslint": "^7.22.0",

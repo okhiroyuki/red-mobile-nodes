@@ -14,9 +14,9 @@ module.exports = function(RED) {
         };
 
         node.on('close', function (done) {
-            if (node.db) { node.db.close(node.id, done()); }
+            if (node.db) { node.db.close(node.id, done); }
             else { done(); }
-        });  
+        });
     }
     RED.nodes.registerType("sqlitedb",SqliteNodeDB);
 

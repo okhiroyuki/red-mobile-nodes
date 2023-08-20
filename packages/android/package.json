@@ -1,6 +1,6 @@
 {
   "name": "@red-mobile/red-mobile-nodes",
-  "version": "2.8.2",
+  "version": "2.9.0",
   "description": "Extra nodes for RedMobile",
   "main": "app.js",
   "scripts": {
@@ -56,9 +56,6 @@
       "ble-subscribe": "./nodes/ble/07-subscribe.js",
       "ble-unsubscribe": "./nodes/ble/08-unsubscribe.js",
       "clipboard": "./nodes/clipboard/clipboard.js",
-      "fcm-token": "./nodes/fcm/01-token.js",
-      "fcm-refresh-token": "./nodes/fcm/02-refresh.js",
-      "fcm-data-message": "./nodes/fcm/03-datamessage.js",
       "qrcode-scan": "./nodes/qrcode/scan.js",
       "mlkit": "./nodes/mlkit/mlkit.js"
     }

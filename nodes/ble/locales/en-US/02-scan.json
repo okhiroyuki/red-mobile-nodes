@@ -3,6 +3,6 @@
         "ble-scan": "scan",
         "label":{
             "timeout": "Timeout"
-        }    
+        }
     }
 }

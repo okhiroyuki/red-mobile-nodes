@@ -38,7 +38,7 @@
         label: function () {
             return this.name || this._("sensor-unsubscribe.unsubscribe");
         },
-        oneditprepare: function() { 
+        oneditprepare: function() {
             $("#unsubscribe-sensor-select option").filter(function() {
                 var v = $("#node-input-sensor").val();
                 return $(this).val() == v;

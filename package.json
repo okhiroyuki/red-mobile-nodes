@@ -9,7 +9,6 @@
     "build:fire": "grunt fire",
     "lint": "eslint ./nodes ./lib --fix"
   },
-  "private": true,
   "keywords": [
     "redmobile",
     "nodered"

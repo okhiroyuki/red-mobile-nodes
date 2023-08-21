@@ -159,41 +159,11 @@ module.exports = function (grunt) {
           },
         ],
       },
-      android: {
-        files: [
-          {
-            expand: true,
-            cwd: './lib/',
-            src: ['**'],
-            dest: './packages/android/lib/',
-          },
-          {
-            expand: true,
-            cwd: './nodes/',
-            src: ['**'],
-            dest: './packages/android/nodes/',
-          },
-          {
-            expand: true,
-            cwd: './examples/',
-            src: ['**'],
-            dest: './packages/android/examples/',
-          },
-        ],
-      },
-    },
-    clean: {
-      fire: ['./packages/fire/nodes/', './packages/fire/examples/'],
-      android: ['./packages/android/nodes/', './packages/android/examples/'],
     },
   });
 
   grunt.loadNpmTasks('grunt-lint-inline');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-nr-locales-htmllint');
 
   grunt.registerTask('default', ['inlinelint:html', 'nr_locales_htmllint']);
-  grunt.registerTask('android', ['clean:android', 'copy:android']);
-  grunt.registerTask('fire', ['clean:fire', 'copy:fire']);
 };

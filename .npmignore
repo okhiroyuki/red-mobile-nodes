@@ -1,0 +1,12 @@
+.github/
+node_modules/
+.editorconfig
+.eslintrc.js
+.gitignore
+.node-version
+.pre-commit-config.yml
+.prettierrc
+Gruntfile.js
+package-lock.json
+README.md
+renovate.json

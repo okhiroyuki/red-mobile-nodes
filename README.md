@@ -31,15 +31,8 @@ node ci
 npm run test
 ```
 
-## Build
-
-```zsh
-npm run build:android
-```
-
 ## Deploy
 
 ```zsh
-cd packages/android
 npm publish
 ```

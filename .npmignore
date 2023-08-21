@@ -10,5 +10,4 @@ node_modules/
 .prettierrc
 Gruntfile.js
 package-lock.json
-README.md
 renovate.json

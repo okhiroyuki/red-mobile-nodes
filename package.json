@@ -4,8 +4,8 @@
   "description": "Extra nodes for RedMobile",
   "main": "app.js",
   "scripts": {
-    "test": "grunt",
-    "lint": "eslint ./nodes ./lib --fix"
+    "test": "npx grunt",
+    "lint": "npx eslint ./nodes ./lib --fix"
   },
   "keywords": [
     "redmobile",

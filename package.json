@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "npx grunt",
-    "lint": "eslint ./nodes ./lib --fix"
+    "lint": "npx eslint ./nodes ./lib --fix"
   },
   "keywords": [
     "redmobile",

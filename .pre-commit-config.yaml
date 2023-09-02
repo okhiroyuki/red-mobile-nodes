@@ -15,9 +15,9 @@ repos:
   - repo: https://github.com/pre-commit/mirrors-eslint
     rev: v8.47.0
     hooks:
-    -   id: eslint
+      - id: eslint
         types: [file]
-        files: \.[jt]sx?$  # *.js, *.jsx, *.ts and *.tsx
+        files: \.[jt]sx?$ # *.js, *.jsx, *.ts and *.tsx
         args: [--cache, --max-warnings, '0']
         additional_dependencies:
           - 'eslint@8.47.0'

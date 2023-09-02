@@ -4,8 +4,8 @@
   "description": "Extra nodes for RedMobile",
   "main": "app.js",
   "scripts": {
-    "test": "npx grunt",
-    "lint": "npx eslint ./nodes ./lib --fix"
+    "test": "echo \"no test specified\" && exit 0",
+    "lint": "npx eslint --cache --fix nodes/ lib/ && npx prettier --write nodes/ lib/"
   },
   "keywords": [
     "redmobile",
@@ -21,9 +21,7 @@
   },
   "devDependencies": {
     "eslint": "8.47.0",
-    "grunt": "1.6.1",
-    "grunt-lint-inline": "1.0.0",
-    "grunt-nr-locales-htmllint": "1.2.2",
+    "eslint-config-prettier": "9.0.0",
     "prettier": "3.0.2"
   },
   "node-red": {

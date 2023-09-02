@@ -4,6 +4,7 @@
   "description": "Extra nodes for RedMobile",
   "main": "app.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "npx eslint --cache --fix nodes/ lib/ && npx prettier --write nodes/ lib/"
   },
   "keywords": [

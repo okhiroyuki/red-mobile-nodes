@@ -4,10 +4,8 @@ node_modules/
 .eslintcache
 .eslintrc.js
 .gitignore
-.jshintrc
 .node-version
 .pre-commit-config.yaml
 .prettierrc
-Gruntfile.js
 package-lock.json
 renovate.json

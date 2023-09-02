@@ -1,241 +1,247 @@
 <script type="text/x-red" data-template-name="serial-open">
-    <div class="form-row">
-        <label for="node-input-baudRate"><i class="fa fa-list"></i> <span data-i18n="serial-open.label.baudRate"></span></label>
-        <select type="text" id="serial-baudRate-select">
-            <option value="300" data-i18n="serial-open.baudRate.300"></option>
-            <option value="1200" data-i18n="serial-open.baudRate.1200"></option>
-            <option value="4800" data-i18n="serial-open.baudRate.4800"></option>
-            <option value="9600" data-i18n="serial-open.baudRate.9600"></option>
-            <option value="19200" data-i18n="serial-open.baudRate.19200"></option>
-            <option value="38400" data-i18n="serial-open.baudRate.38400"></option>
-            <option value="57600" data-i18n="serial-open.baudRate.57600"></option>
-            <option value="115200" data-i18n="serial-open.baudRate.115200"></option>
-        </select>
-        <input type="hidden" id="node-input-baudRate">
-    </div>
+  <div class="form-row">
+      <label for="node-input-baudRate"><i class="fa fa-list"></i> <span data-i18n="serial-open.label.baudRate"></span></label>
+      <select type="text" id="serial-baudRate-select">
+          <option value="300" data-i18n="serial-open.baudRate.300"></option>
+          <option value="1200" data-i18n="serial-open.baudRate.1200"></option>
+          <option value="4800" data-i18n="serial-open.baudRate.4800"></option>
+          <option value="9600" data-i18n="serial-open.baudRate.9600"></option>
+          <option value="19200" data-i18n="serial-open.baudRate.19200"></option>
+          <option value="38400" data-i18n="serial-open.baudRate.38400"></option>
+          <option value="57600" data-i18n="serial-open.baudRate.57600"></option>
+          <option value="115200" data-i18n="serial-open.baudRate.115200"></option>
+      </select>
+      <input type="hidden" id="node-input-baudRate">
+  </div>
 
-    <div class="form-row">
-        <label for="node-input-dataBits"><i class="fa fa-list"></i> <span data-i18n="serial-open.label.dataBits"></span></label>
-        <select type="text" id="serial-dataBits-select">
-            <option value="5" data-i18n="serial-open.dataBits.5"></option>
-            <option value="6" data-i18n="serial-open.dataBits.6"></option>
-            <option value="7" data-i18n="serial-open.dataBits.7"></option>
-            <option value="8" data-i18n="serial-open.dataBits.8"></option>
-        </select>
-        <input type="hidden" id="node-input-dataBits">
-    </div>
+  <div class="form-row">
+      <label for="node-input-dataBits"><i class="fa fa-list"></i> <span data-i18n="serial-open.label.dataBits"></span></label>
+      <select type="text" id="serial-dataBits-select">
+          <option value="5" data-i18n="serial-open.dataBits.5"></option>
+          <option value="6" data-i18n="serial-open.dataBits.6"></option>
+          <option value="7" data-i18n="serial-open.dataBits.7"></option>
+          <option value="8" data-i18n="serial-open.dataBits.8"></option>
+      </select>
+      <input type="hidden" id="node-input-dataBits">
+  </div>
 
-    <div class="form-row">
-        <label for="node-input-stopBits"><i class="fa fa-list"></i> <span data-i18n="serial-open.label.stopBits"></span></label>
-        <select type="text" id="serial-stopBits-select">
-            <option value="1" data-i18n="serial-open.stopBits.1"></option>
-            <option value="2" data-i18n="serial-open.stopBits.2"></option>
-        </select>
-        <input type="hidden" id="node-input-stopBits">
-    </div>
+  <div class="form-row">
+      <label for="node-input-stopBits"><i class="fa fa-list"></i> <span data-i18n="serial-open.label.stopBits"></span></label>
+      <select type="text" id="serial-stopBits-select">
+          <option value="1" data-i18n="serial-open.stopBits.1"></option>
+          <option value="2" data-i18n="serial-open.stopBits.2"></option>
+      </select>
+      <input type="hidden" id="node-input-stopBits">
+  </div>
 
-    <div class="form-row">
-        <label for="node-input-parity"><i class="fa fa-list"></i> <span data-i18n="serial-open.label.parity"></span></label>
-        <select type="text" id="serial-parity-select">
-            <option value="none" data-i18n="serial-open.parity.none"></option>
-            <option value="odd" data-i18n="serial-open.parity.odd"></option>
-            <option value="even" data-i18n="serial-open.parity.even"></option>
-        </select>
-        <input type="hidden" id="node-input-parity">
-    </div>
+  <div class="form-row">
+      <label for="node-input-parity"><i class="fa fa-list"></i> <span data-i18n="serial-open.label.parity"></span></label>
+      <select type="text" id="serial-parity-select">
+          <option value="none" data-i18n="serial-open.parity.none"></option>
+          <option value="odd" data-i18n="serial-open.parity.odd"></option>
+          <option value="even" data-i18n="serial-open.parity.even"></option>
+      </select>
+      <input type="hidden" id="node-input-parity">
+  </div>
 
-    <div class="form-row">
-        <label for="node-input-dtr"><i class="fa fa-toggle-on"></i> <span data-i18n="serial-open.label.dtr"></span></label>
-        <input type="checkbox" id="node-input-dtr" placeholder="" style="display:inline-block; width:auto; vertical-align:top;">
-        <input type="hidden" id="node-input-dtr">
-    </div>
+  <div class="form-row">
+      <label for="node-input-dtr"><i class="fa fa-toggle-on"></i> <span data-i18n="serial-open.label.dtr"></span></label>
+      <input type="checkbox" id="node-input-dtr" placeholder="" style="display:inline-block; width:auto; vertical-align:top;">
+      <input type="hidden" id="node-input-dtr">
+  </div>
 
-    <div class="form-row">
-        <label for="node-input-rts"><i class="fa fa-toggle-on"></i> <span data-i18n="serial-open.label.rts"></span></label>
-        <input type="checkbox" id="node-input-rts" placeholder="" style="display:inline-block; width:auto; vertical-align:top;">
-        <input type="hidden" id="node-input-rts">
-    </div>
+  <div class="form-row">
+      <label for="node-input-rts"><i class="fa fa-toggle-on"></i> <span data-i18n="serial-open.label.rts"></span></label>
+      <input type="checkbox" id="node-input-rts" placeholder="" style="display:inline-block; width:auto; vertical-align:top;">
+      <input type="hidden" id="node-input-rts">
+  </div>
 
-    <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
-        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
-    </div>
+  <div class="form-row">
+      <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+      <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+  </div>
 </script>
 
 <script type="text/javascript">
-    RED.nodes.registerType('serial-open', {
-        category: 'serial',
-        color: '#a9d159',
-        defaults: {
-            name: {
-                value: ""
-            },
-            baudRate:{
-                value: "9600"
-            },
-            dataBits:{
-                value: "8"
-            },
-            stopBits:{
-                value: "1"
-            },
-            parity:{
-                value: "none"
-            },
-            dtr:{
-                value: false
-            },
-            rts:{
-                value: false
-            }
-        },
-        inputs: 1,
-        outputs: 1,
-        icon: "serial-open.png",
-        label: function () {
-            return this.name || this._("serial-open.serial-open");
-        },
-        oneditprepare: function() {
-            $("#serial-baudRate-select option").filter(function() {
-                var v = $("#node-input-baudRate").val();
-                return $(this).val() == v;
-            }).attr('selected', true);
+  RED.nodes.registerType('serial-open', {
+    category: 'serial',
+    color: '#a9d159',
+    defaults: {
+      name: {
+        value: '',
+      },
+      baudRate: {
+        value: '9600',
+      },
+      dataBits: {
+        value: '8',
+      },
+      stopBits: {
+        value: '1',
+      },
+      parity: {
+        value: 'none',
+      },
+      dtr: {
+        value: false,
+      },
+      rts: {
+        value: false,
+      },
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: 'serial-open.png',
+    label: function () {
+      return this.name || this._('serial-open.serial-open');
+    },
+    oneditprepare: function () {
+      $('#serial-baudRate-select option')
+        .filter(function () {
+          var v = $('#node-input-baudRate').val();
+          return $(this).val() == v;
+        })
+        .attr('selected', true);
 
-            $("#serial-dataBits-select option").filter(function() {
-                var v = $("#node-input-dataBits").val();
-                return $(this).val() == v;
-            }).attr('selected', true);
+      $('#serial-dataBits-select option')
+        .filter(function () {
+          var v = $('#node-input-dataBits').val();
+          return $(this).val() == v;
+        })
+        .attr('selected', true);
 
-            $("#serial-stopBits-select option").filter(function() {
-                var v = $("#node-input-stopBits").val();
-                return $(this).val() == v;
-            }).attr('selected', true);
+      $('#serial-stopBits-select option')
+        .filter(function () {
+          var v = $('#node-input-stopBits').val();
+          return $(this).val() == v;
+        })
+        .attr('selected', true);
 
-            $("#serial-parity-select option").filter(function() {
-                var v = $("#node-input-parity").val();
-                return $(this).val() == v;
-            }).attr('selected', true);
-        },
-        oneditsave: function() {
-            var baudRate = $("#serial-baudRate-select option:selected").val();
-            $("#node-input-baudRate").val(baudRate);
-            var dataBits = $("#serial-dataBits-select option:selected").val();
-            $("#node-input-dataBits").val(dataBits);
-            var stopBits = $("#serial-stopBits-select option:selected").val();
-            $("#node-input-stopBits").val(stopBits);
-            var parity = $("#serial-parity-select option:selected").val();
-            $("#node-input-parity").val(parity);
-        }
-    });
+      $('#serial-parity-select option')
+        .filter(function () {
+          var v = $('#node-input-parity').val();
+          return $(this).val() == v;
+        })
+        .attr('selected', true);
+    },
+    oneditsave: function () {
+      var baudRate = $('#serial-baudRate-select option:selected').val();
+      $('#node-input-baudRate').val(baudRate);
+      var dataBits = $('#serial-dataBits-select option:selected').val();
+      $('#node-input-dataBits').val(dataBits);
+      var stopBits = $('#serial-stopBits-select option:selected').val();
+      $('#node-input-stopBits').val(stopBits);
+      var parity = $('#serial-parity-select option:selected').val();
+      $('#node-input-parity').val(parity);
+    },
+  });
 </script>
 
 <script type="text/x-red" data-template-name="serial-close">
-    <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
-        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
-    </div>
+  <div class="form-row">
+      <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+      <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+  </div>
 </script>
 
 <script type="text/javascript">
-    RED.nodes.registerType('serial-close', {
-        category: 'serial',
-        color: '#a9d159',
-        defaults: {
-            name: {
-                value: ""
-            }
-        },
-        inputs: 1,
-        outputs: 1,
-        icon: "serial-close.png",
-        label: function () {
-            return this.name || this._("serial-close.serial-close");
-        },
-        oneditprepare: function() {
-        },
-        oneditsave: function() {
-        }
-    });
+  RED.nodes.registerType('serial-close', {
+    category: 'serial',
+    color: '#a9d159',
+    defaults: {
+      name: {
+        value: '',
+      },
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: 'serial-close.png',
+    label: function () {
+      return this.name || this._('serial-close.serial-close');
+    },
+    oneditprepare: function () {},
+    oneditsave: function () {},
+  });
 </script>
 
 <script type="text/x-red" data-template-name="serial-write">
-    <div class="form-row">
-        <label for="node-input-data"><i class="fa fa-info"></i> <span data-i18n="serial-write.label.data"></span></label>
-        <input type="text" id="node-input-data">
-    </div>
-    <div class="form-row">
-        <label for="node-input-dataType"><i class="fa fa-list"></i> <span data-i18n="serial-write.label.dataType"></span></label>
-        <select type="text" id="serial-write-dataType-select">
-            <option value="string" data-i18n="serial-write.dataType.string"></option>
-            <option value="hex" data-i18n="serial-write.dataType.hex"></option>
-        </select>
-        <input type="hidden" id="node-input-dataType">
-    </div>
-    <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
-        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
-    </div>
+  <div class="form-row">
+      <label for="node-input-data"><i class="fa fa-info"></i> <span data-i18n="serial-write.label.data"></span></label>
+      <input type="text" id="node-input-data">
+  </div>
+  <div class="form-row">
+      <label for="node-input-dataType"><i class="fa fa-list"></i> <span data-i18n="serial-write.label.dataType"></span></label>
+      <select type="text" id="serial-write-dataType-select">
+          <option value="string" data-i18n="serial-write.dataType.string"></option>
+          <option value="hex" data-i18n="serial-write.dataType.hex"></option>
+      </select>
+      <input type="hidden" id="node-input-dataType">
+  </div>
+  <div class="form-row">
+      <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+      <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+  </div>
 </script>
 
 <script type="text/javascript">
-    RED.nodes.registerType('serial-write', {
-        category: 'serial',
-        color: '#a9d159',
-        defaults: {
-            name: {
-                value: ""
-            },
-            data:{
-                value: ""
-            },
-            dataType:{
-                value: "string"
-            }
-        },
-        inputs: 1,
-        outputs: 1,
-        icon: "inject.png",
-        label: function () {
-            return this.name || this._("serial-write.serial-write");
-        },
-        oneditprepare: function() {
-            $("#serial-write-dataType-select option").filter(function() {
-                var v = $("#node-input-dataType").val();
-                return $(this).val() == v;
-            }).attr('selected', true);
-        },
-        oneditsave: function() {
-            var v = $("#serial-write-dataType-select option:selected").val();
-            $("#node-input-dataType").val(v);
-        }
-    });
+  RED.nodes.registerType('serial-write', {
+    category: 'serial',
+    color: '#a9d159',
+    defaults: {
+      name: {
+        value: '',
+      },
+      data: {
+        value: '',
+      },
+      dataType: {
+        value: 'string',
+      },
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: 'inject.png',
+    label: function () {
+      return this.name || this._('serial-write.serial-write');
+    },
+    oneditprepare: function () {
+      $('#serial-write-dataType-select option')
+        .filter(function () {
+          var v = $('#node-input-dataType').val();
+          return $(this).val() == v;
+        })
+        .attr('selected', true);
+    },
+    oneditsave: function () {
+      var v = $('#serial-write-dataType-select option:selected').val();
+      $('#node-input-dataType').val(v);
+    },
+  });
 </script>
 
 <script type="text/x-red" data-template-name="serial-read">
-    <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
-        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
-    </div>
+  <div class="form-row">
+      <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+      <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+  </div>
 </script>
 
 <script type="text/javascript">
-    RED.nodes.registerType('serial-read', {
-        category: 'serial',
-        color: '#a9d159',
-        defaults: {
-            name: {
-                value: ""
-            }
-        },
-        inputs: 0,
-        outputs: 1,
-        icon: "bridge.png",
-        label: function () {
-            return this.name || this._("serial-read.serial-read");
-        },
-        oneditprepare: function() {
-        },
-        oneditsave: function() {
-        }
-    });
+  RED.nodes.registerType('serial-read', {
+    category: 'serial',
+    color: '#a9d159',
+    defaults: {
+      name: {
+        value: '',
+      },
+    },
+    inputs: 0,
+    outputs: 1,
+    icon: 'bridge.png',
+    label: function () {
+      return this.name || this._('serial-read.serial-read');
+    },
+    oneditprepare: function () {},
+    oneditsave: function () {},
+  });
 </script>

@@ -1,11 +1,11 @@
 {
-    "confirm": {
-        "confirm": "confirm",
-        "label": {
-            "name": "Name"
-        },
-        "errors": {
-            "response": "Could not get sensor data."
-        }
+  "confirm": {
+    "confirm": "confirm",
+    "label": {
+      "name": "Name"
+    },
+    "errors": {
+      "response": "Could not get sensor data."
     }
+  }
 }

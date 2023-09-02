@@ -1,26 +1,26 @@
 <script type="text/x-red" data-help-name="confirm">
-    <p>Displays a customizable confirmation dialog box.</p>
-    <h3>Inputs</h3>
-    <dl class="message-properties">
-        <dt>payload.message <span class="property-type">string</span></dt>
-        <dd>Dialog message.</dd>
-        <dt>payload.title <span class="property-type">string</span></dt>
-        <dd>Dialog title.(Optional, defaults to Alert)</dd>
-        <dt>payload.buttonLabels <span class="property-type">array</span></dt>
-        <dd>Array of strings specifying button labels. (Optional, defaults to [OK,Cancel])</dd>
-    </dl>
-    <h3>Outouts</h3>
-    <dl class="message-properties">
-        <dt>payload.buttonIndex <span class="property-type">number</span></dt>
-        <dd>index of button pressed or when the dialog is dismissed without a button press (0)</dd>
-    </dl>
-    <h4>Example</h4>
-<pre>
-msg.payload = {
-    "message": "You are the winner!",
-    "title": "Game Over",
-    "buttonLabels": ["Restart","Exit"]
-}
-</pre>
-    <p><b>Note: </b> It will be displayed on the RedMobile home screen.</p>
+      <p>Displays a customizable confirmation dialog box.</p>
+      <h3>Inputs</h3>
+      <dl class="message-properties">
+          <dt>payload.message <span class="property-type">string</span></dt>
+          <dd>Dialog message.</dd>
+          <dt>payload.title <span class="property-type">string</span></dt>
+          <dd>Dialog title.(Optional, defaults to Alert)</dd>
+          <dt>payload.buttonLabels <span class="property-type">array</span></dt>
+          <dd>Array of strings specifying button labels. (Optional, defaults to [OK,Cancel])</dd>
+      </dl>
+      <h3>Outouts</h3>
+      <dl class="message-properties">
+          <dt>payload.buttonIndex <span class="property-type">number</span></dt>
+          <dd>index of button pressed or when the dialog is dismissed without a button press (0)</dd>
+      </dl>
+      <h4>Example</h4>
+  <pre>
+  msg.payload = {
+      "message": "You are the winner!",
+      "title": "Game Over",
+      "buttonLabels": ["Restart","Exit"]
+  }
+  </pre>
+      <p><b>Note: </b> It will be displayed on the RedMobile home screen.</p>
 </script>

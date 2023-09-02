@@ -1,8 +1,8 @@
 {
-    "ble-connect":{
-        "ble-connect": "connect",
-        "label":{
-            "device": "Device"
-        }
+  "ble-connect": {
+    "ble-connect": "connect",
+    "label": {
+      "device": "Device"
     }
+  }
 }

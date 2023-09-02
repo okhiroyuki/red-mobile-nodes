@@ -1,27 +1,27 @@
 <script type="text/javascript">
-    RED.nodes.registerType('bledevice', {
-        category: 'config',
-        defaults: {
-            name: {value:""},
-            address: {
-                value:"",
-                required: true
-            }
-        },
-        label: function () {
-            return this.name || this.address;
-        }
-    });
+  RED.nodes.registerType('bledevice', {
+    category: 'config',
+    defaults: {
+      name: { value: '' },
+      address: {
+        value: '',
+        required: true,
+      },
+    },
+    label: function () {
+      return this.name || this.address;
+    },
+  });
 </script>
 
 <script type="text/x-red" data-template-name="bledevice">
-    <div class="form-row">
-        <label for="node-config-input-address"><i class="fa fa-info"></i> <span data-i18n="bledevice.label.address"></span></label>
-        <input type="text" id="node-config-input-address">
-    </div>
+  <div class="form-row">
+      <label for="node-config-input-address"><i class="fa fa-info"></i> <span data-i18n="bledevice.label.address"></span></label>
+      <input type="text" id="node-config-input-address">
+  </div>
 
-    <div class="form-row">
-        <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="node-red:common.label.name"></span></label>
-        <input type="text" id="node-config-input-name" data-i18n="[placeholder]node-red:common.label.name">
-    </div>
+  <div class="form-row">
+      <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="node-red:common.label.name"></span></label>
+      <input type="text" id="node-config-input-name" data-i18n="[placeholder]node-red:common.label.name">
+  </div>
 </script>

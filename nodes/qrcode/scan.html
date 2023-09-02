@@ -1,93 +1,96 @@
 <script type="text/x-red" data-template-name="qrcode scan">
-    <div class="form-row">
-        <label for="node-input-camera"><i class="fa fa-list"></i> <span data-i18n="qrcode.label.camera"></span></label>
-        <select id="qrcode-camera-select">
-            <option value="back" data-i18n="qrcode.camera.back"></option>
-            <option value="front" data-i18n="qrcode.camera.front"></option>
-        </select>
-        <input type="hidden" id="node-input-camera">
-    </div>
-    <div class="form-row">
-        <label for="node-input-prompt"> <i class="fa fa-info fa-fw"></i> <span data-i18n="qrcode.label.prompt"></span></label>
-        <input type="text" id="node-input-prompt" data-i18n="[placeholder]qrcode.label.prompt">
-    </div>
-    <div class="form-row">
-        <label for="node-input-orientation"><i class="fa fa-list"></i> <span data-i18n="qrcode.label.orientation"></span></label>
-        <select id="qrcode-orientation-select">
-            <option value="portrait" data-i18n="qrcode.orientation.portrait"></option>
-            <option value="landscape" data-i18n="qrcode.orientation.landscape"></option>
-        </select>
-        <input type="hidden" id="node-input-orientation">
-    </div>
-    <div class="form-row">
-        <input type="checkbox" id="node-input-showFlipCameraButton" style="display: inline-block; width: auto; vertical-align: top;">
-        <label for="node-input-showFlipCameraButton" style="width: auto;"><span data-i18n="qrcode.label.showFlipCameraButton"></span></label>
-    </div>
-    <div class="form-row">
-        <input type="checkbox" id="node-input-showTorchButton" style="display: inline-block; width: auto; vertical-align: top;">
-        <label for="node-input-showTorchButton" style="width: auto;"><span data-i18n="qrcode.label.showTorchButton"></span></label>
-    </div>
-    <div class="form-row">
-        <input type="checkbox" id="node-input-torchOn" style="display: inline-block; width: auto; vertical-align: top;">
-        <label for="node-input-torchOn" style="width: auto;"><span data-i18n="qrcode.label.torchOn"></span></label>
-    </div>
-    <div class="form-row">
-        <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="node-red:common.label.name"></span></label>
-        <input type="text" id="node-config-input-name" data-i18n="[placeholder]node-red:common.label.name">
-    </div>
+  <div class="form-row">
+      <label for="node-input-camera"><i class="fa fa-list"></i> <span data-i18n="qrcode.label.camera"></span></label>
+      <select id="qrcode-camera-select">
+          <option value="back" data-i18n="qrcode.camera.back"></option>
+          <option value="front" data-i18n="qrcode.camera.front"></option>
+      </select>
+      <input type="hidden" id="node-input-camera">
+  </div>
+  <div class="form-row">
+      <label for="node-input-prompt"> <i class="fa fa-info fa-fw"></i> <span data-i18n="qrcode.label.prompt"></span></label>
+      <input type="text" id="node-input-prompt" data-i18n="[placeholder]qrcode.label.prompt">
+  </div>
+  <div class="form-row">
+      <label for="node-input-orientation"><i class="fa fa-list"></i> <span data-i18n="qrcode.label.orientation"></span></label>
+      <select id="qrcode-orientation-select">
+          <option value="portrait" data-i18n="qrcode.orientation.portrait"></option>
+          <option value="landscape" data-i18n="qrcode.orientation.landscape"></option>
+      </select>
+      <input type="hidden" id="node-input-orientation">
+  </div>
+  <div class="form-row">
+      <input type="checkbox" id="node-input-showFlipCameraButton" style="display: inline-block; width: auto; vertical-align: top;">
+      <label for="node-input-showFlipCameraButton" style="width: auto;"><span data-i18n="qrcode.label.showFlipCameraButton"></span></label>
+  </div>
+  <div class="form-row">
+      <input type="checkbox" id="node-input-showTorchButton" style="display: inline-block; width: auto; vertical-align: top;">
+      <label for="node-input-showTorchButton" style="width: auto;"><span data-i18n="qrcode.label.showTorchButton"></span></label>
+  </div>
+  <div class="form-row">
+      <input type="checkbox" id="node-input-torchOn" style="display: inline-block; width: auto; vertical-align: top;">
+      <label for="node-input-torchOn" style="width: auto;"><span data-i18n="qrcode.label.torchOn"></span></label>
+  </div>
+  <div class="form-row">
+      <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="node-red:common.label.name"></span></label>
+      <input type="text" id="node-config-input-name" data-i18n="[placeholder]node-red:common.label.name">
+  </div>
 </script>
 
 <script type="text/javascript">
-    RED.nodes.registerType('qrcode scan', {
-        category: 'camera',
-        color: '#c6d9ab',
-        defaults: {
-            name: {
-                value: ""
-            },
-            camera: {
-                value: "back"
-            },
-            showFlipCameraButton: {
-                value: true
-            },
-            showTorchButton: {
-                value: true
-            },
-            torchOn:{
-                value: false
-            },
-            orientation:{
-                value: "portrait"
-            },
-            prompt: {
-                value: ""
-            }
-        },
-        inputs: 1,
-        outputs: 1,
-        icon: "qrcode.png",
-        label: function () {
-            return this.name || this._("qrcode.qrcode");
-        },
-        oneditprepare: function() {
-            $("#qrcode-camera-select option").filter(function() {
-                const v = $("#node-input-camera").val();
-                return $(this).val() == v;
-            }).attr('selected', true);
+  RED.nodes.registerType('qrcode scan', {
+    category: 'camera',
+    color: '#c6d9ab',
+    defaults: {
+      name: {
+        value: '',
+      },
+      camera: {
+        value: 'back',
+      },
+      showFlipCameraButton: {
+        value: true,
+      },
+      showTorchButton: {
+        value: true,
+      },
+      torchOn: {
+        value: false,
+      },
+      orientation: {
+        value: 'portrait',
+      },
+      prompt: {
+        value: '',
+      },
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: 'qrcode.png',
+    label: function () {
+      return this.name || this._('qrcode.qrcode');
+    },
+    oneditprepare: function () {
+      $('#qrcode-camera-select option')
+        .filter(function () {
+          const v = $('#node-input-camera').val();
+          return $(this).val() == v;
+        })
+        .attr('selected', true);
 
-            $("#qrcode-orientation-select option").filter(function() {
-                const v = $("#node-input-orientation").val();
-                return $(this).val() == v;
-            }).attr('selected', true);
-        },
-        oneditsave: function() {
-            const orientation = $("#qrcode-orientation-select option:selected").val();
-            $("#node-input-orientation").val(orientation);
+      $('#qrcode-orientation-select option')
+        .filter(function () {
+          const v = $('#node-input-orientation').val();
+          return $(this).val() == v;
+        })
+        .attr('selected', true);
+    },
+    oneditsave: function () {
+      const orientation = $('#qrcode-orientation-select option:selected').val();
+      $('#node-input-orientation').val(orientation);
 
-            const camera = $("#qrcode-camera-select option:selected").val();
-            $("#node-input-camera").val(camera);
-
-        }
-    });
+      const camera = $('#qrcode-camera-select option:selected').val();
+      $('#node-input-camera').val(camera);
+    },
+  });
 </script>

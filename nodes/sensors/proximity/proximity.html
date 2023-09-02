@@ -1,28 +1,27 @@
-p<script type="text/x-red" data-template-name="proximity">
-    <div class="form-row">
-        <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="proximity.label.name"></span></label>
-        <input type="text" id="node-input-name" data-i18n="[placeholder]proximity.label.name">
-    </div>
+p
+<script type="text/x-red" data-template-name="proximity">
+  <div class="form-row">
+      <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="proximity.label.name"></span></label>
+      <input type="text" id="node-input-name" data-i18n="[placeholder]proximity.label.name">
+  </div>
 </script>
 
 <script type="text/javascript">
-    RED.nodes.registerType('proximity', {
-        category: 'sensor',
-        color: '#a4c639',
-        defaults: {
-            name: {
-                value: ""
-            }
-        },
-        inputs: 0,
-        outputs: 1,
-        icon: "proximity.png",
-        label: function () {
-            return this.name || this._("proximity.proximity");
-        },
-        oneditprepare: function() {
-        },
-        oneditsave: function() {
-        }
-    });
+  RED.nodes.registerType('proximity', {
+    category: 'sensor',
+    color: '#a4c639',
+    defaults: {
+      name: {
+        value: '',
+      },
+    },
+    inputs: 0,
+    outputs: 1,
+    icon: 'proximity.png',
+    label: function () {
+      return this.name || this._('proximity.proximity');
+    },
+    oneditprepare: function () {},
+    oneditsave: function () {},
+  });
 </script>

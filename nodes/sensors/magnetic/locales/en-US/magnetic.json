@@ -1,11 +1,11 @@
 {
-    "magnetic": {
-        "magnetic": "magnetic",
-        "label": {
-            "name": "Name"
-        },
-        "errors": {
-            "response": "Could not get sensor data."
-        }
+  "magnetic": {
+    "magnetic": "magnetic",
+    "label": {
+      "name": "Name"
+    },
+    "errors": {
+      "response": "Could not get sensor data."
     }
+  }
 }

@@ -1,47 +1,57 @@
-
 <script type="text/html" data-template-name="clipboard">
-    <div class="form-row">
-        <label for="node-input-mode"><i class="fa fa-list"></i> <span data-i18n="clipboard.label.mode"></span></label>
-        <select id="clipboard-mode-select">
-            <option value="copy" data-i18n="clipboard.mode.copy"></option>
-            <option value="paste" data-i18n="clipboard.mode.paste"></option>
-            <option value="clear" data-i18n="clipboard.mode.clear"></option>
-        </select>
-        <input type="hidden" id="node-input-mode">
-    </div>
-    <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
-        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
-    </div>
+  <div class="form-row">
+    <label for="node-input-mode"
+      ><i class="fa fa-list"></i> <span data-i18n="clipboard.label.mode"></span
+    ></label>
+    <select id="clipboard-mode-select">
+      <option value="copy" data-i18n="clipboard.mode.copy"></option>
+      <option value="paste" data-i18n="clipboard.mode.paste"></option>
+      <option value="clear" data-i18n="clipboard.mode.clear"></option>
+    </select>
+    <input type="hidden" id="node-input-mode" />
+  </div>
+  <div class="form-row">
+    <label for="node-input-name"
+      ><i class="fa fa-tag"></i>
+      <span data-i18n="node-red:common.label.name"></span
+    ></label>
+    <input
+      type="text"
+      id="node-input-name"
+      data-i18n="[placeholder]node-red:common.label.name"
+    />
+  </div>
 </script>
 
 <script type="text/javascript">
-    RED.nodes.registerType('clipboard',{
-        category: 'advanced-output',
-        color: '#a4c639',
-        defaults: {
-            mode: {
-                value: "copy"
-            },
-            name: {
-                value:""
-            }
-        },
-        inputs: 1,
-        outputs: 1,
-        icon: "clipboard.png",
-        label: function () {
-            return this.name || this._("clipboard.clipboard");
-        },
-        oneditprepare: function() {
-            $("#clipboard-mode-select option").filter(function() {
-                var v = $("#node-input-mode").val();
-                return $(this).val() == v;
-            }).attr('selected', true);
-        },
-        oneditsave: function() {
-            var mode = $("#clipboard-mode-select option:selected").val();
-            $("#node-input-mode").val(mode);
-        }
-    });
+  RED.nodes.registerType('clipboard', {
+    category: 'advanced-output',
+    color: '#a4c639',
+    defaults: {
+      mode: {
+        value: 'copy',
+      },
+      name: {
+        value: '',
+      },
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: 'clipboard.png',
+    label: function () {
+      return this.name || this._('clipboard.clipboard');
+    },
+    oneditprepare: function () {
+      $('#clipboard-mode-select option')
+        .filter(function () {
+          var v = $('#node-input-mode').val();
+          return $(this).val() == v;
+        })
+        .attr('selected', true);
+    },
+    oneditsave: function () {
+      var mode = $('#clipboard-mode-select option:selected').val();
+      $('#node-input-mode').val(mode);
+    },
+  });
 </script>

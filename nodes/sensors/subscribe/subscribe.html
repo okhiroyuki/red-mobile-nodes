@@ -1,83 +1,85 @@
 <script type="text/x-red" data-template-name="sensor subscribe">
-    <div class="form-row">
-        <label for="node-input-sensor"><i class="fa fa-list"></i> <span data-i18n="sensor-subscribe.label.sensor"></span></label>
-        <select type="text" id="subscribe-sensor-select">
-            <option value="motion" data-i18n="sensor-subscribe.sensor.motion"></option>
-            <option value="compass" data-i18n="sensor-subscribe.sensor.compass"></option>
-            <option value="geolocation" data-i18n="sensor-subscribe.sensor.geolocation"></option>
-            <option value="magnetic" data-i18n="sensor-subscribe.sensor.magnetic"></option>
-            <option value="gyroscope" data-i18n="sensor-subscribe.sensor.gyroscope"></option>
-            <option value="light" data-i18n="sensor-subscribe.sensor.light"></option>
-            <option value="proximity" data-i18n="sensor-subscribe.sensor.proximity"></option>
-            <option value="nfc" data-i18n="sensor-subscribe.sensor.nfc"></option>
-        </select>
-        <input type="hidden" id="node-input-sensor">
-    </div>
+  <div class="form-row">
+      <label for="node-input-sensor"><i class="fa fa-list"></i> <span data-i18n="sensor-subscribe.label.sensor"></span></label>
+      <select type="text" id="subscribe-sensor-select">
+          <option value="motion" data-i18n="sensor-subscribe.sensor.motion"></option>
+          <option value="compass" data-i18n="sensor-subscribe.sensor.compass"></option>
+          <option value="geolocation" data-i18n="sensor-subscribe.sensor.geolocation"></option>
+          <option value="magnetic" data-i18n="sensor-subscribe.sensor.magnetic"></option>
+          <option value="gyroscope" data-i18n="sensor-subscribe.sensor.gyroscope"></option>
+          <option value="light" data-i18n="sensor-subscribe.sensor.light"></option>
+          <option value="proximity" data-i18n="sensor-subscribe.sensor.proximity"></option>
+          <option value="nfc" data-i18n="sensor-subscribe.sensor.nfc"></option>
+      </select>
+      <input type="hidden" id="node-input-sensor">
+  </div>
 
-    <div class="form-row sensor-freq" hidden>
-        <label for="node-input-freq"><i class="fa fa-volume-up fa-fw"></i> <span data-i18n="sensor-subscribe.label.freq"></span></label>
-        <input type="text" id="node-input-freq" >
-    </div>
+  <div class="form-row sensor-freq" hidden>
+      <label for="node-input-freq"><i class="fa fa-volume-up fa-fw"></i> <span data-i18n="sensor-subscribe.label.freq"></span></label>
+      <input type="text" id="node-input-freq" >
+  </div>
 
-    <div class="form-row">
-        <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="node-red:common.label.name"></span></label>
-        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
-    </div>
+  <div class="form-row">
+      <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="node-red:common.label.name"></span></label>
+      <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+  </div>
 </script>
 
 <style>
-    input#node-input-freq{
-        text-align: end;
-        width:60px !important;
-    }
+  input#node-input-freq {
+    text-align: end;
+    width: 60px !important;
+  }
 </style>
 
 <script type="text/javascript">
-    RED.nodes.registerType('sensor subscribe', {
-        category: 'sensor',
-        color: '#a4c639',
-        defaults: {
-            sensor:{
-                value: "motion"
-            },
-            freq:{
-                value: 3000
-            },
-            name: {
-                value: ""
-            }
-        },
-        inputs: 1,
-        outputs: 1,
-        icon: "subscribe.png",
-        label: function () {
-            return this.name || this._("sensor-subscribe.subscribe");
-        },
-        oneditprepare: function() {
-            $( "#node-input-freq" ).spinner({min:100,step:100});
-            $("#subscribe-sensor-select option").filter(function() {
-                var v = $("#node-input-sensor").val();
-                toggleFreq(v);
-                return $(this).val() == v;
-            }).attr('selected', true);
-            $("#subscribe-sensor-select").change(function() {
-                var v = $("#subscribe-sensor-select option:selected").val();
-                toggleFreq(v);
-                $("#node-input-sensor").val(v);
-            });
+  RED.nodes.registerType('sensor subscribe', {
+    category: 'sensor',
+    color: '#a4c639',
+    defaults: {
+      sensor: {
+        value: 'motion',
+      },
+      freq: {
+        value: 3000,
+      },
+      name: {
+        value: '',
+      },
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: 'subscribe.png',
+    label: function () {
+      return this.name || this._('sensor-subscribe.subscribe');
+    },
+    oneditprepare: function () {
+      $('#node-input-freq').spinner({ min: 100, step: 100 });
+      $('#subscribe-sensor-select option')
+        .filter(function () {
+          var v = $('#node-input-sensor').val();
+          toggleFreq(v);
+          return $(this).val() == v;
+        })
+        .attr('selected', true);
+      $('#subscribe-sensor-select').change(function () {
+        var v = $('#subscribe-sensor-select option:selected').val();
+        toggleFreq(v);
+        $('#node-input-sensor').val(v);
+      });
 
-            function toggleFreq(v){
-                if(v === "geolocation" || v === "nfc"){
-                    $(".sensor-freq").hide();
-                }else{
-                    $(".sensor-freq").show();
-                }
-            }
-        },
-        oneditsave: function() {
-            if($( "#node-input-freq" ).val() < 100){
-                $( "#node-input-freq" ).val(100);
-            }
+      function toggleFreq(v) {
+        if (v === 'geolocation' || v === 'nfc') {
+          $('.sensor-freq').hide();
+        } else {
+          $('.sensor-freq').show();
         }
-    });
+      }
+    },
+    oneditsave: function () {
+      if ($('#node-input-freq').val() < 100) {
+        $('#node-input-freq').val(100);
+      }
+    },
+  });
 </script>

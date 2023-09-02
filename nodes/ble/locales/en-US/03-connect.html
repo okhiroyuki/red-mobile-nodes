@@ -1,31 +1,31 @@
 <script type="text/x-red" data-help-name="ble connect">
-    <p>Connect to a Bluetooth LE device. After connecting, it automatically discovers all device services, characteristics, and descriptors.</p>
-    <h3>Outputs</h3>
-    <dl class="message-properties">
-        <dt>payload.name <span class="property-type">string</span></dt>
-        <dd>Device name</dd>
-        <dt>payload.address <span class="property-type">string</span></dt>
-        <dd>Device address</dd>
-        <dt>payload.status <span class="property-type">string</span></dt>
-        <dd>status</dd>
-        <dt>service <span class="property-type">object</span></dt>
-        <dd>Array of service objects below</dd>
-    </dl>
-    <h3>Details</h3>
-    <p>Service Object:</p>
-    <ul>
-        <li>uuid = Service's uuid</li>
-        <li>characteristics = Array of characteristic objects below</li>
-    </ul>
-    <p>Characteristic Object:</p>
-    <ul>
-        <li>uuid = Characteristic's uuid</li>
-        <li>properties = If the property is defined as a key, the characteristic has that property</li>
-        <li>permissions = If the permission is defined as a key, the character has that permission</li>
-        <li>descriptors = Array of descriptor objects below</li>
-    </ul>
-    <p>Descriptor Object:</p>
-    <ul>
-        <li>uuid = Descriptor's uuid</li>
-    </ul>
+  <p>Connect to a Bluetooth LE device. After connecting, it automatically discovers all device services, characteristics, and descriptors.</p>
+  <h3>Outputs</h3>
+  <dl class="message-properties">
+      <dt>payload.name <span class="property-type">string</span></dt>
+      <dd>Device name</dd>
+      <dt>payload.address <span class="property-type">string</span></dt>
+      <dd>Device address</dd>
+      <dt>payload.status <span class="property-type">string</span></dt>
+      <dd>status</dd>
+      <dt>service <span class="property-type">object</span></dt>
+      <dd>Array of service objects below</dd>
+  </dl>
+  <h3>Details</h3>
+  <p>Service Object:</p>
+  <ul>
+      <li>uuid = Service's uuid</li>
+      <li>characteristics = Array of characteristic objects below</li>
+  </ul>
+  <p>Characteristic Object:</p>
+  <ul>
+      <li>uuid = Characteristic's uuid</li>
+      <li>properties = If the property is defined as a key, the characteristic has that property</li>
+      <li>permissions = If the permission is defined as a key, the character has that permission</li>
+      <li>descriptors = Array of descriptor objects below</li>
+  </ul>
+  <p>Descriptor Object:</p>
+  <ul>
+      <li>uuid = Descriptor's uuid</li>
+  </ul>
 </script>

@@ -1,50 +1,49 @@
 <script type="text/x-red" data-template-name="ble scan">
-    <div class="form-row">
-        <label for="node-input-timeout"> <i class="fa fa-fw fa-clock-o"></i> <span data-i18n="ble-scan.label.timeout"></label>
-        <input type="text" id="node-input-timeout">
-    </div>
+  <div class="form-row">
+      <label for="node-input-timeout"> <i class="fa fa-fw fa-clock-o"></i> <span data-i18n="ble-scan.label.timeout"></label>
+      <input type="text" id="node-input-timeout">
+  </div>
 
-    <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
-        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
-    </div>
+  <div class="form-row">
+      <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+      <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+  </div>
 </script>
 
 <style>
-    input#node-input-timeout{
-        text-align: end;
-        width:50px !important;
-    }
+  input#node-input-timeout {
+    text-align: end;
+    width: 50px !important;
+  }
 </style>
 
 <script type="text/javascript">
-    RED.nodes.registerType('ble scan', {
-        category: 'ble',
-        color: '#4d94ff',
-        defaults: {
-            name: {
-                value: ""
-            },
-            timeout: {
-                value: 5,
-                validate:RED.validators.number()
-            }
-        },
-        inputs: 1,
-        outputs: 1,
-        icon: "ble.png",
-        label: function () {
-            return this.name || this._("ble-scan.ble-scan");
-        },
-        oneditprepare: function() {
-            $("#node-input-timeout").spinner({min: 1});
-        },
-        oneditsave: function() {
-            var s = $("#node-input-timeout").val();
-            if(s < 1){
-                $("#node-input-timeout").val(1);
-            }
-
-        }
-    });
+  RED.nodes.registerType('ble scan', {
+    category: 'ble',
+    color: '#4d94ff',
+    defaults: {
+      name: {
+        value: '',
+      },
+      timeout: {
+        value: 5,
+        validate: RED.validators.number(),
+      },
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: 'ble.png',
+    label: function () {
+      return this.name || this._('ble-scan.ble-scan');
+    },
+    oneditprepare: function () {
+      $('#node-input-timeout').spinner({ min: 1 });
+    },
+    oneditsave: function () {
+      var s = $('#node-input-timeout').val();
+      if (s < 1) {
+        $('#node-input-timeout').val(1);
+      }
+    },
+  });
 </script>

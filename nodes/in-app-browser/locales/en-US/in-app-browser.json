@@ -1,18 +1,18 @@
 {
-    "browser": {
-        "open": "browser open",
-        "close": "browser close",
-        "label": {
-            "target": "Target",
-            "url": "Url",
-            "options": "Options"
-        },
-        "target": {
-            "system": "System",
-            "blank": "Blank"
-        },
-        "errors": {
-            "response": "Could not get sensor data."
-        }
+  "browser": {
+    "open": "browser open",
+    "close": "browser close",
+    "label": {
+      "target": "Target",
+      "url": "Url",
+      "options": "Options"
+    },
+    "target": {
+      "system": "System",
+      "blank": "Blank"
+    },
+    "errors": {
+      "response": "Could not get sensor data."
     }
+  }
 }

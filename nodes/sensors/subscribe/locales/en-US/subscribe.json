@@ -1,20 +1,20 @@
 {
-    "sensor-subscribe": {
-        "subscribe": "subscribe",
-        "label": {
-            "sensor": "Sensor",
-            "freq": "Freq",
-            "name": "Name"
-        },
-        "sensor":{
-            "motion": "Motion",
-            "compass": "Compass",
-            "geolocation": "GeoLocation",
-            "magnetic": "Magnetic",
-            "gyroscope": "Gyroscope",
-            "light": "Light",
-            "proximity": "Proximity",
-            "nfc": "NFC"
-        }
+  "sensor-subscribe": {
+    "subscribe": "subscribe",
+    "label": {
+      "sensor": "Sensor",
+      "freq": "Freq",
+      "name": "Name"
+    },
+    "sensor": {
+      "motion": "Motion",
+      "compass": "Compass",
+      "geolocation": "GeoLocation",
+      "magnetic": "Magnetic",
+      "gyroscope": "Gyroscope",
+      "light": "Light",
+      "proximity": "Proximity",
+      "nfc": "NFC"
     }
+  }
 }

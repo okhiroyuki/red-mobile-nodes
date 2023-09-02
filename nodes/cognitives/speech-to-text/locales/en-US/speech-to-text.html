@@ -1,29 +1,29 @@
 <script type="text/x-red" data-help-name="speech-to-text">
-    <p>Get the result of speech recognition.</p>
-    <h3>Inputs</h3>
-    <dl class="message-properties">
-        <dt>payload.language<span class="property-type">string</span></dt>
-        <dd>used language for recognition (default "en-US").</dd>
-        <dt>payload.matches <span class="property-type">number</span></dt>
-        <dd>number of return matches (default 5).</dd>
-        <dt>payload.prompt <span class="property-type">string</span></dt>
-        <dd>displayed prompt of listener popup window (default "")</dd>
-        <dt>payload.showPopup <span class="property-type">boolean</span></dt>
-        <dd>display listener popup window with prompt (default true)</dd>
-    </dl>
-    <h3>Outputs</h3>
-    <dl class="message-properties">
-        <dt>payload<span class="property-type">array</span></dt>
-        <dd>an Array of recognized terms.</dd>
-    </dl>
-    <p>Example</p>
-<pre>
-msg.payload = {
-    "language": "en-US",
-    "matches": 5,
-    "prompt": "please talk",
-    "showPopup": true
-}
-</pre>
-    <p><b>Note</b>: See <a href="https://github.com/pbakondy/cordova-plugin-speechrecognition#getsupportedlanguages">here</a> for supported languages.</p>
+      <p>Get the result of speech recognition.</p>
+      <h3>Inputs</h3>
+      <dl class="message-properties">
+          <dt>payload.language<span class="property-type">string</span></dt>
+          <dd>used language for recognition (default "en-US").</dd>
+          <dt>payload.matches <span class="property-type">number</span></dt>
+          <dd>number of return matches (default 5).</dd>
+          <dt>payload.prompt <span class="property-type">string</span></dt>
+          <dd>displayed prompt of listener popup window (default "")</dd>
+          <dt>payload.showPopup <span class="property-type">boolean</span></dt>
+          <dd>display listener popup window with prompt (default true)</dd>
+      </dl>
+      <h3>Outputs</h3>
+      <dl class="message-properties">
+          <dt>payload<span class="property-type">array</span></dt>
+          <dd>an Array of recognized terms.</dd>
+      </dl>
+      <p>Example</p>
+  <pre>
+  msg.payload = {
+      "language": "en-US",
+      "matches": 5,
+      "prompt": "please talk",
+      "showPopup": true
+  }
+  </pre>
+      <p><b>Note</b>: See <a href="https://github.com/pbakondy/cordova-plugin-speechrecognition#getsupportedlanguages">here</a> for supported languages.</p>
 </script>

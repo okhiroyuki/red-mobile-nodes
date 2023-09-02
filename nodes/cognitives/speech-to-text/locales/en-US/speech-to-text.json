@@ -1,11 +1,11 @@
 {
-    "speech-to-text": {
-        "speech-to-text": "speech to text",
-        "label": {
-            "name": "Name"
-        },
-        "errors": {
-            "response": "Could not get sensor data."
-        }
+  "speech-to-text": {
+    "speech-to-text": "speech to text",
+    "label": {
+      "name": "Name"
+    },
+    "errors": {
+      "response": "Could not get sensor data."
     }
+  }
 }

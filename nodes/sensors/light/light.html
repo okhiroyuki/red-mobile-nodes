@@ -1,28 +1,26 @@
 <script type="text/x-red" data-template-name="light">
-    <div class="form-row">
-        <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="light.label.name"></span></label>
-        <input type="text" id="node-input-name" data-i18n="[placeholder]light.label.name">
-    </div>
+  <div class="form-row">
+      <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="light.label.name"></span></label>
+      <input type="text" id="node-input-name" data-i18n="[placeholder]light.label.name">
+  </div>
 </script>
 
 <script type="text/javascript">
-    RED.nodes.registerType('light', {
-        category: 'sensor',
-        color: '#a4c639',
-        defaults: {
-            name: {
-                value: ""
-            }
-        },
-        inputs: 0,
-        outputs: 1,
-        icon: "light.png",
-        label: function () {
-            return this.name || this._("light.light");
-        },
-        oneditprepare: function() {
-        },
-        oneditsave: function() {
-        }
-    });
+  RED.nodes.registerType('light', {
+    category: 'sensor',
+    color: '#a4c639',
+    defaults: {
+      name: {
+        value: '',
+      },
+    },
+    inputs: 0,
+    outputs: 1,
+    icon: 'light.png',
+    label: function () {
+      return this.name || this._('light.light');
+    },
+    oneditprepare: function () {},
+    oneditsave: function () {},
+  });
 </script>

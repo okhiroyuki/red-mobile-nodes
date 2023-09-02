@@ -1,25 +1,25 @@
 {
-    "volume":{
-        "volume-get": "volume get",
-        "volume-set": "volume set",
-        "label":{
-            "volume": "Volume",
-            "target": "Target"
-        },
-        "target":{
-            "alarm": "the alarm volume",
-            "dtmf": "the dtmf volume",
-            "music": "the music/media volume",
-            "notification": "the notification volume",
-            "ringer": "the ringer/ringtone volume",
-            "system": "the system volume",
-            "voiceCall": "the voice call volume",
-            "all": "all different types of volume"
-        },
-        "errors":{
-            "response-get": "Could not get volume.",
-            "response-set": "Could not set volume.",
-            "volume": "parameter error: msg.payload."
-        }
+  "volume": {
+    "volume-get": "volume get",
+    "volume-set": "volume set",
+    "label": {
+      "volume": "Volume",
+      "target": "Target"
+    },
+    "target": {
+      "alarm": "the alarm volume",
+      "dtmf": "the dtmf volume",
+      "music": "the music/media volume",
+      "notification": "the notification volume",
+      "ringer": "the ringer/ringtone volume",
+      "system": "the system volume",
+      "voiceCall": "the voice call volume",
+      "all": "all different types of volume"
+    },
+    "errors": {
+      "response-get": "Could not get volume.",
+      "response-set": "Could not set volume.",
+      "volume": "parameter error: msg.payload."
     }
+  }
 }

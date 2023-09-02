@@ -1,68 +1,68 @@
 {
-    "serial-open":{
-        "serial-open": "Serial Open",
-        "label":{
-            "baudRate": "Baud Rate",
-            "dataBits": "Data Bits",
-            "stopBits": "Stop Bits",
-            "parity": "Parity",
-            "dtr": "DTR",
-            "rts": "RTS"
-        },
-        "baudRate":{
-            "300": "300",
-            "1200": "1200",
-            "4800": "4800",
-            "9600": "9600",
-            "19200": "19200",
-            "38400": "38400",
-            "57600": "57600",
-            "115200": "115200"
-        },
-        "dataBits":{
-            "5": "5",
-            "6": "6",
-            "7": "7",
-            "8": "8"
-        },
-        "stopBits":{
-            "1": "1",
-            "2": "2"
-        },
-        "parity":{
-            "none": "None",
-            "odd": "Odd",
-            "even": "Even"
-        },
-        "errors":{
-            "response": "Could not open serial."
-        }
+  "serial-open": {
+    "serial-open": "Serial Open",
+    "label": {
+      "baudRate": "Baud Rate",
+      "dataBits": "Data Bits",
+      "stopBits": "Stop Bits",
+      "parity": "Parity",
+      "dtr": "DTR",
+      "rts": "RTS"
     },
-    "serial-write":{
-        "serial-write": "Serial Write",
-        "label":{
-            "data": "Data",
-            "dataType": "DataType"
-        },
-        "dataType":{
-            "string": "Strings",
-            "hex": "Hex-Strings"
-        },
-        "errors":{
-            "response": "Could not write serial data.",
-            "payload": "no send data."
-        }
+    "baudRate": {
+      "300": "300",
+      "1200": "1200",
+      "4800": "4800",
+      "9600": "9600",
+      "19200": "19200",
+      "38400": "38400",
+      "57600": "57600",
+      "115200": "115200"
     },
-    "serial-close":{
-        "serial-close": "Serial Close",
-        "errors":{
-            "response": "Could not close serial."
-        }
+    "dataBits": {
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8"
     },
-    "serial-read":{
-        "serial-read": "Serial Read",
-        "errors":{
-            "response": "Could not read serial data."
-        }
+    "stopBits": {
+      "1": "1",
+      "2": "2"
+    },
+    "parity": {
+      "none": "None",
+      "odd": "Odd",
+      "even": "Even"
+    },
+    "errors": {
+      "response": "Could not open serial."
     }
+  },
+  "serial-write": {
+    "serial-write": "Serial Write",
+    "label": {
+      "data": "Data",
+      "dataType": "DataType"
+    },
+    "dataType": {
+      "string": "Strings",
+      "hex": "Hex-Strings"
+    },
+    "errors": {
+      "response": "Could not write serial data.",
+      "payload": "no send data."
+    }
+  },
+  "serial-close": {
+    "serial-close": "Serial Close",
+    "errors": {
+      "response": "Could not close serial."
+    }
+  },
+  "serial-read": {
+    "serial-read": "Serial Read",
+    "errors": {
+      "response": "Could not read serial data."
+    }
+  }
 }

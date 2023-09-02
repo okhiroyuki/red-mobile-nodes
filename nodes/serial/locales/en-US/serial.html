@@ -1,29 +1,29 @@
 <script type="text/x-red" data-help-name="serial-open">
-    <p>Open the serial port</p>
-    <p><b>Note</b>: First request the permission to use the serial port to the system.</p>
+  <p>Open the serial port</p>
+  <p><b>Note</b>: First request the permission to use the serial port to the system.</p>
 </script>
 
 <script type="text/x-red" data-help-name="serial-close">
-    <p>Close the serial port.</p>
+  <p>Close the serial port.</p>
 </script>
 
 <script type="text/x-red" data-help-name="serial-write">
-    <p>Write string via serial.</p>
-    <h3>Inputs</h3>
-    <dl class="message-properties">
-        <dt>payload<span class="property-type">string</span></dt>
-        <dd>The string representation to be written to the serial port. It can be overwritten only when the string is not set in the property.</dd>
-    </dl>
-    <h4>Note</h4>
-    <p>Hex-Strings to have an easy way to work with RS232 protocol driven hardware from your javascript by using hex-strings.</p>
-    <p>In a nutshell, serial.writeHex('ff') would write just a single byte where serial.write('ff') would let java write 2 bytes to the serial port.</p>
+  <p>Write string via serial.</p>
+  <h3>Inputs</h3>
+  <dl class="message-properties">
+      <dt>payload<span class="property-type">string</span></dt>
+      <dd>The string representation to be written to the serial port. It can be overwritten only when the string is not set in the property.</dd>
+  </dl>
+  <h4>Note</h4>
+  <p>Hex-Strings to have an easy way to work with RS232 protocol driven hardware from your javascript by using hex-strings.</p>
+  <p>In a nutshell, serial.writeHex('ff') would write just a single byte where serial.write('ff') would let java write 2 bytes to the serial port.</p>
 </script>
 
 <script type="text/x-red" data-help-name="serial-read">
-    <p>Read data via serial. Data output starts automatically when the USB serial is opened. When communication is closed, output stops.</p>
-    <h3>Outputs</h3>
-    <dl class="message-properties">
-        <dt>payload <span class="property-type">string</span></dt>
-        <dd>Get the latest value of data read serially. The data delimiter is \n.</dd>
-    </dl>
+  <p>Read data via serial. Data output starts automatically when the USB serial is opened. When communication is closed, output stops.</p>
+  <h3>Outputs</h3>
+  <dl class="message-properties">
+      <dt>payload <span class="property-type">string</span></dt>
+      <dd>Get the latest value of data read serially. The data delimiter is \n.</dd>
+  </dl>
 </script>

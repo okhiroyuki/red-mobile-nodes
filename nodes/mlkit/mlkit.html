@@ -1,86 +1,80 @@
 <script type="text/x-red" data-template-name="text recognizer">
-    <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
-        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
-    </div>
+  <div class="form-row">
+      <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+      <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+  </div>
 </script>
 
 <script type="text/javascript">
-    RED.nodes.registerType('text recognizer', {
-        category: 'mlkit beta',
-        color: '#ECEFF1',
-        defaults: {
-            name: {
-                value: ""
-            }
-        },
-        inputs: 1,
-        outputs: 1,
-        icon: "mlkit.png",
-        label: function () {
-            return this.name || this._("mlkit.textRecognizer");
-        },
-        oneditprepare: function() {
-        },
-        oneditsave: function() {
-        }
-    });
+  RED.nodes.registerType('text recognizer', {
+    category: 'mlkit beta',
+    color: '#ECEFF1',
+    defaults: {
+      name: {
+        value: '',
+      },
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: 'mlkit.png',
+    label: function () {
+      return this.name || this._('mlkit.textRecognizer');
+    },
+    oneditprepare: function () {},
+    oneditsave: function () {},
+  });
 </script>
 
 <script type="text/x-red" data-template-name="image labeler">
-    <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
-        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
-    </div>
+  <div class="form-row">
+      <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+      <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+  </div>
 </script>
 
 <script type="text/javascript">
-    RED.nodes.registerType('image labeler', {
-        category: 'mlkit beta',
-        color: '#ECEFF1',
-        defaults: {
-            name: {
-                value: ""
-            }
-        },
-        inputs: 1,
-        outputs: 1,
-        icon: "mlkit.png",
-        label: function () {
-            return this.name || this._("mlkit.imageLabeler");
-        },
-        oneditprepare: function() {
-        },
-        oneditsave: function() {
-        }
-    });
+  RED.nodes.registerType('image labeler', {
+    category: 'mlkit beta',
+    color: '#ECEFF1',
+    defaults: {
+      name: {
+        value: '',
+      },
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: 'mlkit.png',
+    label: function () {
+      return this.name || this._('mlkit.imageLabeler');
+    },
+    oneditprepare: function () {},
+    oneditsave: function () {},
+  });
 </script>
 
 <script type="text/x-red" data-template-name="barcode detector">
-    <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
-        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
-    </div>
+  <div class="form-row">
+      <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+      <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+  </div>
 </script>
 
 <script type="text/javascript">
-    RED.nodes.registerType('barcode detector', {
-        category: 'mlkit beta',
-        color: '#ECEFF1',
-        defaults: {
-            name: {
-                value: ""
-            }
-        },
-        inputs: 1,
-        outputs: 1,
-        icon: "mlkit.png",
-        label: function () {
-            return this.name || this._("mlkit.barcodeDetector");
-        },
-        oneditprepare: function() {
-        },
-        oneditsave: function() {
-        }
-    });
+  RED.nodes.registerType('barcode detector', {
+    category: 'mlkit beta',
+    color: '#ECEFF1',
+    defaults: {
+      name: {
+        value: '',
+      },
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: 'mlkit.png',
+    label: function () {
+      return this.name || this._('mlkit.barcodeDetector');
+    },
+    oneditprepare: function () {},
+    oneditsave: function () {},
+  });
 </script>

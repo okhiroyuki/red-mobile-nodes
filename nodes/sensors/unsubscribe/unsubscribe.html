@@ -1,53 +1,55 @@
 <script type="text/x-red" data-template-name="sensor unsubscribe">
-    <div class="form-row">
-        <label for="node-input-sensor"><i class="fa fa-list"></i> <span data-i18n="sensor-unsubscribe.label.sensor"></span></label>
-        <select type="text" id="unsubscribe-sensor-select">
-            <option value="motion" data-i18n="sensor-unsubscribe.sensor.motion"></option>
-            <option value="compass" data-i18n="sensor-unsubscribe.sensor.compass"></option>
-            <option value="geolocation" data-i18n="sensor-unsubscribe.sensor.geolocation"></option>
-            <option value="magnetic" data-i18n="sensor-unsubscribe.sensor.magnetic"></option>
-            <option value="gyroscope" data-i18n="sensor-unsubscribe.sensor.gyroscope"></option>
-            <option value="light" data-i18n="sensor-unsubscribe.sensor.light"></option>
-            <option value="proximity" data-i18n="sensor-unsubscribe.sensor.proximity"></option>
-            <option value="nfc" data-i18n="sensor-unsubscribe.sensor.nfc"></option>
-        </select>
-        <input type="hidden" id="node-input-sensor">
-    </div>
+  <div class="form-row">
+      <label for="node-input-sensor"><i class="fa fa-list"></i> <span data-i18n="sensor-unsubscribe.label.sensor"></span></label>
+      <select type="text" id="unsubscribe-sensor-select">
+          <option value="motion" data-i18n="sensor-unsubscribe.sensor.motion"></option>
+          <option value="compass" data-i18n="sensor-unsubscribe.sensor.compass"></option>
+          <option value="geolocation" data-i18n="sensor-unsubscribe.sensor.geolocation"></option>
+          <option value="magnetic" data-i18n="sensor-unsubscribe.sensor.magnetic"></option>
+          <option value="gyroscope" data-i18n="sensor-unsubscribe.sensor.gyroscope"></option>
+          <option value="light" data-i18n="sensor-unsubscribe.sensor.light"></option>
+          <option value="proximity" data-i18n="sensor-unsubscribe.sensor.proximity"></option>
+          <option value="nfc" data-i18n="sensor-unsubscribe.sensor.nfc"></option>
+      </select>
+      <input type="hidden" id="node-input-sensor">
+  </div>
 
-    <div class="form-row">
-        <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="node-red:common.label.name"></span></label>
-        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
-    </div>
+  <div class="form-row">
+      <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="node-red:common.label.name"></span></label>
+      <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+  </div>
 </script>
 
 <script type="text/javascript">
-    RED.nodes.registerType('sensor unsubscribe', {
-        category: 'sensor',
-        color: '#a4c639',
-        defaults: {
-            sensor:{
-                value: "motion"
-            },
-            name: {
-                value: ""
-            }
-        },
-        inputs: 1,
-        outputs: 1,
-        icon: "unsubscribe.png",
-        label: function () {
-            return this.name || this._("sensor-unsubscribe.unsubscribe");
-        },
-        oneditprepare: function() {
-            $("#unsubscribe-sensor-select option").filter(function() {
-                var v = $("#node-input-sensor").val();
-                return $(this).val() == v;
-            }).attr('selected', true);
-            $("#unsubscribe-sensor-select").change(function() {
-                var v = $("#unsubscribe-sensor-select option:selected").val();
-                $("#node-input-sensor").val(v);
-            });
-        },
-        oneditsave: function() { }
-    });
+  RED.nodes.registerType('sensor unsubscribe', {
+    category: 'sensor',
+    color: '#a4c639',
+    defaults: {
+      sensor: {
+        value: 'motion',
+      },
+      name: {
+        value: '',
+      },
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: 'unsubscribe.png',
+    label: function () {
+      return this.name || this._('sensor-unsubscribe.unsubscribe');
+    },
+    oneditprepare: function () {
+      $('#unsubscribe-sensor-select option')
+        .filter(function () {
+          var v = $('#node-input-sensor').val();
+          return $(this).val() == v;
+        })
+        .attr('selected', true);
+      $('#unsubscribe-sensor-select').change(function () {
+        var v = $('#unsubscribe-sensor-select option:selected').val();
+        $('#node-input-sensor').val(v);
+      });
+    },
+    oneditsave: function () {},
+  });
 </script>

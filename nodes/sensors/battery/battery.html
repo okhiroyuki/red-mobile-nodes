@@ -1,28 +1,26 @@
 <script type="text/x-red" data-template-name="battery">
-    <div class="form-row">
-        <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="battery.label.name"></span></label>
-        <input type="text" id="node-input-name" data-i18n="[placeholder]battery.label.name">
-    </div>
+  <div class="form-row">
+      <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> <span data-i18n="battery.label.name"></span></label>
+      <input type="text" id="node-input-name" data-i18n="[placeholder]battery.label.name">
+  </div>
 </script>
 
 <script type="text/javascript">
-    RED.nodes.registerType('battery', {
-        category: 'sensor',
-        color: '#a4c639',
-        defaults: {
-            name: {
-                value: ""
-            }
-        },
-        inputs: 1,
-        outputs: 1,
-        icon: "battery.png",
-        label: function () {
-            return this.name || this._("battery.battery");
-        },
-        oneditprepare: function() {
-        },
-        oneditsave: function() {
-        }
-    });
+  RED.nodes.registerType('battery', {
+    category: 'sensor',
+    color: '#a4c639',
+    defaults: {
+      name: {
+        value: '',
+      },
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: 'battery.png',
+    label: function () {
+      return this.name || this._('battery.battery');
+    },
+    oneditprepare: function () {},
+    oneditsave: function () {},
+  });
 </script>

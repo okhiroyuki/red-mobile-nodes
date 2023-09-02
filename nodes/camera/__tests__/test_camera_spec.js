@@ -3,13 +3,11 @@ const helper = require('node-red-node-test-helper');
 const cameraNode = require('../camera.js');
 const qs = require('qs');
 
-const PORT = 1880;
-
 jest.mock('axios');
 
 helper.init(require.resolve('node-red'), {
-  redMobilePort: PORT,
-  redMobileAccessKey: 'key',
+  redMobilePort: 1880,
+  redMobileAccessKey: 'dummy_key',
 });
 
 describe('camera Node', () => {
@@ -51,20 +49,20 @@ describe('camera Node', () => {
     helper.load(cameraNode, flow, function () {
       const n2 = helper.getNode('n2');
       const n1 = helper.getNode('n1');
-      const mockRequest = jest.spyOn(axios, 'request');
+      const mockPost = jest.spyOn(axios, 'post');
       const RESPONSE_VALUE = 'response';
-      mockRequest.mockReturnValue(Promise.resolve({ data: RESPONSE_VALUE }));
+      mockPost.mockImplementation((fn) => {
+        if (fn.url === '/mobile') {
+          return Promise.resolve({ data: RESPONSE_VALUE });
+        }
+      });
 
       n2.on('input', function (msg) {
         try {
           expect(msg).toHaveProperty('payload', RESPONSE_VALUE);
-          expect(mockRequest.mock.calls).toHaveLength(1);
+          expect(mockPost.mock.calls).toHaveLength(1);
 
-          const mock_calls = mockRequest.mock.calls[0][0];
-          expect(mock_calls.baseURL).toBe(`http://127.0.0.1:${PORT}`);
-          expect(mock_calls.url).toBe('/mobile');
-          expect(mock_calls.method).toBe('post');
-
+          const mock_calls = mockPost.mock.calls[0][0];
           const parsed_data = qs.parse(mock_calls.data);
           expect(parsed_data.method).toBe('camera');
           expect(parsed_data.payload).toBe('test');

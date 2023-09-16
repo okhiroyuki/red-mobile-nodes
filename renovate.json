@@ -29,6 +29,13 @@
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
       "stabilityDays": 3,
       "prCreation": "not-pending"
+    },
+    {
+      "description": "Ignore nodejs",
+      "matchPackageNames": ["node"],
+      "matchManagers": ["npm"],
+      "matchDepTypes": [ "engines" ],
+      "dependencyDashboardApproval": true
     }
   ]
 }

@@ -1,5 +1,6 @@
 .github/
-node_modules/
+.vscode/
+**/__tests__/
 .editorconfig
 .eslintcache
 .eslintrc.js
@@ -7,5 +8,5 @@ node_modules/
 .node-version
 .pre-commit-config.yaml
 .prettierrc
-package-lock.json
+jest.config.json
 renovate.json

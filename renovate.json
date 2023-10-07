@@ -1,40 +1,38 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base",
-    ":enablePreCommit",
-    ":prHourlyLimitNone",
-    ":prConcurrentLimitNone",
+    "config:recommended",
+    ":dependencyDashboardApproval",
     ":timezone(Asia/Tokyo)"
   ],
   "rangeStrategy": "pin",
   "major": {
-    "automerge": false
+    "dependencyDashboardApproval": true
   },
   "nodenv": {
     "enabled": false
   },
   "lockFileMaintenance": {
     "enabled": true,
-    "automerge": true
+    "automerge": true,
+    "platformAutomerge": true
   },
-  "automergeSchedule": ["before 2am"],
   "packageRules": [
     {
       "automerge": true,
+      "platformAutomerge": true,
       "matchManagers": ["pre-commit"]
     },
     {
       "automerge": true,
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-      "stabilityDays": 3,
-      "prCreation": "not-pending"
+      "platformAutomerge": true,
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"]
     },
     {
       "description": "Ignore nodejs",
       "matchPackageNames": ["node"],
       "matchManagers": ["npm"],
-      "matchDepTypes": [ "engines" ],
+      "matchDepTypes": ["engines"],
       "enabled": false
     }
   ]

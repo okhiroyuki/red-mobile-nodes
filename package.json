@@ -4,7 +4,7 @@
   "description": "Extra nodes for RedMobile",
   "main": "app.js",
   "scripts": {
-    "test": "npx jest nodes/",
+    "test": "npx jest nodes/ lib/",
     "lint": "npx eslint --cache --fix nodes/ lib/ && npx prettier --write nodes/ lib/"
   },
   "keywords": [

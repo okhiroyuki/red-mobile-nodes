@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "outDir": "./dist",
+    "rootDir": "./",
+    "lib": ["es5", "dom"],
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowJs": true
+  },
+  "include": ["nodes/**/*", "lib/**/*"],
+  "exclude": ["nodes/**/__tests__/*", "lib/__tests__/*"]
+}

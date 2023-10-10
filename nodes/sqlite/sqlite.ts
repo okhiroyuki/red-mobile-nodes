@@ -1,13 +1,17 @@
-module.exports = function (RED) {
-  'use strict';
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const DB = require('./db');
+import { NodeAPI } from 'node-red';
+import DB from './db';
+import {
+  SqliteNode,
+  SqliteNodeDef,
+  SqliteNodeMessageInFlow,
+} from '../@types/sqlite';
 
-  function SqliteNodeDB(n) {
-    RED.nodes.createNode(this, n);
+module.exports = function (RED: NodeAPI) {
+  function SqliteNodeDB(this: SqliteNode, props: SqliteNodeDef) {
+    RED.nodes.createNode(this, props);
 
-    this.dbname = n.db;
-    this.mod = n.mode;
+    this.dbname = props.db;
+    this.mode = props.mode;
     const node = this;
 
     node.doConnect = function () {
@@ -24,11 +28,11 @@ module.exports = function (RED) {
   }
   RED.nodes.registerType('sqlitedb', SqliteNodeDB);
 
-  function SqliteNodeIn(n) {
-    RED.nodes.createNode(this, n);
-    this.mydb = n.mydb;
-    this.sqlquery = n.sqlquery || 'msg.topic';
-    this.sql = n.sql;
+  function SqliteNodeIn(this: SqliteNode, props: SqliteNodeDef) {
+    RED.nodes.createNode(this, props);
+    this.mydb = props.mydb;
+    this.sqlquery = props.sqlquery || 'msg.topic';
+    this.sql = props.sql;
     this.mydbConfig = RED.nodes.getNode(this.mydb);
     const node = this;
     node.status({});
@@ -38,7 +42,7 @@ module.exports = function (RED) {
       node.status({ fill: 'green', shape: 'dot', text: this.mydbConfig.mod });
       let bind = [];
 
-      const doQuery = function (msg) {
+      const doQuery = function (msg: SqliteNodeMessageInFlow) {
         if (node.sqlquery == 'msg.topic') {
           if (typeof msg.topic === 'string') {
             if (msg.topic.length > 0) {
@@ -166,7 +170,7 @@ module.exports = function (RED) {
         }
       };
 
-      node.on('input', function (msg) {
+      node.on('input', function (msg: SqliteNodeMessageInFlow) {
         if (msg && Object.prototype.hasOwnProperty.call(msg, 'extension')) {
           node.mydbConfig.db.loadExtension(msg.extension, function (err) {
             if (err) {

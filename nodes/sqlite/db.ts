@@ -1,19 +1,26 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const axios = require('axios');
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const qs = require('qs');
+import axios from 'axios';
+import { NodeAPISettingsWithData } from 'node-red';
+import qs from 'qs';
 const BASE_URL = 'http://127.0.0.1';
 const PATH = '/mobile';
 
 let dbname;
 let redSettings;
 
-function DB(_settings, _dbname) {
+export default function DB(
+  _settings: NodeAPISettingsWithData,
+  _dbname: string
+) {
   redSettings = _settings;
   dbname = _dbname;
 }
 
-DB.prototype.all = (id, sql, params, callback) => {
+DB.prototype.all = (
+  id: string,
+  sql: string & any[],
+  params: any[],
+  callback
+) => {
   const json = {
     id: id,
     method: 'sqlite-all',
@@ -32,7 +39,7 @@ DB.prototype.all = (id, sql, params, callback) => {
     });
 };
 
-DB.prototype.exec = (id, sql, callback) => {
+DB.prototype.exec = (id: string, sql: string & any[], callback) => {
   const json = {
     id: id,
     method: 'sqlite-exec',
@@ -50,11 +57,11 @@ DB.prototype.exec = (id, sql, callback) => {
     });
 };
 
-DB.prototype.loadExtension = (extension, callback) => {
+DB.prototype.loadExtension = (_, callback) => {
   callback(new Error('extension is not supported'));
 };
 
-DB.prototype.close = function (id, done) {
+DB.prototype.close = function (id: string, done: () => void) {
   const json = {
     id: id,
     method: 'sqlite-close',
@@ -71,7 +78,7 @@ DB.prototype.close = function (id, done) {
     });
 };
 
-DB.prototype.delete = function (id, callback) {
+DB.prototype.delete = function (id: string, callback) {
   const json = {
     id: id,
     method: 'sqlite-delete',
@@ -100,5 +107,3 @@ function generateConfig(json) {
     },
   };
 }
-
-module.exports = DB;

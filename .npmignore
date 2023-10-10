@@ -10,3 +10,5 @@
 .prettierrc
 jest.config.json
 renovate.json
+nodes/
+tsconfig.json

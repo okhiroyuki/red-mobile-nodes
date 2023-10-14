@@ -15,10 +15,10 @@ module.exports = function (RED: NodeAPI) {
     const node = this;
 
     node.doConnect = function () {
-      node.db = new DB(RED.settings, node.dbname);
+      node.db = new (DB as any)(RED.settings, node.dbname);
     };
 
-    node.on('close', function (done) {
+    node.on('close', function (done: () => void) {
       if (node.db) {
         node.db.close(node.id, done);
       } else {
@@ -40,7 +40,7 @@ module.exports = function (RED: NodeAPI) {
     if (node.mydbConfig) {
       node.mydbConfig.doConnect(node.id);
       node.status({ fill: 'green', shape: 'dot', text: this.mydbConfig.mod });
-      let bind = [];
+      let bind: string[] = [];
 
       const doQuery = function (msg: SqliteNodeMessageInFlow) {
         if (node.sqlquery == 'msg.topic') {
@@ -51,7 +51,7 @@ module.exports = function (RED: NodeAPI) {
                 node.id,
                 msg.topic,
                 bind,
-                function (err, row) {
+                function (err: Error, row: any) {
                   if (err) {
                     node.error(err, msg);
                   } else {
@@ -69,14 +69,18 @@ module.exports = function (RED: NodeAPI) {
         if (node.sqlquery == 'batch') {
           if (Array.isArray(msg.topic)) {
             if (msg.topic.length > 0) {
-              node.mydbConfig.db.exec(node.id, msg.topic, function (err) {
-                if (err) {
-                  node.error(err, msg);
-                } else {
-                  msg.payload = [];
-                  node.send(msg);
+              node.mydbConfig.db.exec(
+                node.id,
+                msg.topic,
+                function (err: Error) {
+                  if (err) {
+                    node.error(err, msg);
+                  } else {
+                    msg.payload = [];
+                    node.send(msg);
+                  }
                 }
-              });
+              );
             }
           } else {
             node.error('msg.topic: the query is not defined as an array', msg);
@@ -90,7 +94,7 @@ module.exports = function (RED: NodeAPI) {
                 node.id,
                 node.sql,
                 bind,
-                function (err, row) {
+                function (err: Error, row: any) {
                   if (err) {
                     node.error(err, msg);
                   } else {
@@ -100,15 +104,13 @@ module.exports = function (RED: NodeAPI) {
                 }
               );
             }
-          } else {
-            if (node.sql === null || node.sql == '') {
-              node.error('SQL statement config not set up', msg);
-              node.status({
-                fill: 'red',
-                shape: 'dot',
-                text: 'SQL config not set up',
-              });
-            }
+          } else if (node.sql === null || node.sql == '') {
+            node.error('SQL statement config not set up', msg);
+            node.status({
+              fill: 'red',
+              shape: 'dot',
+              text: 'SQL config not set up',
+            });
           }
         }
         if (node.sqlquery == 'prepared') {
@@ -122,7 +124,7 @@ module.exports = function (RED: NodeAPI) {
                 node.id,
                 node.sql,
                 msg.params,
-                function (err, row) {
+                function (err: Error, row: any) {
                   if (err) {
                     node.error(err, msg);
                   } else {
@@ -159,26 +161,32 @@ module.exports = function (RED: NodeAPI) {
           }
         }
         if (node.sqlquery === 'delete') {
-          node.mydbConfig.db.delete(node.id, function (err, result) {
-            if (err) {
-              node.error(err, msg);
-            } else {
-              msg.payload = result;
-              node.send(msg);
+          node.mydbConfig.db.delete(
+            node.id,
+            function (err: Error, result: any) {
+              if (err) {
+                node.error(err, msg);
+              } else {
+                msg.payload = result;
+                node.send(msg);
+              }
             }
-          });
+          );
         }
       };
 
       node.on('input', function (msg: SqliteNodeMessageInFlow) {
-        if (msg && Object.prototype.hasOwnProperty.call(msg, 'extension')) {
-          node.mydbConfig.db.loadExtension(msg.extension, function (err) {
-            if (err) {
-              node.error(err, msg);
-            } else {
-              doQuery(msg);
+        if (msg && Object.hasOwn(msg, 'extension')) {
+          node.mydbConfig.db.loadExtension(
+            msg.extension,
+            function (err: Error) {
+              if (err) {
+                node.error(err, msg);
+              } else {
+                doQuery(msg);
+              }
             }
-          });
+          );
         } else {
           doQuery(msg);
         }

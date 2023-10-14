@@ -1,12 +1,13 @@
-import { NodeAPI, Node } from 'node-red';
+import { Node } from 'node-red';
 import { getRequest, postRequest } from '../util';
 import {
   CameraCommandNodeDef,
   CameraCommandNodeOptions,
 } from '../@types/camera-command';
 import { UtilJsonDef } from '../@types/util';
+import { RedNodeAPI } from '../@types/nodeAPI';
 
-module.exports = function (RED: NodeAPI) {
+module.exports = function (RED: RedNodeAPI) {
   function RedMobileCameraOpenNode(this: Node, props: CameraCommandNodeDef) {
     RED.nodes.createNode(this, props);
     const node = this;
@@ -40,8 +41,8 @@ module.exports = function (RED: NodeAPI) {
 
   RED.nodes.registerType('camera-open', RedMobileCameraOpenNode);
 
-  function RedMobileCameraCloseNode(n) {
-    RED.nodes.createNode(this, n);
+  function RedMobileCameraCloseNode(this: Node, props: CameraCommandNodeDef) {
+    RED.nodes.createNode(this, props);
     const node = this;
 
     node.on('input', function (msg) {
@@ -56,8 +57,8 @@ module.exports = function (RED: NodeAPI) {
 
   RED.nodes.registerType('camera-close', RedMobileCameraCloseNode);
 
-  function RedMobileTakePictureNode(n) {
-    RED.nodes.createNode(this, n);
+  function RedMobileTakePictureNode(this: Node, props: CameraCommandNodeDef) {
+    RED.nodes.createNode(this, props);
     const node = this;
 
     node.on('input', function (msg) {
@@ -71,8 +72,8 @@ module.exports = function (RED: NodeAPI) {
 
   RED.nodes.registerType('take-picture', RedMobileTakePictureNode);
 
-  function RedMobileCameraSwitchNode(n) {
-    RED.nodes.createNode(this, n);
+  function RedMobileCameraSwitchNode(this: Node, props: CameraCommandNodeDef) {
+    RED.nodes.createNode(this, props);
     const node = this;
 
     node.on('input', function (msg) {

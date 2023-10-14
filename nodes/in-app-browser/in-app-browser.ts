@@ -1,12 +1,13 @@
-import { NodeAPI, Node, NodeDef } from 'node-red';
+import { Node, NodeDef } from 'node-red';
 import { postRequest } from '../util';
 import { UtilJsonDef } from '../@types/util';
 import {
   InAppBrowserNodeDef,
   InAppBrowserNodeMessageInFlow,
 } from '../@types/in_app_browser';
+import { RedNodeAPI } from '../@types/nodeAPI';
 
-module.exports = function (RED: NodeAPI) {
+module.exports = function (RED: RedNodeAPI) {
   function BrowserOpen(this: Node, props: InAppBrowserNodeDef) {
     RED.nodes.createNode(this, props);
     const node = this;

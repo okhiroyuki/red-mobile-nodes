@@ -1,13 +1,14 @@
-import { NodeAPI, Node } from 'node-red';
+import { Node } from 'node-red';
 import { BleNodeDef } from '../@types/ble';
 import { EventEmitter } from 'events';
+import { RedNodeAPI } from '../@types/nodeAPI';
 import WebSocketClient from '../WebSocketClient';
 
-module.exports = function (RED: NodeAPI) {
+module.exports = function (RED: RedNodeAPI) {
   const ev = new EventEmitter();
-  const ws = new WebSocketClient(ev);
-  if (RED.settings['redMobileWsPort']) {
-    const port = RED.settings['redMobileWsPort'];
+  const ws = new (WebSocketClient as any)(ev);
+  if (RED.settings.redMobileWsPort) {
+    const port = RED.settings.redMobileWsPort;
     ws.open('ws://localhost:' + port + '/mobile/ble');
   }
 

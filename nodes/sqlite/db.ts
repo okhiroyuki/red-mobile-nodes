@@ -1,14 +1,14 @@
 import axios from 'axios';
-import { NodeAPISettingsWithData } from 'node-red';
 import qs from 'qs';
+import { RedNodeAPISettingsWithData } from '../@types/nodeAPI';
 const BASE_URL = 'http://127.0.0.1';
 const PATH = '/mobile';
 
-let dbname;
-let redSettings;
+let dbname: string;
+let redSettings: RedNodeAPISettingsWithData;
 
 export default function DB(
-  _settings: NodeAPISettingsWithData,
+  _settings: RedNodeAPISettingsWithData,
   _dbname: string
 ) {
   redSettings = _settings;
@@ -19,7 +19,7 @@ DB.prototype.all = (
   id: string,
   sql: string & any[],
   params: any[],
-  callback
+  callback: (arg0: Error | null, arg1?: any) => void
 ) => {
   const json = {
     id: id,
@@ -39,7 +39,11 @@ DB.prototype.all = (
     });
 };
 
-DB.prototype.exec = (id: string, sql: string & any[], callback) => {
+DB.prototype.exec = (
+  id: string,
+  sql: string & any[],
+  callback: (arg0: Error | null) => void
+) => {
   const json = {
     id: id,
     method: 'sqlite-exec',
@@ -57,7 +61,7 @@ DB.prototype.exec = (id: string, sql: string & any[], callback) => {
     });
 };
 
-DB.prototype.loadExtension = (_, callback) => {
+DB.prototype.loadExtension = (_: any, callback: (arg0: Error) => void) => {
   callback(new Error('extension is not supported'));
 };
 
@@ -78,7 +82,10 @@ DB.prototype.close = function (id: string, done: () => void) {
     });
 };
 
-DB.prototype.delete = function (id: string, callback) {
+DB.prototype.delete = function (
+  id: string,
+  callback: (arg0: Error | null, arg1?: any) => void
+) {
   const json = {
     id: id,
     method: 'sqlite-delete',
@@ -95,7 +102,13 @@ DB.prototype.delete = function (id: string, callback) {
     });
 };
 
-function generateConfig(json) {
+function generateConfig(json: {
+  id: string;
+  method: string;
+  dbname: string;
+  payload?: string & any[];
+  params?: any[];
+}) {
   return {
     baseURL: BASE_URL + ':' + redSettings.redMobilePort,
     url: PATH,

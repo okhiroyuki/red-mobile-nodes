@@ -1,4 +1,4 @@
-import { NodeAPI, Node, NodeDef } from 'node-red';
+import { Node, NodeDef } from 'node-red';
 import { getRequest, postRequest } from '../util';
 import { UtilJsonDef } from '../@types/util';
 import { EventEmitter } from 'ws';
@@ -8,10 +8,11 @@ import {
   SerialOpenNodeOptions,
   SerialWriteNodeDef,
 } from '../@types/serial';
+import { RedNodeAPI } from '../@types/nodeAPI';
 
-module.exports = function (RED: NodeAPI) {
+module.exports = function (RED: RedNodeAPI) {
   const ev = new EventEmitter();
-  const ws = new WebSocketClient(ev);
+  const ws = new (WebSocketClient as any)(ev);
 
   ws.open(
     'ws://localhost:' + RED.settings['redMobileWsPort'] + '/mobile/serial'
@@ -47,7 +48,7 @@ module.exports = function (RED: NodeAPI) {
     const node = this;
 
     node.on('input', function (msg) {
-      const params = {
+      const params: UtilJsonDef = {
         id: node.id,
         method: 'serial-close',
       };

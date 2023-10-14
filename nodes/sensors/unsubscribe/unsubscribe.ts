@@ -1,9 +1,10 @@
-import { NodeAPI, Node } from 'node-red';
+import { Node } from 'node-red';
 import { postRequest } from '../../util';
 import { UtilJsonDef } from '../../@types/util';
 import { SensorNodeDef, SensorNodeOptions } from '../../@types/sensor';
+import { RedNodeAPI } from '../../@types/nodeAPI';
 
-module.exports = function (RED: NodeAPI) {
+module.exports = function (RED: RedNodeAPI) {
   function RedMobileSensorUnSubscribeNode(this: Node, props: SensorNodeDef) {
     RED.nodes.createNode(this, props);
     const node = this;

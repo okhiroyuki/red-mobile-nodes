@@ -1,9 +1,10 @@
-import { NodeAPI, Node } from 'node-red';
+import { Node } from 'node-red';
 import { postRequest } from '../util';
 import { UtilJsonDef } from '../@types/util';
 import { VolumeNodeDef } from '../@types/volume';
+import { RedNodeAPI } from '../@types/nodeAPI';
 
-module.exports = function (RED: NodeAPI) {
+module.exports = function (RED: RedNodeAPI) {
   function RedMobileVolumeGetNode(this: Node, props: VolumeNodeDef) {
     RED.nodes.createNode(this, props);
     const node = this;
@@ -22,7 +23,7 @@ module.exports = function (RED: NodeAPI) {
 
   RED.nodes.registerType('volume-get', RedMobileVolumeGetNode);
 
-  function validateVolume(volume) {
+  function validateVolume(volume: number) {
     return volume >= 0 && volume <= 100;
   }
 

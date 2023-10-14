@@ -1,23 +1,24 @@
-import { NodeAPI, Node, NodeMessageInFlow } from 'node-red';
+import { Node, NodeMessageInFlow } from 'node-red';
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { UtilJsonDef } from './@types/util';
 import qs from 'qs';
+import { RedNodeAPI } from './@types/nodeAPI';
 
 const BASE_URL = 'http://127.0.0.1';
 const PATH = '/mobile';
 
 export function generateGetConfig(
-  RED: NodeAPI,
+  RED: RedNodeAPI,
   params: any,
   timeout: number
 ): AxiosRequestConfig<any> {
   return {
-    baseURL: BASE_URL + ':' + RED.settings['redMobilePort'],
+    baseURL: BASE_URL + ':' + RED.settings.redMobilePort,
     url: PATH,
     method: 'get',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: 'Bearer: ' + RED.settings['redMobileAccessKey'],
+      Authorization: 'Bearer: ' + RED.settings.redMobileAccessKey,
     },
     params: params,
     timeout: timeout,
@@ -50,18 +51,20 @@ function sendError(node: Node, err: any) {
   });
 }
 
-export function generatePostConfig(RED: NodeAPI): AxiosRequestConfig<string> {
+export function generatePostConfig(
+  RED: RedNodeAPI
+): AxiosRequestConfig<string> {
   return {
-    baseURL: BASE_URL + ':' + RED.settings['redMobilePort'],
+    baseURL: BASE_URL + ':' + RED.settings.redMobilePort,
     headers: {
-      Authorization: 'Bearer: ' + RED.settings['redMobileAccessKey'],
+      Authorization: 'Bearer: ' + RED.settings.redMobileAccessKey,
       'Content-Type': 'application/x-www-form-urlencoded',
     },
   };
 }
 
 export function postRequest(
-  RED: NodeAPI,
+  RED: RedNodeAPI,
   node: Node,
   msg: NodeMessageInFlow,
   json: UtilJsonDef
@@ -77,10 +80,10 @@ export function postRequest(
 }
 
 export function getRequest(
-  RED: NodeAPI,
+  RED: RedNodeAPI,
   node: Node,
   msg: NodeMessageInFlow,
-  params,
+  params: UtilJsonDef,
   timeout: number
 ) {
   axios

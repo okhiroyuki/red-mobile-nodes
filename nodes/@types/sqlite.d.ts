@@ -1,4 +1,4 @@
-import { Node, NodeDef, NodeMessageInFlow } from 'node-red';
+import { Node, NodeDef, NodeMessage, NodeMessageInFlow } from 'node-red';
 export interface SqliteNode extends Node {
   dbname: string;
   mode: string;
@@ -8,6 +8,23 @@ export interface SqliteNode extends Node {
   sql: string;
   mydbConfig: any;
   doConnect: () => void;
+
+  on(
+    event: 'input',
+    listener: (
+      msg: SqliteNodeMessageInFlow,
+      send: (
+        msg: NodeMessage | Array<NodeMessage | NodeMessage[] | null>
+      ) => void,
+      done: (err?: Error) => void
+    ) => void
+  ): this;
+  on(event: 'close', listener: () => void): this;
+  on(event: 'close', listener: (done: () => void) => void): this; // tslint:disable-line:unified-signatures
+  on(
+    event: 'close',
+    listener: (removed: boolean, done: () => void) => void
+  ): this; // tslint:disable-line:unified-signatures
 }
 
 export interface SqliteNodeDef extends NodeDef {
@@ -22,5 +39,5 @@ export interface SqliteNodeDef extends NodeDef {
 
 export interface SqliteNodeMessageInFlow extends NodeMessageInFlow {
   extension: string;
-  params: string;
+  params: [];
 }

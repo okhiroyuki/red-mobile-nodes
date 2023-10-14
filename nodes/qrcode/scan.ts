@@ -1,8 +1,10 @@
-import { NodeAPI, Node } from 'node-red';
+import { Node } from 'node-red';
 import { postRequest } from '../util';
 import { UtilJsonDef } from '../@types/util';
 import { QRCodeNodeDef, QRCodeNodeOptions } from '../@types/qrcode';
-module.exports = function (RED: NodeAPI) {
+import { RedNodeAPI } from '../@types/nodeAPI';
+
+module.exports = function (RED: RedNodeAPI) {
   function startQRCode(this: Node, props: QRCodeNodeDef) {
     RED.nodes.createNode(this, props);
     const node = this;

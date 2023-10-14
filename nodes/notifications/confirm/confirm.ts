@@ -4,19 +4,32 @@ import { UtilJsonDef } from '../../@types/util';
 import { RedNodeAPI } from '../../@types/nodeAPI';
 
 module.exports = function (RED: RedNodeAPI) {
-  function RedMobileTextToSpeechNode(this: Node, props: NodeDef) {
+  function RedMobileConfirmNode(this: Node, props: NodeDef) {
     RED.nodes.createNode(this, props);
     const node = this;
 
     node.on('input', function (msg) {
+      if (msg.payload === undefined || typeof msg.payload !== 'object') {
+        sendError(node);
+        return;
+      }
       const json: UtilJsonDef = {
         id: node.id,
-        method: 'text-to-speech',
+        method: 'confirm',
         payload: msg.payload,
       };
       postRequest(RED, node, msg, json);
     });
   }
 
-  RED.nodes.registerType('text-to-speech', RedMobileTextToSpeechNode);
+  function sendError(node: Node) {
+    node.error(RED._('beep.errors.response'));
+    node.status({
+      fill: 'red',
+      shape: 'ring',
+      text: RED._('beep.errors.response'),
+    });
+  }
+
+  RED.nodes.registerType('confirm', RedMobileConfirmNode);
 };

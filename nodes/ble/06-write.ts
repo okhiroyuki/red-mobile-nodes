@@ -1,17 +1,18 @@
-import { NodeAPI, Node } from 'node-red';
+import { Node } from 'node-red';
 import { postRequest } from '../util';
 import { generateBleOptions } from './common';
 import { BleNodeDef } from '../@types/ble';
 import { UtilJsonDef } from '../@types/util';
-import { isBase64 } from 'is-base64';
+import isBase64 from 'is-base64';
+import { RedNodeAPI } from '../@types/nodeAPI';
 
-module.exports = function (RED: NodeAPI) {
+module.exports = function (RED: RedNodeAPI) {
   function RedMobileBleWriteNode(this: Node, props: BleNodeDef) {
     RED.nodes.createNode(this, props);
     const node = this;
 
     node.on('input', function (msg) {
-      if (!isBase64(msg.payload)) {
+      if (typeof msg.payload === 'string' && !isBase64(msg.payload)) {
         node.error('msg.payload must Base64 encoded string');
         node.status({
           fill: 'red',

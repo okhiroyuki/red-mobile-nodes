@@ -1,8 +1,9 @@
-import { NodeAPI, Node, NodeDef } from 'node-red';
+import { Node, NodeDef } from 'node-red';
 import { EventEmitter } from 'events';
 import { open } from '../common';
+import { RedNodeAPI } from '../../@types/nodeAPI';
 
-module.exports = function (RED: NodeAPI) {
+module.exports = function (RED: RedNodeAPI) {
   const ev = new EventEmitter();
   open(RED, ev);
   function RedMobileNfcNode(this: Node, props: NodeDef) {

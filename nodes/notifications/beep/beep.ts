@@ -1,28 +1,27 @@
-module.exports = function (RED) {
-  'use strcit';
+import { Node, NodeDef } from 'node-red';
+import { postRequest } from '../../util';
+import { UtilJsonDef } from '../../@types/util';
+import { RedNodeAPI } from '../../@types/nodeAPI';
 
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const util = require('../../util');
-  util.init(RED);
-
-  function RedMobileBeepNode(n) {
-    RED.nodes.createNode(this, n);
-    let node = this;
+module.exports = function (RED: RedNodeAPI) {
+  function RedMobileBeepNode(this: Node, props: NodeDef) {
+    RED.nodes.createNode(this, props);
+    const node = this;
 
     node.on('input', function (msg) {
       if (msg.payload === undefined || typeof msg.payload !== 'number') {
         sendError(node);
         return;
       }
-      const json = {
+      const json: UtilJsonDef = {
         id: node.id,
         method: 'beep',
         payload: msg.payload,
       };
-      util.postRequest(node, msg, json);
+      postRequest(RED, node, msg, json);
     });
 
-    function sendError(node) {
+    function sendError(node: Node) {
       node.error(RED._('beep.errors.response'));
       node.status({
         fill: 'red',

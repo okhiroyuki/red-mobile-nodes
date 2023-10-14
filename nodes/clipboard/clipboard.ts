@@ -1,9 +1,10 @@
-import { NodeAPI, Node } from 'node-red';
+import { Node } from 'node-red';
 import { postRequest } from '../util';
 import { UtilJsonDef } from '../@types/util';
 import { ClipboardNodeDef, ClipboardNodeOptions } from '../@types/clipboard';
+import { RedNodeAPI } from '../@types/nodeAPI';
 
-module.exports = function (RED: NodeAPI) {
+module.exports = function (RED: RedNodeAPI) {
   function RedMobileClipboardNode(this: Node, props: ClipboardNodeDef) {
     RED.nodes.createNode(this, props);
     const node = this;
@@ -14,7 +15,7 @@ module.exports = function (RED: NodeAPI) {
 
     node.on('input', function (msg) {
       const json: UtilJsonDef = {
-        id: this.id,
+        id: node.id,
         method: 'clipboard',
         payload: msg.payload,
         options: options,

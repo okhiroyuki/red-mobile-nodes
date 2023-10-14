@@ -1,11 +1,10 @@
-module.exports = function (RED) {
-  'use strcit';
+import { Node, NodeDef } from 'node-red';
+import { postRequest } from '../../util';
+import { UtilJsonDef } from '../../@types/util';
+import { RedNodeAPI } from '../../@types/nodeAPI';
 
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const util = require('../../util');
-  util.init(RED);
-
-  function sendError(node) {
+module.exports = function (RED: RedNodeAPI) {
+  function sendError(node: Node) {
     node.error(RED._('vibrate.errors.response'));
     node.status({
       fill: 'red',
@@ -14,21 +13,21 @@ module.exports = function (RED) {
     });
   }
 
-  function RedMobileVibrateNode(n) {
-    RED.nodes.createNode(this, n);
-    let node = this;
+  function RedMobileVibrateNode(this: Node, props: NodeDef) {
+    RED.nodes.createNode(this, props);
+    const node = this;
 
     node.on('input', function (msg) {
       if (msg.payload === undefined || !Array.isArray(msg.payload)) {
         sendError(node);
         return;
       }
-      const json = {
+      const json: UtilJsonDef = {
         id: node.id,
         method: 'vibrate',
         payload: msg.payload,
       };
-      util.postRequest(node, msg, json);
+      postRequest(RED, node, msg, json);
     });
   }
 

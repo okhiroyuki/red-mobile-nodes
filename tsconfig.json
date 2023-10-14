@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es5",
+    "target": "es2022",
     "outDir": "./dist",
     "rootDir": "./",
-    "lib": ["es5", "dom"],
+    "lib": ["es2022", "dom"],
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "allowJs": true
+    "strict": true
   },
   "include": ["nodes/**/*"],
   "exclude": ["nodes/**/__tests__/*"]

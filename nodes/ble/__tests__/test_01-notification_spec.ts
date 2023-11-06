@@ -1,6 +1,6 @@
 import helper from 'node-red-node-test-helper';
 import { CustomLocalSetting } from '../../@types/util';
-import TestServer from '../../testServer';
+import TestServer from '../../testHelper';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const testNode = require('../01-notification');

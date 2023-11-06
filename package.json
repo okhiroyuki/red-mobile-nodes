@@ -8,6 +8,7 @@
     "copy": "copyfiles -u 1 \"./nodes/**/*.{png,svg,json,html}\" \"./dist/nodes/\"",
     "type-check": "npx tsc",
     "test": "npx jest --runInBand nodes/",
+    "coverage": "npx jest --runInBand --coverage nodes/",
     "lint": "npx eslint --cache --fix nodes/ && npx prettier --write nodes/"
   },
   "keywords": [

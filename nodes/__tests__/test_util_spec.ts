@@ -1,8 +1,8 @@
 import helper from 'node-red-node-test-helper';
 import { generateGetConfig, generatePostConfig } from '../util';
-import { NodeAPI } from 'node-red';
 import { AxiosRequestConfig } from 'axios';
 import { CustomLocalSetting } from '../@types/util';
+import { RedNodeAPI } from '../@types/nodeAPI';
 
 jest.mock('axios');
 
@@ -27,7 +27,7 @@ describe('util', () => {
   test('generatePostConfig', (done) => {
     const flow = [{ id: 'n1', type: 'test', name: 'test' }];
     let config: AxiosRequestConfig<string> = {};
-    const testNode = (module.exports = function (RED: NodeAPI) {
+    const testNode = (module.exports = (RED: RedNodeAPI) => {
       config = generatePostConfig(RED);
     });
     helper.load(testNode, flow, function () {
@@ -45,7 +45,7 @@ describe('util', () => {
   test('generateGetConfig', (done) => {
     const flow = [{ id: 'n1', type: 'test', name: 'test' }];
     let config: AxiosRequestConfig<string> = {};
-    const testNode = (module.exports = function (RED: NodeAPI) {
+    const testNode = (module.exports = function (RED: RedNodeAPI) {
       config = generateGetConfig(RED, 'test', 1000);
     });
     helper.load(testNode, flow, function () {

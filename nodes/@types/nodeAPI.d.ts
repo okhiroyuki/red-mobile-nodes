@@ -1,7 +1,7 @@
 import { NodeAPI, NodeAPISettingsWithData } from 'node-red';
 
 export interface RedNodeAPI extends NodeAPI {
-  address: string;
+  address?: string;
   settings: RedNodeAPISettingsWithData;
 }
 

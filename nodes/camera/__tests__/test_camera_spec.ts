@@ -1,7 +1,7 @@
 import axios from 'axios';
 import helper from 'node-red-node-test-helper';
-import qs from 'qs';
 import { CustomLocalSetting } from '../../@types/util';
+import qs from 'qs';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const cameraNode = require('../camera');
@@ -67,15 +67,16 @@ describe('camera Node', () => {
           const mock_calls = mockPost.mock.calls[0][1];
           if (typeof mock_calls === 'string') {
             const parsed_data = qs.parse(mock_calls);
+
             expect(parsed_data.method).toBe('camera');
             expect(parsed_data.payload).toBe('test');
-            if (parsed_data.options) {
-              expect(parsed_data.options['quality']).toBe('50');
-              expect(parsed_data.options['destinationType']).toBe('0');
-              expect(parsed_data.options['saveToPhotoAlbum']).toBe('false');
-            }
-            done();
+            expect(parsed_data.options).toEqual({
+              quality: '50',
+              destinationType: '0',
+              saveToPhotoAlbum: 'false',
+            });
           }
+          done();
         } catch (err) {
           done(err);
         }

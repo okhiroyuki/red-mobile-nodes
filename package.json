@@ -1,6 +1,6 @@
 {
   "name": "@red-mobile/red-mobile-nodes",
-  "version": "3.0.3",
+  "version": "3.1.0-bata.0",
   "description": "Extra nodes for RedMobile",
   "scripts": {
     "start": "npx node-red --setting=settings.js -v",
@@ -35,7 +35,7 @@
     "eslint": "8.54.0",
     "eslint-config-prettier": "9.0.0",
     "jest": "29.7.0",
-    "node-red": "3.1.0",
+    "node-red": "^3.1.0",
     "node-red-node-test-helper": "0.3.2",
     "npm-run-all2": "^6.1.1",
     "prettier": "3.1.0",

@@ -1,16 +1,12 @@
 import { Node } from 'node-red';
 import { BleNodeDef } from '../@types/ble';
-import { EventEmitter } from 'events';
 import { RedNodeAPI } from '../@types/nodeAPI';
-import WebSocketClient from '../WebSocketClient';
+import { open } from '../WebSocketHelper';
+import { EventEmitter } from 'ws';
 
 module.exports = function (RED: RedNodeAPI) {
   const ev = new EventEmitter();
-  const ws = new (WebSocketClient as any)(ev);
-  if (RED.settings.redMobileWsPort) {
-    const port = RED.settings.redMobileWsPort;
-    ws.open('ws://localhost:' + port + '/mobile/ble');
-  }
+  open(RED, ev, '/mobile/ble');
 
   function RedMobileBleNotificationNode(this: Node, props: BleNodeDef) {
     RED.nodes.createNode(this, props);

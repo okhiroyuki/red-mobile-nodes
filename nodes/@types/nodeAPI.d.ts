@@ -9,4 +9,5 @@ export interface RedNodeAPISettingsWithData extends NodeAPISettingsWithData {
   redMobileWsPort?: string;
   redMobileAccessKey?: string;
   redMobilePort?: string;
+  forceClose?: boolean;
 }

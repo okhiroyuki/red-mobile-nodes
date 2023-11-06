@@ -27,5 +27,7 @@ export interface UtilJsonDef {
 
 export interface CustomLocalSetting extends LocalSettings {
   redMobilePort: number;
+  redMobileWsPort: number;
   redMobileAccessKey: string;
+  forceClose?: boolean;
 }

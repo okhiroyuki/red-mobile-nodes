@@ -22,9 +22,9 @@ describe('camera Node', () => {
     helper.stopServer(done);
   });
 
-  test('should be loaded', (done) => {
+  it('should be loaded', (done) => {
     const flow = [{ id: 'n1', type: 'camera', name: 'camera' }];
-    helper.load(cameraNode, flow, function () {
+    helper.load(cameraNode, flow, () => {
       const n1 = helper.getNode('n1');
       try {
         expect(n1).toHaveProperty('name', 'camera');
@@ -35,7 +35,7 @@ describe('camera Node', () => {
     });
   });
 
-  test('should make payload', (done) => {
+  it('should make payload', (done) => {
     const flow = [
       {
         id: 'n1',
@@ -48,7 +48,7 @@ describe('camera Node', () => {
       },
       { id: 'n2', type: 'helper' },
     ];
-    helper.load(cameraNode, flow, function () {
+    helper.load(cameraNode, flow, () => {
       const n2 = helper.getNode('n2');
       const n1 = helper.getNode('n1');
       const mockPost = jest.spyOn(axios, 'post');

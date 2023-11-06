@@ -1,11 +1,12 @@
 import { Node, NodeDef } from 'node-red';
 import { EventEmitter } from 'events';
-import { open } from '../common';
+import { open } from '../../WebSocketHelper';
 import { RedNodeAPI } from '../../@types/nodeAPI';
 
 module.exports = function (RED: RedNodeAPI) {
   const ev = new EventEmitter();
-  open(RED, ev);
+  open(RED, ev, '/mobile/light');
+
   function RedMobileLightNode(this: Node, props: NodeDef) {
     RED.nodes.createNode(this, props);
     const node = this;

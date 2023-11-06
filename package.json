@@ -7,7 +7,7 @@
     "build": "run-p type-check copy",
     "copy": "copyfiles -u 1 \"./nodes/**/*.{png,svg,json,html}\" \"./dist/nodes/\"",
     "type-check": "npx tsc",
-    "test": "npx jest nodes/",
+    "test": "npx jest --runInBand nodes/",
     "lint": "npx eslint --cache --fix nodes/ && npx prettier --write nodes/"
   },
   "keywords": [

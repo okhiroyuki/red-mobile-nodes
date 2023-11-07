@@ -1,18 +1,18 @@
-import axios from 'axios';
+jest.mock('../../util');
+
 import helper from 'node-red-node-test-helper';
 import { CustomLocalSetting } from '../../@types/util';
-import qs from 'qs';
+import * as util from '../../util';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const cameraNode = require('../camera');
-jest.mock('axios');
+const testNode = require('../camera');
 
 helper.init(require.resolve('node-red'), {
   redMobilePort: 1880,
   redMobileAccessKey: 'dummy_key',
 } as CustomLocalSetting);
 
-describe('camera Node', () => {
+describe('ClipboardNode', () => {
   beforeEach((done) => {
     helper.startServer(done);
   });
@@ -22,68 +22,48 @@ describe('camera Node', () => {
     helper.stopServer(done);
   });
 
-  it('should be loaded', (done) => {
-    const flow = [{ id: 'n1', type: 'camera', name: 'camera' }];
-    helper.load(cameraNode, flow, () => {
-      const n1 = helper.getNode('n1');
-      try {
-        expect(n1).toHaveProperty('name', 'camera');
-        done();
-      } catch (err) {
-        done(err);
-      }
-    });
-  });
-
-  it('should make payload', (done) => {
+  it('should call postRequest on input', (done) => {
     const flow = [
       {
         id: 'n1',
         type: 'camera',
-        quality: 50,
+        quality: '50',
         destinationType: 'data',
-        saveToPhotoAlbum: false,
+        saveToPhotoAlbum: 'false',
         name: 'camera',
-        wires: [['n2']],
       },
-      { id: 'n2', type: 'helper' },
     ];
-    helper.load(cameraNode, flow, () => {
-      const n2 = helper.getNode('n2');
+    helper.load(testNode, flow, () => {
       const n1 = helper.getNode('n1');
-      const mockPost = jest.spyOn(axios, 'post');
-      const RESPONSE_VALUE = 'response';
-      mockPost.mockImplementation((url): any => {
-        if (url === '/mobile') {
-          return Promise.resolve({ data: RESPONSE_VALUE });
-        }
-      });
-      n2.on('input', function (msg) {
+
+      const mockPostRequest = jest.spyOn(util, 'postRequest');
+      const mockPayload = 'test payload';
+      const expectedJson = {
+        id: 'n1',
+        method: 'camera',
+        payload: mockPayload,
+        options: {
+          quality: '50',
+          destinationType: 0,
+          saveToPhotoAlbum: 'false',
+        },
+      };
+
+      n1.on('input', () => {
         try {
-          expect(msg).toHaveProperty('payload', RESPONSE_VALUE);
-          expect(mockPost.mock.calls.length).toBe(1);
-          expect(mockPost.mock.calls[0].length).toBe(3);
-
-          const mock_calls = mockPost.mock.calls[0][1];
-          if (typeof mock_calls === 'string') {
-            const parsed_data = qs.parse(mock_calls);
-
-            expect(parsed_data.method).toBe('camera');
-            expect(parsed_data.payload).toBe('test');
-            expect(parsed_data.options).toEqual({
-              quality: '50',
-              destinationType: '0',
-              saveToPhotoAlbum: 'false',
-            });
-          }
+          expect(mockPostRequest).toHaveBeenCalledWith(
+            expect.anything(),
+            n1,
+            expect.anything(),
+            expectedJson
+          );
           done();
         } catch (err) {
           done(err);
         }
       });
-      n1.receive({
-        payload: 'test',
-      });
+
+      n1.receive({ payload: mockPayload });
     });
   });
 });

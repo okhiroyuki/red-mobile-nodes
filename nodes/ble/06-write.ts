@@ -12,14 +12,7 @@ module.exports = function (RED: RedNodeAPI) {
     const node = this;
 
     node.on('input', function (msg) {
-      if (typeof msg.payload === 'string' && !isBase64(msg.payload)) {
-        node.error('msg.payload must Base64 encoded string');
-        node.status({
-          fill: 'red',
-          shape: 'ring',
-          text: 'error',
-        });
-      } else {
+      if (typeof msg.payload === 'string' && isBase64(msg.payload)) {
         const json: UtilJsonDef = {
           id: node.id,
           method: 'ble-write',
@@ -27,6 +20,13 @@ module.exports = function (RED: RedNodeAPI) {
           options: generateBleOptions(RED, props),
         };
         postRequest(RED, node, msg, json);
+      } else {
+        node.error('msg.payload must Base64 encoded string');
+        node.status({
+          fill: 'red',
+          shape: 'ring',
+          text: 'error',
+        });
       }
     });
   }

@@ -25,7 +25,7 @@ export function generateGetConfig(
   };
 }
 
-function sendSuccess(
+export function sendSuccess(
   node: Node,
   msg: NodeMessageInFlow,
   res: AxiosResponse<any, any>
@@ -41,7 +41,7 @@ function sendSuccess(
   });
 }
 
-function sendError(node: Node, err: any) {
+export function sendError(node: Node, err: any) {
   const payload = err.response.data;
   node.error(payload);
   node.status({

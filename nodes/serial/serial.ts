@@ -63,21 +63,18 @@ module.exports = function (RED: RedNodeAPI) {
       const json: UtilJsonDef = {
         id: node.id,
         method: 'serial-write',
-        payload: props.data,
+        payload: props.data ? props.data : msg.payload,
         dataType: props.dataType,
       };
-      if (!props.data) {
-        if (msg.payload) {
-          json.payload = msg.payload;
-          postRequest(RED, node, msg, json);
-        } else {
-          node.error(RED._('serial-write.errors.payload'));
-          node.status({
-            fill: 'red',
-            shape: 'ring',
-            text: RED._('serial-write.errors.payload'),
-          });
-        }
+      if (json.payload) {
+        postRequest(RED, node, msg, json);
+      } else {
+        node.error(RED._('serial-write.errors.payload'));
+        node.status({
+          fill: 'red',
+          shape: 'ring',
+          text: RED._('serial-write.errors.payload'),
+        });
       }
     });
   }

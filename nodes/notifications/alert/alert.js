@@ -1,7 +1,8 @@
 module.exports = function (RED) {
   'use strcit';
 
-  const util = require('../../../lib/util');
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const util = require('../../util');
   util.init(RED);
 
   function RedMobileAlertNode(n) {

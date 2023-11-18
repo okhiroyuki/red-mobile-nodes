@@ -1,4 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const axios = require('axios');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const qs = require('qs');
 const BASE_URL = 'http://127.0.0.1';
 const PATH = '/mobile';

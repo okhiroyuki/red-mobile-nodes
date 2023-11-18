@@ -1,5 +1,6 @@
 module.exports = function (RED) {
   'use strict';
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   const DB = require('./db');
 
   function SqliteNodeDB(n) {
@@ -7,7 +8,7 @@ module.exports = function (RED) {
 
     this.dbname = n.db;
     this.mod = n.mode;
-    var node = this;
+    const node = this;
 
     node.doConnect = function () {
       node.db = new DB(RED.settings, node.dbname);
@@ -29,15 +30,15 @@ module.exports = function (RED) {
     this.sqlquery = n.sqlquery || 'msg.topic';
     this.sql = n.sql;
     this.mydbConfig = RED.nodes.getNode(this.mydb);
-    var node = this;
+    const node = this;
     node.status({});
 
     if (node.mydbConfig) {
       node.mydbConfig.doConnect(node.id);
       node.status({ fill: 'green', shape: 'dot', text: this.mydbConfig.mod });
-      var bind = [];
+      let bind = [];
 
-      var doQuery = function (msg) {
+      const doQuery = function (msg) {
         if (node.sqlquery == 'msg.topic') {
           if (typeof msg.topic === 'string') {
             if (msg.topic.length > 0) {

@@ -9,6 +9,6 @@
     "esModuleInterop": true,
     "allowJs": true
   },
-  "include": ["nodes/**/*", "lib/**/*"],
-  "exclude": ["nodes/**/__tests__/*", "lib/__tests__/*"]
+  "include": ["nodes/**/*"],
+  "exclude": ["nodes/**/__tests__/*"]
 }

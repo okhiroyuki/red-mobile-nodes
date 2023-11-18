@@ -5,9 +5,17 @@ module.exports = {
     node: true,
     jest: true,
   },
-  extends: ['eslint:recommended', 'prettier'],
+  extends: [
+    'eslint:recommended',
+    'prettier',
+    'plugin:@typescript-eslint/recommended',
+  ],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 12,
   },
-  rules: {},
+  rules: {
+    '@typescript-eslint/no-explicit-any': 0,
+    '@typescript-eslint/no-this-alias': 0,
+  },
 };

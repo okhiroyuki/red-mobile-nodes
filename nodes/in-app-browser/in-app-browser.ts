@@ -16,7 +16,7 @@ module.exports = function (RED: RedNodeAPI) {
       const json: UtilJsonDef = {
         id: node.id,
         method: 'browser-open',
-        payload: props.payload ? props.payload : msg.payload,
+        payload: props.url ? props.url : msg.payload,
         target: props.target === 'blank' ? '_blank' : '_system',
         options: props.options ? props.options : msg.options,
       };

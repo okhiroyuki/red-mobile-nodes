@@ -1,9 +1,9 @@
 import helper from 'node-red-node-test-helper';
-import { CustomLocalSetting } from '../../../@types/util';
-import TestServer from '../../../testHelper';
+import { CustomLocalSetting } from '../../@types/util';
+import TestServer from '../../testHelper';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const testNode = require('../compass');
+const testNode = require('../proximity/proximity');
 
 helper.init(require.resolve('node-red'), {
   redMobilePort: 1880,
@@ -12,11 +12,11 @@ helper.init(require.resolve('node-red'), {
   forceClose: true,
 } as CustomLocalSetting);
 
-describe('CompassNode', () => {
+describe('ProximityNode', () => {
   let server: TestServer;
 
   beforeAll(() => {
-    server = new TestServer(1234, '/mobile/compass');
+    server = new TestServer(1234, '/mobile/proximity');
   });
 
   beforeEach((done) => {
@@ -34,7 +34,7 @@ describe('CompassNode', () => {
 
   it('should handle WebSocket messages', (done) => {
     const flow = [
-      { id: 'n1', type: 'compass', wires: [['n2']] },
+      { id: 'n1', type: 'proximity', wires: [['n2']] },
       { id: 'n2', type: 'helper' },
     ];
     helper.load(testNode, flow, () => {

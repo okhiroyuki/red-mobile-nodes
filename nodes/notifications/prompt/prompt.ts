@@ -23,11 +23,11 @@ module.exports = function (RED: RedNodeAPI) {
   }
 
   function sendError(node: Node) {
-    node.error(RED._('beep.errors.response'));
+    node.error(RED._('prompt.errors.response'));
     node.status({
       fill: 'red',
       shape: 'ring',
-      text: RED._('beep.errors.response'),
+      text: RED._('prompt.errors.response'),
     });
   }
 

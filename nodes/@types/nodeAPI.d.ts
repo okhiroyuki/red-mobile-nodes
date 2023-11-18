@@ -1,4 +1,4 @@
-import { NodeAPI, NodeAPISettingsWithData } from 'node-red';
+import { NodeAPI, NodeAPISettingsWithData, NodeMessage } from 'node-red';
 
 export interface RedNodeAPI extends NodeAPI {
   address?: string;
@@ -10,4 +10,8 @@ export interface RedNodeAPISettingsWithData extends NodeAPISettingsWithData {
   redMobileAccessKey?: string;
   redMobilePort?: string;
   forceClose?: boolean;
+}
+
+export interface RedMobileNodeMessage extends NodeMessage {
+  options?: string;
 }

@@ -20,11 +20,8 @@ helper.init(require.resolve('node-red'), {
 describe('SerialNode', () => {
   let server: TestServer;
 
-  beforeAll(() => {
-    server = new TestServer(1234, '/mobile/serial');
-  });
-
   beforeEach((done) => {
+    server = new TestServer(1234, '/mobile/serial');
     helper.startServer(done);
   });
 
@@ -33,9 +30,6 @@ describe('SerialNode', () => {
     mockGetRequest.mockClear();
     helper.unload();
     helper.stopServer(done);
-  });
-
-  afterAll(() => {
     server.close();
   });
 

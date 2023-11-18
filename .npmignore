@@ -1,4 +1,5 @@
 .github/
+.node-red
 .vscode/
 **/__tests__/
 .editorconfig
@@ -10,3 +11,6 @@
 .prettierrc
 jest.config.json
 renovate.json
+nodes/
+settings.js
+tsconfig.json

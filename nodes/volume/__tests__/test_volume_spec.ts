@@ -3,6 +3,7 @@ jest.mock('../../util');
 import helper from 'node-red-node-test-helper';
 import { CustomLocalSetting } from '../../@types/util';
 import * as util from '../../util';
+const mockPostRequest = jest.spyOn(util, 'postRequest');
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const testNode = require('../volume');
@@ -18,99 +19,156 @@ describe('VolumeNode', () => {
   });
 
   afterEach((done) => {
+    mockPostRequest.mockClear();
     helper.unload();
     helper.stopServer(done);
   });
 
-  it('should call postRequest with correct parameters on input', (done) => {
-    const flow = [{ id: 'n1', type: 'volume-get', wires: [['n2']] }];
+  it('should call volume get node', (done) => {
+    const flow = [{ id: 'n1', type: 'volume-get', target: 'alarm' }];
     helper.load(testNode, flow, () => {
       const n1 = helper.getNode('n1');
-      const mockPayload = { volume: 50 }; // Example payload
+      const mockPayload = 'test message'; // Example payload
       const expectedJson = {
         id: 'n1',
         method: 'volume-get',
         payload: mockPayload,
-        target: undefined, // Assuming target is undefined in this test case
+        target: 'alarm',
       };
 
-      jest
-        .spyOn(util, 'postRequest')
-        .mockImplementation((RED, node, msg, json) => {
-          expect(json).toEqual(expectedJson);
+      n1.on('input', () => {
+        try {
+          expect(mockPostRequest).toHaveBeenCalledWith(
+            expect.anything(),
+            n1,
+            expect.anything(),
+            expectedJson
+          );
           done();
-        });
+        } catch (err) {
+          done(err);
+        }
+      });
 
       n1.receive({ payload: mockPayload });
     });
   });
-});
 
-describe('RedMobileVolumeSetNode', () => {
-  beforeEach((done) => {
-    helper.startServer(done);
-  });
-
-  afterEach((done) => {
-    helper.unload();
-    helper.stopServer(done);
-  });
-
-  it('should call postRequest to set volume', (done) => {
+  it('should call volume set node', (done) => {
     const flow = [
       {
         id: 'n1',
         type: 'volume-set',
-        volume: 30,
+        volume: 50,
         target: 'alarm',
-        wires: [['n2']],
       },
     ];
     helper.load(testNode, flow, () => {
       const n1 = helper.getNode('n1');
-      const mockPayload = { volume: 30 }; // Example payload
+      const mockPayload = 'test message'; // Example payload
       const expectedJson = {
         id: 'n1',
         method: 'volume-set',
         payload: mockPayload,
-        volume: 30,
+        volume: 50,
         target: 'alarm',
       };
 
-      jest
-        .spyOn(util, 'postRequest')
-        .mockImplementation((RED, node, msg, json) => {
-          expect(json).toEqual(expectedJson);
-          done();
-        });
-
-      n1.receive({ payload: mockPayload });
-    });
-  });
-
-  it('should handle invalid volume input', (done) => {
-    const flow = [
-      {
-        id: 'n1',
-        type: 'volume-set',
-        volume: -1,
-        target: 'alarm',
-        wires: [['n2']],
-      },
-    ];
-    helper.load(testNode, flow, () => {
-      const n1 = helper.getNode('n1');
-      const mockPayload = { volume: -1 };
-
-      const errorSpy = jest.spyOn(n1, 'error');
-
       n1.on('input', () => {
-        expect(errorSpy).toHaveBeenCalled();
-        const errorCallArguments = errorSpy.mock.calls[0];
-        expect(errorCallArguments[0]).toBe('volume.errors.volume');
-        done();
+        try {
+          expect(mockPostRequest).toHaveBeenCalledWith(
+            expect.anything(),
+            n1,
+            expect.anything(),
+            expectedJson
+          );
+          done();
+        } catch (err) {
+          done(err);
+        }
       });
+
       n1.receive({ payload: mockPayload });
     });
   });
+
+  test.each([
+    { payload: 0, expected: 0 },
+    { payload: 100, expected: 100 },
+    { payload: 50, expected: 50 },
+  ])(
+    'should set volume to %s when input payload is %s',
+    ({ payload, expected }, done) => {
+      const flow = [
+        {
+          id: 'n1',
+          type: 'volume-set',
+          volume: -1,
+          target: 'alarm',
+        },
+      ];
+      helper.load(testNode, flow, () => {
+        const n1 = helper.getNode('n1');
+
+        const mockPayload = payload;
+        const expectedJson = {
+          id: 'n1',
+          method: 'volume-set',
+          payload: mockPayload,
+          volume: expected,
+          target: 'alarm',
+        };
+        n1.on('input', () => {
+          try {
+            expect(mockPostRequest).toHaveBeenCalledWith(
+              expect.anything(),
+              n1,
+              expect.anything(),
+              expectedJson
+            );
+            done();
+          } catch (err) {
+            done(err);
+          }
+        });
+        n1.receive({ payload: mockPayload });
+      });
+    }
+  );
+
+  test.each([{ payload: -1 }, { payload: 101 }])(
+    'should set volume to %s when input payload is %s',
+    ({ payload }, done) => {
+      const flow = [
+        {
+          id: 'n1',
+          type: 'volume-set',
+          volume: -1,
+          target: 'alarm',
+        },
+      ];
+      helper.load(testNode, flow, () => {
+        const n1 = helper.getNode('n1');
+
+        const mockPayload = payload;
+        const mockError = jest.spyOn(n1, 'error');
+        const mockStatus = jest.spyOn(n1, 'status');
+        n1.on('input', () => {
+          try {
+            expect(mockError).toHaveBeenCalledWith('volume.errors.volume');
+            expect(mockStatus).toHaveBeenCalledWith({
+              fill: 'red',
+              shape: 'ring',
+              text: 'volume.errors.volume',
+            });
+            expect(mockPostRequest).not.toHaveBeenCalled();
+            done();
+          } catch (err) {
+            done(err);
+          }
+        });
+        n1.receive({ payload: mockPayload });
+      });
+    }
+  );
 });

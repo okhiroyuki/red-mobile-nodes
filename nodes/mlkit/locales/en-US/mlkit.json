@@ -1,7 +1,0 @@
-{
-  "mlkit": {
-    "barcodeDetector": "barcode detector",
-    "imageLabeler": "image labeler",
-    "textRecognizer": "text recognizer"
-  }
-}

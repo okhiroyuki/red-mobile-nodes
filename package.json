@@ -80,7 +80,6 @@
       "ble-unsubscribe": "./dist/nodes/ble/08-unsubscribe.js",
       "clipboard": "./dist/nodes/clipboard/clipboard.js",
       "qrcode-scan": "./dist/nodes/qrcode/scan.js",
-      "mlkit": "./dist/nodes/mlkit/mlkit.js"
     }
   },
   "engines": {

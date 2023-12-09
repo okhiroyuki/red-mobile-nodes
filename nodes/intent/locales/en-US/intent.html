@@ -1,0 +1,49 @@
+<script type="text/x-red" data-help-name="start-activity">
+      <p>Starts a new activity using an intent built from action, url, type, extras, package, component, flags</p>
+      <h3>Inputs</h3>
+      <dl class="message-properties">
+          <dt>payload <span class="property-type">object</span></dt>
+          <dd>Intent parameters</dd>
+      </dl>
+      <h3>Details</h3>
+      <p>Examples</p>
+      <p>Launch the maps activity.</p>
+  <pre>
+  msg.payload = {
+      "action": "android.intent.action.VIEW",
+      "url" : "geo:0,0?q=London"
+  }
+  </pre>
+      <p>Launch the gmail app.</p>
+  <pre>
+  msg.payload = {
+      "action": "android.intent.action.SEND",
+      "type": "message/rfc822",
+      "package": "com.google.android.gm",
+      "extras":{
+              "android.intent.extra.EMAIL": "test@gmail.com",
+              "android.intent.extra.SUBJECT": "this is test.",
+              "android.intent.extra.TEXT": "test test"
+      }
+  }
+  </pre>
+      <p>Launch the camera app in still image mode</p>
+  <pre>
+  msg.payload = {
+      "action": "android.media.action.STILL_IMAGE_CAMERA"
+  }
+  </pre>
+      <p>Launch the camera app in video mode</p>
+  <pre>
+  msg.payload = {
+      "action": "android.media.action.VIDEO_CAMERA",
+  }
+  </pre>
+      <p>Make a phone call</p>
+  <pre>
+  msg.payload = {
+      "action": "android.intent.action.DIAL",
+      "url": "tel:0123456789"
+  }
+  </pre>
+</script>

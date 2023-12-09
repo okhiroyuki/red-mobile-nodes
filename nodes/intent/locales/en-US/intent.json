@@ -1,8 +1,0 @@
-{
-  "start-activity": {
-    "start-activity": "start activity",
-    "errors": {
-      "response": "Could not start Activity."
-    }
-  }
-}

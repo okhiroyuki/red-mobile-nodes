@@ -22,7 +22,7 @@
     "axios": "1.6.2",
     "is-base64": "1.1.0",
     "qs": "6.11.2",
-    "ws": "8.15.0"
+    "ws": "8.15.1"
   },
   "devDependencies": {
     "@types/is-base64": "1.1.3",

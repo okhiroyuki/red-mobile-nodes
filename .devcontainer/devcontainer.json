@@ -8,7 +8,7 @@
     "source=node_modules_${devcontainerId},target=${containerWorkspaceFolder}/node_modules,type=volume"
   ],
   // Features to add to the dev container. More info: https://containers.dev/features.
-  "features": { "ghcr.io/devcontainers-contrib/features/pre-commit:2": {} },
+  "features": {},
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],

@@ -1,30 +1,29 @@
-import { Node } from 'node-red';
-import { postRequest } from '../util';
-import { UtilJsonDef } from '../@types/util';
-import { CameraNodeDef, CameraNodeOptions } from '../@types/camera';
-import { RedNodeAPI } from '../@types/nodeAPI';
+import type { Node } from "node-red";
+import type { CameraNodeDef, CameraNodeOptions } from "../@types/camera";
+import type { RedNodeAPI } from "../@types/nodeAPI";
+import type { UtilJsonDef } from "../@types/util";
+import { postRequest } from "../util";
 
-module.exports = function (RED: RedNodeAPI) {
-  function takePicture(this: Node, props: CameraNodeDef) {
-    RED.nodes.createNode(this, props);
-    const node = this;
+module.exports = (RED: RedNodeAPI) => {
+	function takePicture(this: Node, props: CameraNodeDef) {
+		RED.nodes.createNode(this, props);
 
-    const options: CameraNodeOptions = {
-      quality: props.quality,
-      destinationType: props.destinationType === 'data' ? 0 : 1,
-      saveToPhotoAlbum: props.saveToPhotoAlbum,
-    };
+		const options: CameraNodeOptions = {
+			quality: props.quality,
+			destinationType: props.destinationType === "data" ? 0 : 1,
+			saveToPhotoAlbum: props.saveToPhotoAlbum,
+		};
 
-    node.on('input', function (msg) {
-      const json: UtilJsonDef = {
-        id: node.id,
-        method: 'camera',
-        payload: msg.payload,
-        options: options,
-      };
-      postRequest(RED, node, msg, json);
-    });
-  }
+		this.on("input", (msg) => {
+			const json: UtilJsonDef = {
+				id: this.id,
+				method: "camera",
+				payload: msg.payload,
+				options: options,
+			};
+			postRequest(RED, this, msg, json);
+		});
+	}
 
-  RED.nodes.registerType('camera', takePicture);
+	RED.nodes.registerType("camera", takePicture);
 };

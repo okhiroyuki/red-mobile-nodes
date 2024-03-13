@@ -1,25 +1,24 @@
-import { Node } from 'node-red';
-import { postRequest } from '../util';
-import { generateBleOptions } from './common';
-import { BleNodeDef } from '../@types/ble';
-import { UtilJsonDef } from '../@types/util';
-import { RedNodeAPI } from '../@types/nodeAPI';
+import type { Node } from "node-red";
+import type { BleNodeDef } from "../@types/ble";
+import type { RedNodeAPI } from "../@types/nodeAPI";
+import type { UtilJsonDef } from "../@types/util";
+import { postRequest } from "../util";
+import { generateBleOptions } from "./common";
 
-module.exports = function (RED: RedNodeAPI) {
-  function RedMobileBleSubscribeNode(this: Node, props: BleNodeDef) {
-    RED.nodes.createNode(this, props);
-    const node = this;
+module.exports = (RED: RedNodeAPI) => {
+	function RedMobileBleSubscribeNode(this: Node, props: BleNodeDef) {
+		RED.nodes.createNode(this, props);
 
-    node.on('input', (msg) => {
-      const json: UtilJsonDef = {
-        id: node.id,
-        method: 'ble-subscribe',
-        payload: msg.payload,
-        options: generateBleOptions(RED, props),
-      };
-      postRequest(RED, node, msg, json);
-    });
-  }
+		this.on("input", (msg) => {
+			const json: UtilJsonDef = {
+				id: this.id,
+				method: "ble-subscribe",
+				payload: msg.payload,
+				options: generateBleOptions(RED, props),
+			};
+			postRequest(RED, this, msg, json);
+		});
+	}
 
-  RED.nodes.registerType('ble subscribe', RedMobileBleSubscribeNode);
+	RED.nodes.registerType("ble subscribe", RedMobileBleSubscribeNode);
 };

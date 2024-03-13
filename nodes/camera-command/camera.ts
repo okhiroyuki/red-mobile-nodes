@@ -1,89 +1,85 @@
-import { Node } from 'node-red';
-import { getRequest, postRequest } from '../util';
-import {
-  CameraCommandNodeDef,
-  CameraCommandNodeOptions,
-} from '../@types/camera-command';
-import { UtilJsonDef } from '../@types/util';
-import { RedNodeAPI } from '../@types/nodeAPI';
+import type { Node } from "node-red";
+import type {
+	CameraCommandNodeDef,
+	CameraCommandNodeOptions,
+} from "../@types/camera-command";
+import type { RedNodeAPI } from "../@types/nodeAPI";
+import type { UtilJsonDef } from "../@types/util";
+import { getRequest, postRequest } from "../util";
 
-module.exports = function (RED: RedNodeAPI) {
-  function RedMobileCameraOpenNode(this: Node, props: CameraCommandNodeDef) {
-    RED.nodes.createNode(this, props);
-    const node = this;
+module.exports = (RED: RedNodeAPI) => {
+	function RedMobileCameraOpenNode(this: Node, props: CameraCommandNodeDef) {
+		RED.nodes.createNode(this, props);
 
-    const options: CameraCommandNodeOptions = {
-      toBack: false,
-      direction: 'back',
-    };
-    if (props.preview === 'enable') {
-      options.toBack = false;
-    } else {
-      options.toBack = true;
-    }
-    if (props.direction) {
-      options.direction = props.direction;
-    } else {
-      options.direction = 'back';
-    }
+		const options: CameraCommandNodeOptions = {
+			toBack: false,
+			direction: "back",
+		};
+		if (props.preview === "enable") {
+			options.toBack = false;
+		} else {
+			options.toBack = true;
+		}
+		if (props.direction) {
+			options.direction = props.direction;
+		} else {
+			options.direction = "back";
+		}
 
-    node.on('input', function (msg) {
-      const json: UtilJsonDef = {
-        id: node.id,
-        method: 'camera-open',
-        payload: msg.payload,
-        options: options,
-      };
+		this.on("input", (msg) => {
+			const json: UtilJsonDef = {
+				id: this.id,
+				method: "camera-open",
+				payload: msg.payload,
+				options: options,
+			};
 
-      postRequest(RED, node, msg, json);
-    });
-  }
+			postRequest(RED, this, msg, json);
+		});
+	}
 
-  RED.nodes.registerType('camera-open', RedMobileCameraOpenNode);
+	RED.nodes.registerType("camera-open", RedMobileCameraOpenNode);
 
-  function RedMobileCameraCloseNode(this: Node, props: CameraCommandNodeDef) {
-    RED.nodes.createNode(this, props);
-    const node = this;
+	function RedMobileCameraCloseNode(this: Node, props: CameraCommandNodeDef) {
+		RED.nodes.createNode(this, props);
 
-    node.on('input', function (msg) {
-      const params = {
-        id: node.id,
-        method: 'camera-close',
-      };
+		this.on("input", (msg) => {
+			const params = {
+				id: this.id,
+				method: "camera-close",
+			};
 
-      getRequest(RED, node, msg, params, 5000);
-    });
-  }
+			getRequest(RED, this, msg, params, 5000);
+		});
+	}
 
-  RED.nodes.registerType('camera-close', RedMobileCameraCloseNode);
+	RED.nodes.registerType("camera-close", RedMobileCameraCloseNode);
 
-  function RedMobileTakePictureNode(this: Node, props: CameraCommandNodeDef) {
-    RED.nodes.createNode(this, props);
-    const node = this;
+	function RedMobileTakePictureNode(this: Node, props: CameraCommandNodeDef) {
+		RED.nodes.createNode(this, props);
 
-    node.on('input', function (msg) {
-      const params = {
-        id: node.id,
-        method: 'camera-take-picture',
-      };
-      getRequest(RED, node, msg, params, 5000);
-    });
-  }
+		this.on("input", (msg) => {
+			const params = {
+				id: this.id,
+				method: "camera-take-picture",
+			};
+			getRequest(RED, this, msg, params, 5000);
+		});
+	}
 
-  RED.nodes.registerType('take-picture', RedMobileTakePictureNode);
+	RED.nodes.registerType("take-picture", RedMobileTakePictureNode);
 
-  function RedMobileCameraSwitchNode(this: Node, props: CameraCommandNodeDef) {
-    RED.nodes.createNode(this, props);
-    const node = this;
+	function RedMobileCameraSwitchNode(this: Node, props: CameraCommandNodeDef) {
+		RED.nodes.createNode(this, props);
 
-    node.on('input', function (msg) {
-      const params = {
-        id: node.id,
-        method: 'camera-switch',
-      };
-      getRequest(RED, node, msg, params, 5000);
-    });
-  }
+		this.on("input", (msg) => {
+			const params = {
+				id: this.id,
+				method: "camera-switch",
+			};
+			getRequest(RED, this, msg, params, 5000);
+		});
+	}
 
-  RED.nodes.registerType('camera-switch', RedMobileCameraSwitchNode);
+	RED.nodes.registerType("camera-switch", RedMobileCameraSwitchNode);
 };

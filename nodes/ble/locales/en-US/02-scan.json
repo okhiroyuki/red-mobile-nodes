@@ -1,8 +1,8 @@
 {
-  "ble-scan": {
-    "ble-scan": "scan",
-    "label": {
-      "timeout": "Timeout"
-    }
-  }
+	"ble-scan": {
+		"ble-scan": "scan",
+		"label": {
+			"timeout": "Timeout"
+		}
+	}
 }

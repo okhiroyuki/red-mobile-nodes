@@ -1,26 +1,25 @@
-import { Node } from 'node-red';
-import { postRequest } from '../../util';
-import { UtilJsonDef } from '../../@types/util';
-import { SensorNodeDef, SensorNodeOptions } from '../../@types/sensor';
-import { RedNodeAPI } from '../../@types/nodeAPI';
+import type { Node } from "node-red";
+import type { RedNodeAPI } from "../../@types/nodeAPI";
+import type { SensorNodeDef, SensorNodeOptions } from "../../@types/sensor";
+import type { UtilJsonDef } from "../../@types/util";
+import { postRequest } from "../../util";
 
-module.exports = function (RED: RedNodeAPI) {
-  function RedMobileSensorUnSubscribeNode(this: Node, props: SensorNodeDef) {
-    RED.nodes.createNode(this, props);
-    const node = this;
-    const options: SensorNodeOptions = {
-      sensor: props.sensor,
-    };
+module.exports = (RED: RedNodeAPI) => {
+	function RedMobileSensorUnSubscribeNode(this: Node, props: SensorNodeDef) {
+		RED.nodes.createNode(this, props);
+		const options: SensorNodeOptions = {
+			sensor: props.sensor,
+		};
 
-    node.on('input', function (msg) {
-      const json: UtilJsonDef = {
-        id: node.id,
-        method: 'sensor-unsubscribe',
-        payload: msg.payload,
-        options: options,
-      };
-      postRequest(RED, node, msg, json);
-    });
-  }
-  RED.nodes.registerType('sensor unsubscribe', RedMobileSensorUnSubscribeNode);
+		this.on("input", (msg) => {
+			const json: UtilJsonDef = {
+				id: this.id,
+				method: "sensor-unsubscribe",
+				payload: msg.payload,
+				options: options,
+			};
+			postRequest(RED, this, msg, json);
+		});
+	}
+	RED.nodes.registerType("sensor unsubscribe", RedMobileSensorUnSubscribeNode);
 };

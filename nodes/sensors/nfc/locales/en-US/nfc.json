@@ -1,8 +1,8 @@
 {
-  "nfc": {
-    "nfc": "nfc",
-    "errors": {
-      "response": "Could not get sensor data."
-    }
-  }
+	"nfc": {
+		"nfc": "nfc",
+		"errors": {
+			"response": "Could not get sensor data."
+		}
+	}
 }

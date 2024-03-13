@@ -1,11 +1,11 @@
 {
-  "compass": {
-    "compass": "compass",
-    "label": {
-      "name": "Name"
-    },
-    "errors": {
-      "response": "Could not get sensor data."
-    }
-  }
+	"compass": {
+		"compass": "compass",
+		"label": {
+			"name": "Name"
+		},
+		"errors": {
+			"response": "Could not get sensor data."
+		}
+	}
 }

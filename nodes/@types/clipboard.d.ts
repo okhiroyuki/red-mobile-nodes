@@ -1,9 +1,9 @@
-import { NodeDef } from 'node-red';
+import type { NodeDef } from "node-red";
 
 export interface ClipboardNodeDef extends NodeDef {
-  mode: string;
+	mode: string;
 }
 
 export interface ClipboardNodeOptions {
-  mode: string;
+	mode: string;
 }

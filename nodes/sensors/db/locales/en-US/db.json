@@ -1,11 +1,11 @@
 {
-  "db": {
-    "db": "dB",
-    "label": {
-      "name": "Name"
-    },
-    "errors": {
-      "response": "Could not get sensor data."
-    }
-  }
+	"db": {
+		"db": "dB",
+		"label": {
+			"name": "Name"
+		},
+		"errors": {
+			"response": "Could not get sensor data."
+		}
+	}
 }

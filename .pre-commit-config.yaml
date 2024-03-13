@@ -8,7 +8,7 @@ repos:
       - id: double-quote-string-fixer
       - id: requirements-txt-fixer
   - repo: https://github.com/biomejs/pre-commit
-    rev: "0.1.0"
+    rev: ""
     hooks:
       - id: biome-check
         additional_dependencies: ["@biomejs/biome@1.6.1"]

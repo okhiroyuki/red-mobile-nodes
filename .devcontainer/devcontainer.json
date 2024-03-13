@@ -28,7 +28,8 @@
         "emeraldwalk.RunOnSave",
         "redhat.vscode-yaml",
         "usernamehw.errorlens",
-        "github.vscode-github-actions"
+        "github.vscode-github-actions",
+        "biomejs.biome"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "zsh"

@@ -7,20 +7,8 @@ repos:
       - id: check-yaml
       - id: double-quote-string-fixer
       - id: requirements-txt-fixer
-  - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v3.0.3
+  - repo: https://github.com/biomejs/pre-commit
+    rev: "0.1.0"
     hooks:
-      - id: prettier
-        types_or: [javascript]
-  - repo: https://github.com/pre-commit/mirrors-eslint
-    rev: v8.50.0
-    hooks:
-      - id: eslint
-        types: [file]
-        files: \.[jt]sx?$ # *.js, *.jsx, *.ts and *.tsx
-        args: [--cache, --max-warnings, '0']
-        additional_dependencies:
-          - 'eslint@8.47.0'
-          - 'eslint-config-prettier@9.0.0'
-          - '@typescript-eslint/eslint-plugin@6.7.5'
-          - '@typescript-eslint/parser@6.7.4'
+      - id: biome-check
+        additional_dependencies: ["@biomejs/biome@1.6.1"]

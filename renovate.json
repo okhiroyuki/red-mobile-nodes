@@ -1,38 +1,35 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base",
-    ":timezone(Asia/Tokyo)"
-  ],
-  "rangeStrategy": "pin",
-  "major": {
-    "automerge": false
-  },
-  "nodenv": {
-    "enabled": false
-  },
-  "lockFileMaintenance": {
-    "enabled": true,
-    "automerge": true,
-    "platformAutomerge": true
-  },
-  "packageRules": [
-    {
-      "automerge": true,
-      "platformAutomerge": true,
-      "matchManagers": ["pre-commit"]
-    },
-    {
-      "automerge": true,
-      "platformAutomerge": true,
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"]
-    },
-    {
-      "description": "Ignore nodejs",
-      "matchPackageNames": ["node"],
-      "matchManagers": ["npm"],
-      "matchDepTypes": ["engines"],
-      "enabled": false
-    }
-  ]
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"extends": ["config:base", ":timezone(Asia/Tokyo)"],
+	"rangeStrategy": "pin",
+	"major": {
+		"automerge": false
+	},
+	"nodenv": {
+		"enabled": false
+	},
+	"lockFileMaintenance": {
+		"enabled": true,
+		"automerge": true,
+		"platformAutomerge": true
+	},
+	"packageRules": [
+		{
+			"automerge": true,
+			"platformAutomerge": true,
+			"matchManagers": ["pre-commit"]
+		},
+		{
+			"automerge": true,
+			"platformAutomerge": true,
+			"matchUpdateTypes": ["minor", "patch", "pin", "digest"]
+		},
+		{
+			"description": "Ignore nodejs",
+			"matchPackageNames": ["node"],
+			"matchManagers": ["npm"],
+			"matchDepTypes": ["engines"],
+			"enabled": false
+		}
+	]
 }

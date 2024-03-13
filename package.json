@@ -4,7 +4,7 @@
   "description": "Extra nodes for RedMobile",
   "scripts": {
     "start": "npx node-red --setting=settings.js -v",
-    "build": "run-p type-check copy",
+    "build": "run-p lint type-check copy",
     "copy": "copyfiles -u 1 \"./nodes/**/*.{png,svg,json,html}\" \"./dist/nodes/\"",
     "type-check": "npx tsc",
     "test": "npx jest --runInBand nodes/",

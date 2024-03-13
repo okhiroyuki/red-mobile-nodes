@@ -1,17 +1,17 @@
-import { NodeAPI, NodeAPISettingsWithData, NodeMessage } from 'node-red';
+import type { NodeAPI, NodeAPISettingsWithData, NodeMessage } from "node-red";
 
 export interface RedNodeAPI extends NodeAPI {
-  address?: string;
-  settings: RedNodeAPISettingsWithData;
+	address?: string;
+	settings: RedNodeAPISettingsWithData;
 }
 
 export interface RedNodeAPISettingsWithData extends NodeAPISettingsWithData {
-  redMobileWsPort?: string;
-  redMobileAccessKey?: string;
-  redMobilePort?: string;
-  forceClose?: boolean;
+	redMobileWsPort?: string;
+	redMobileAccessKey?: string;
+	redMobilePort?: string;
+	forceClose?: boolean;
 }
 
 export interface RedMobileNodeMessage extends NodeMessage {
-  options?: string;
+	options?: string;
 }

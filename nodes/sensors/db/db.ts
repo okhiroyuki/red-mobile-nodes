@@ -1,21 +1,20 @@
-import { Node, NodeDef } from 'node-red';
-import { getRequest } from '../../util';
-import { UtilJsonDef } from '../../@types/util';
-import { RedNodeAPI } from '../../@types/nodeAPI';
+import type { Node, NodeDef } from "node-red";
+import type { RedNodeAPI } from "../../@types/nodeAPI";
+import type { UtilJsonDef } from "../../@types/util";
+import { getRequest } from "../../util";
 
-module.exports = function (RED: RedNodeAPI) {
-  function RedMobileDBNode(this: Node, props: NodeDef) {
-    RED.nodes.createNode(this, props);
-    const node = this;
+module.exports = (RED: RedNodeAPI) => {
+	function RedMobileDBNode(this: Node, props: NodeDef) {
+		RED.nodes.createNode(this, props);
 
-    node.on('input', function (msg) {
-      const json: UtilJsonDef = {
-        id: node.id,
-        method: 'db',
-      };
-      getRequest(RED, node, msg, json, 5000);
-    });
-  }
+		this.on("input", (msg) => {
+			const json: UtilJsonDef = {
+				id: this.id,
+				method: "db",
+			};
+			getRequest(RED, this, msg, json, 5000);
+		});
+	}
 
-  RED.nodes.registerType('db', RedMobileDBNode);
+	RED.nodes.registerType("db", RedMobileDBNode);
 };

@@ -1,21 +1,21 @@
 {
-  "qrcode": {
-    "qrcode": "qrcode scan",
-    "label": {
-      "camera": "Camera",
-      "showFlipCameraButton": "show Flip Button",
-      "showTorchButton": "show Torch Button",
-      "torchOn": "TorchOn",
-      "orientation": "Orientation",
-      "prompt": "Prompt"
-    },
-    "camera": {
-      "front": "Front",
-      "back": "Back"
-    },
-    "orientation": {
-      "portrait": "Portrait",
-      "landscape": "Landscape"
-    }
-  }
+	"qrcode": {
+		"qrcode": "qrcode scan",
+		"label": {
+			"camera": "Camera",
+			"showFlipCameraButton": "show Flip Button",
+			"showTorchButton": "show Torch Button",
+			"torchOn": "TorchOn",
+			"orientation": "Orientation",
+			"prompt": "Prompt"
+		},
+		"camera": {
+			"front": "Front",
+			"back": "Back"
+		},
+		"orientation": {
+			"portrait": "Portrait",
+			"landscape": "Landscape"
+		}
+	}
 }

@@ -1,10 +1,10 @@
 {
-  "ble-write": {
-    "ble-write": "write",
-    "label": {
-      "device": "Device",
-      "service": "Service",
-      "characteristic": "Characteristic"
-    }
-  }
+	"ble-write": {
+		"ble-write": "write",
+		"label": {
+			"device": "Device",
+			"service": "Service",
+			"characteristic": "Characteristic"
+		}
+	}
 }

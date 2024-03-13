@@ -1,13 +1,13 @@
 {
-  "clipboard": {
-    "clipboard": "clipboard",
-    "label": {
-      "mode": "Mode"
-    },
-    "mode": {
-      "copy": "Copy",
-      "paste": "Paste",
-      "clear": "Clear"
-    }
-  }
+	"clipboard": {
+		"clipboard": "clipboard",
+		"label": {
+			"mode": "Mode"
+		},
+		"mode": {
+			"copy": "Copy",
+			"paste": "Paste",
+			"clear": "Clear"
+		}
+	}
 }

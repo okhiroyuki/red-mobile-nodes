@@ -1,11 +1,11 @@
-import { NodeDef } from 'node-red';
+import type { NodeDef } from "node-red";
 
 export interface CameraCommandNodeDef extends NodeDef {
-  preview: string;
-  direction: string;
+	preview: string;
+	direction: string;
 }
 
 export interface CameraCommandNodeOptions {
-  toBack: boolean;
-  direction: string;
+	toBack: boolean;
+	direction: string;
 }

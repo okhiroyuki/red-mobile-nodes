@@ -13,6 +13,12 @@
 		}
 	},
 	"files": {
-		"ignore": [".devcontainer/*", ".vscode/*", "examples/*.json"]
+		"ignore": [
+			".devcontainer/*",
+			".vscode/*",
+			"examples/*.json",
+			"dist/*",
+			"coverage/*"
+		]
 	}
 }

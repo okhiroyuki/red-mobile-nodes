@@ -4,12 +4,14 @@
 	"description": "Extra nodes for RedMobile",
 	"scripts": {
 		"start": "npx node-red --setting=settings.js -v",
-		"build": "run-s lint type-check copy",
+		"lint": "npx @biomejs/biome check --apply .",
+		"type-check": "npx tsc --noEmit",
 		"copy": "copyfiles -u 1 \"./nodes/**/*.{png,svg,json,html}\" \"./dist/nodes/\"",
-		"type-check": "npx tsc",
-		"test": "npx jest --runInBand nodes/",
-		"coverage": "npx jest --runInBand --coverage nodes/",
-		"lint": "npx @biomejs/biome check --apply ."
+		"build:ts": "npx tsc",
+		"build": "run-s lint build:ts copy",
+		"test:jest": "npx jest --runInBand nodes/",
+		"test": "run-s lint type-check test:jest",
+		"coverage": "npx jest --runInBand --coverage nodes/"
 	},
 	"keywords": ["redmobile", "nodered"],
 	"author": "hiroyuki okada",

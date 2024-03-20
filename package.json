@@ -11,10 +11,7 @@
 		"coverage": "npx jest --runInBand --coverage nodes/",
 		"lint": "npx @biomejs/biome check --apply ."
 	},
-	"keywords": [
-		"redmobile",
-		"nodered"
-	],
+	"keywords": ["redmobile", "nodered"],
 	"author": "hiroyuki okada",
 	"license": "MIT",
 	"dependencies": {

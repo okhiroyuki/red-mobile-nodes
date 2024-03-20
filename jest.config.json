@@ -2,7 +2,7 @@
 	"bail": 1,
 	"verbose": true,
 	"testEnvironment": "node",
-  "transform": {
-    "^.+\\.(t|j)sx?$": ["@swc/jest"]
-  }
+	"transform": {
+		"^.+\\.(t|j)sx?$": ["@swc/jest"]
+	}
 }

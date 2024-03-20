@@ -11,10 +11,15 @@
 		"coverage": "npx jest --runInBand --coverage nodes/",
 		"lint": "npx @biomejs/biome check --apply ."
 	},
-	"keywords": ["redmobile", "nodered"],
+	"keywords": [
+		"redmobile",
+		"nodered"
+	],
 	"author": "hiroyuki okada",
 	"license": "MIT",
 	"dependencies": {
+		"@swc/core": "^1.4.8",
+		"@swc/jest": "^0.2.36",
 		"@types/node-red-node-test-helper": "0.3.4",
 		"axios": "1.6.8",
 		"is-base64": "1.1.0",
@@ -24,7 +29,7 @@
 	"devDependencies": {
 		"@biomejs/biome": "1.6.1",
 		"@types/is-base64": "1.1.3",
-		"@types/jest": "29.5.12",
+		"@types/jest": "^29.5.12",
 		"@types/node-red": "1.3.5",
 		"@types/node-red-node-test-helper": "0.3.4",
 		"@types/ws": "8.5.10",
@@ -33,7 +38,6 @@
 		"node-red": "3.1.7",
 		"node-red-node-test-helper": "0.3.3",
 		"npm-run-all2": "6.1.2",
-		"ts-jest": "29.1.2",
 		"typescript": "5.4.2"
 	},
 	"node-red": {

@@ -23,9 +23,7 @@
       "extensions": [
         "EditorConfig.EditorConfig",
         "DavidAnson.vscode-markdownlint",
-        "eamodio.gitlens",
         "esbenp.prettier-vscode",
-        "emeraldwalk.RunOnSave",
         "redhat.vscode-yaml",
         "usernamehw.errorlens",
         "github.vscode-github-actions",

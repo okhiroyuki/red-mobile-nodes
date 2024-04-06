@@ -4,7 +4,7 @@
 	"description": "Extra nodes for RedMobile",
 	"scripts": {
 		"start": "npx node-red --setting=settings.js -v",
-		"lint": "npx @biomejs/biome check --apply .",
+		"lint": "npx @biomejs/biome check .",
 		"type-check": "npx tsc --noEmit",
 		"copy": "copyfiles -u 1 \"./nodes/**/*.{png,svg,json,html}\" \"./dist/nodes/\"",
 		"build:ts": "npx tsc",

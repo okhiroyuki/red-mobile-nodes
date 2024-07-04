@@ -22,7 +22,7 @@
 		"@types/node-red-node-test-helper": "0.3.4",
 		"axios": "1.7.2",
 		"is-base64": "1.1.0",
-		"qs": "6.12.1",
+		"qs": "6.12.2",
 		"ws": "8.17.1"
 	},
 	"devDependencies": {

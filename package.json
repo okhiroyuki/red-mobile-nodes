@@ -17,7 +17,7 @@
 	"author": "hiroyuki okada",
 	"license": "MIT",
 	"dependencies": {
-		"@swc/core": "1.7.2",
+		"@swc/core": "1.7.3",
 		"@swc/jest": "0.2.36",
 		"@types/node-red-node-test-helper": "0.3.4",
 		"axios": "1.7.2",

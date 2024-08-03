@@ -1,8 +1,7 @@
 ---
 name: pre-commit
 
-# yamllint disable-line rule:truthy
-on:
+"on":
   pull_request:
   push:
     branches: [main]

@@ -6,33 +6,37 @@
   "build": {
     "dockerfile": "Dockerfile"
   },
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
   "mounts": [
-    "source=node_modules_${devcontainerId},target=${containerWorkspaceFolder}/node_modules,type=volume"
+    "source=node_modules_${devcontainerId},target=${containerWorkspaceFolder}/node_modules,type=volume",
+    "source=pre-commit-cache_${devcontainerId},target=${containerWorkspaceFolder}/.pre-commit-cache,type=volume",
+    "source=npm_${devcontainerId},target=${containerWorkspaceFolder}/.npm,type=volume"
   ],
-  // Features to add to the dev container. More info: https://containers.dev/features.
-  "features": {},
-  // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  // "forwardPorts": [],
-  // Use 'postCreateCommand' to run commands after the container is created.
-  // "postCreateCommand": "yarn install",
+  "remoteEnv": {
+    "PRE_COMMIT_HOME": "${containerWorkspaceFolder}/.pre-commit-cache",
+    "npm_config_cache": "${containerWorkspaceFolder}/.npm"
+  },
   "postAttachCommand": "bash .devcontainer/commands/post-attach.sh",
-  // Configure tool-specific properties.
   "customizations": {
     "vscode": {
       "extensions": [
-        "EditorConfig.EditorConfig",
-        "DavidAnson.vscode-markdownlint",
-        "esbenp.prettier-vscode",
-        "redhat.vscode-yaml",
+        "biomejs.biome",
+        "streetsidesoftware.code-spell-checker",
         "usernamehw.errorlens",
         "github.vscode-github-actions",
-        "biomejs.biome"
+        "GitHub.vscode-pull-request-github",
+        "exiasr.hadolint",
+        "GitHub.copilot-chat",
+        "GitHub.copilot",
+        "DavidAnson.vscode-markdownlint",
+        "redhat.vscode-yaml",
+        "ms-azuretools.vscode-docker"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "zsh"
       }
     }
   }
-  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-  // "remoteUser": "root"
 }

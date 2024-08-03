@@ -145,3 +145,4 @@ dist
 
 .node-red/
 .DS_Store
+.pre-commit-cache

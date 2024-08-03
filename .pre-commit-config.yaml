@@ -1,0 +1,24 @@
+---
+repos:
+  - repo: https://github.com/adrienverge/yamllint.git
+    rev: v1.35.1
+    hooks:
+      - id: yamllint
+        args: [--strict, -c=.yamllint]
+
+  - repo: https://github.com/koalaman/shellcheck-precommit
+    rev: v0.10.0
+    hooks:
+      - id: shellcheck
+
+  - repo: local
+    hooks:
+      - id: biome
+        name: biome check
+        entry: npx @biomejs/biome check --write .
+        language: system
+      - id: dprint
+        name: dprint fmt
+        entry: npx dprint fmt
+        args: ["--allow-no-files"]
+        language: system

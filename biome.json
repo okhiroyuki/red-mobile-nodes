@@ -18,7 +18,11 @@
 			".vscode/*",
 			"examples/*.json",
 			"dist/*",
-			"coverage/*"
+			"coverage/*",
+			"node_modules/*",
+			"package-lock.json",
+			".npm/*",
+			".pre-commit-cache/*"
 		]
 	}
 }

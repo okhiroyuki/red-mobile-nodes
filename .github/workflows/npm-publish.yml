@@ -20,4 +20,4 @@ jobs:
           path: ./.github/actions/composite-actions
       - uses: ./.github/actions/composite-actions/npm-publish
         with:
-          token: ${{ secrets.NPM_TOKEN }}
+          npm_token: ${{ secrets.NPM_TOKEN }}

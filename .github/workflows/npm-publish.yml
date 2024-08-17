@@ -3,21 +3,21 @@ name: npm publish
 
 # yamllint disable-line rule:truthy
 on:
-  push:
+  workflow_run:
+    workflows:
+      - Node.js
     branches:
       - main
-    paths:
-      - "package.json"
+    types:
+      - completed
 
 jobs:
   publish:
-    if: github.ref == 'refs/heads/main'
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     permissions:
       contents: write
-    env:
-      CI: true
     steps:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4

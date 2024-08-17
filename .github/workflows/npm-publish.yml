@@ -8,7 +8,6 @@ on:
       - main
     paths:
       - "package.json"
-  workflow_dispatch:
 
 jobs:
   publish:
@@ -17,12 +16,17 @@ jobs:
     timeout-minutes: 5
     permissions:
       contents: write
+    env:
+      CI: true
     steps:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
         with:
           repository: okhiroyuki/composite-actions
           path: ./.github/actions/composite-actions
+      - uses: ./.github/actions/composite-actions/setup-node
+      - name: build
+        run: npm run build
       - uses: ./.github/actions/composite-actions/npm-publish
         with:
           npm-token: ${{ secrets.NPM_TOKEN }}

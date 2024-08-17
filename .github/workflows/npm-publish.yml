@@ -8,6 +8,7 @@ on:
       - main
     paths:
       - "package.json"
+  workflow_dispatch:
 
 jobs:
   publish:

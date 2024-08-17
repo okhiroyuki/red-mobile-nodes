@@ -18,4 +18,5 @@ jobs:
         with:
           repository: okhiroyuki/composite-actions
           path: ./.github/actions/composite-actions
+      - uses: ./.github/actions/composite-actions/setup-node
       - uses: ./.github/actions/composite-actions/pre-commit

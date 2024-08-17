@@ -1,21 +1,23 @@
 ---
-name: pre-commit
+name: npm publish
 
 # yamllint disable-line rule:truthy
 on:
-  pull_request:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
-  pre-commit:
+  publish:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
         with:
           repository: okhiroyuki/composite-actions
           path: ./.github/actions/composite-actions
-      - uses: ./.github/actions/composite-actions/pre-commit
+      - uses: ./.github/actions/composite-actions/npm-publish
+        with:
+          token: ${{ secrets.NPM_TOKEN }}

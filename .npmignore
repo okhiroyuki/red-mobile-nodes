@@ -7,6 +7,7 @@
 **/__tests__/
 nodes/
 .gitignore
+.node-version
 .pre-commit-config.yaml
 .yamllint
 biome.json

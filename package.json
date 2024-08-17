@@ -1,6 +1,6 @@
 {
 	"name": "@red-mobile/red-mobile-nodes",
-	"version": "3.4.2",
+	"version": "3.4.1",
 	"description": "Extra nodes for RedMobile",
 	"scripts": {
 		"start": "npx node-red --setting=settings.js -v",

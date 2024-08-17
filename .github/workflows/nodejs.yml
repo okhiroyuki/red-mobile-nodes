@@ -15,8 +15,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Install dependencies
-        run: npm ci
+      - uses: actions/checkout@v4
+        with:
+          repository: okhiroyuki/composite-actions
+          path: ./.github/actions/composite-actions
+      - uses: ./.github/actions/composite-actions/setup-node
       - name: Test and coverage
         run: npm run coverage
       - name: SonarCloud Scan
@@ -28,10 +31,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
         with:
-          node-version: "18"
+          repository: okhiroyuki/composite-actions
+          path: ./.github/actions/composite-actions
+      - uses: ./.github/actions/composite-actions/setup-node
       - name: npm install, build, and test
         run: |
           npm ci

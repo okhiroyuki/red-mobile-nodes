@@ -6,11 +6,6 @@ repos:
       - id: yamllint
         args: [--strict, -c=.yamllint]
 
-  - repo: https://github.com/koalaman/shellcheck-precommit
-    rev: v0.10.0
-    hooks:
-      - id: shellcheck
-
   - repo: local
     hooks:
       - id: biome
@@ -22,3 +17,8 @@ repos:
         entry: npx dprint fmt
         args: ["--allow-no-files"]
         language: system
+      - id: shellcheck
+        name: shellcheck
+        language: system
+        entry: shellcheck
+        files: ^(.*\.(sh|bash))$

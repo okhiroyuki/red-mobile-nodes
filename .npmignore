@@ -5,7 +5,8 @@
 .node-red
 .vscode/
 **/__tests__/
-nodes/
+covarage/*
+nodes/*
 .gitignore
 .node-version
 .pre-commit-config.yaml

@@ -10,8 +10,8 @@ jobs:
   coverage:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: ArtiomTr/jest-coverage-report-action@v2
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+      - uses: ArtiomTr/jest-coverage-report-action@c026e98ae079f4b0b027252c8e957f5ebd420610 # v2
         with:
           test-script: npm run coverage
           annotations: none

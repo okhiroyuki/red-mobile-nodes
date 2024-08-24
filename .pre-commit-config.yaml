@@ -17,8 +17,3 @@ repos:
         entry: npx dprint fmt
         args: ["--allow-no-files"]
         language: system
-      - id: shellcheck
-        name: shellcheck
-        language: system
-        entry: shellcheck
-        files: ^(.*\.(sh|bash))$

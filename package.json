@@ -22,7 +22,7 @@
 		"ws": "8.18.0"
 	},
 	"devDependencies": {
-		"@swc/core": "1.10.15",
+		"@swc/core": "1.10.16",
 		"@swc/jest": "0.2.37",
 		"@biomejs/biome": "1.9.3",
 		"@types/is-base64": "1.1.3",

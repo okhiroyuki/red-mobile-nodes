@@ -1,7 +1,11 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
-	"organizeImports": {
-		"enabled": true
+	"$schema": "https://biomejs.dev/schemas/2.2.0/schema.json",
+	"assist": {
+		"actions": {
+			"source": {
+				"organizeImports": "on"
+			}
+		}
 	},
 	"linter": {
 		"enabled": true,
@@ -13,17 +17,18 @@
 		}
 	},
 	"files": {
-		"ignore": [
-			".devcontainer/*",
-			".vscode/*",
-			"examples/*.json",
-			"dist/*",
-			"coverage/*",
-			"node_modules/*",
-			"package-lock.json",
-			".npm/*",
-			".pre-commit-cache/*",
-			"./.github/actions/composite-actions/*"
+		"includes": [
+			"**",
+			"!**/.devcontainer/**/*",
+			"!**/.vscode/**/*",
+			"!**/examples/**/*.json",
+			"!**/dist/**/*",
+			"!**/coverage/**/*",
+			"!**/node_modules/**/*",
+			"!**/package-lock.json",
+			"!**/.npm/**/*",
+			"!**/.pre-commit-cache/**/*",
+			"!.github/actions/composite-actions/**/*"
 		]
 	}
 }

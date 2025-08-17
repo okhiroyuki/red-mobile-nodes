@@ -1,6 +1,7 @@
 import axios from "axios";
 import qs from "qs";
 import type { RedNodeAPISettingsWithData } from "../@types/nodeAPI";
+
 const BASE_URL = "http://127.0.0.1";
 const PATH = "/mobile";
 

@@ -1,15 +1,14 @@
 import type { Node, NodeDef } from "node-red";
 import { EventEmitter } from "ws";
-import type { UtilJsonDef } from "../@types/util";
-import { open } from "../WebSocketHelper";
-import { getRequest, postRequest } from "../util";
-
 import type { RedNodeAPI } from "../@types/nodeAPI";
 import type {
 	SerialOpenNodeDef,
 	SerialOpenNodeOptions,
 	SerialWriteNodeDef,
 } from "../@types/serial";
+import type { UtilJsonDef } from "../@types/util";
+import { getRequest, postRequest } from "../util";
+import { open } from "../WebSocketHelper";
 
 module.exports = (RED: RedNodeAPI) => {
 	const ev = new EventEmitter();

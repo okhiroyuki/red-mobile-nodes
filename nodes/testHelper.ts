@@ -1,4 +1,4 @@
-import { type Server, createServer } from "node:http";
+import { createServer, type Server } from "node:http";
 import { parse } from "node:url";
 import { type WebSocket, WebSocketServer } from "ws";
 

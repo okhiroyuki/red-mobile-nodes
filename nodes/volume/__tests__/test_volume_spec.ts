@@ -3,6 +3,7 @@ jest.mock("../../util");
 import helper from "node-red-node-test-helper";
 import type { CustomLocalSetting } from "../../@types/util";
 import * as util from "../../util";
+
 const mockPostRequest = jest.spyOn(util, "postRequest");
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
